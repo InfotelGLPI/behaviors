@@ -323,6 +323,7 @@ class PluginBehaviorsTicket {
          foreach ($ticket->input['items_id'] as $type => $items) {
             if (($item = $dbu->getItemForItemtype($type))
                 && isset($ticket->input['_actors'])) {
+
                $actors = $ticket->input['_actors'];
 
                //for simplified interface
@@ -359,13 +360,14 @@ class PluginBehaviorsTicket {
       }
 
       if ($config->getField('use_requester_user_group') > 0) {
-          
+
+         $actors = [];
          if (isset($ticket->input['_actors'])) {
               $actors = ($ticket->input['_actors'] ?? []);
          }
          
          //for simplified interface or mailgate
-         if (!isset($actors['requester']) && isset($ticket->input['_users_id_requester'])) {
+         if (isset($ticket->input['_actors']) && !isset($actors['requester']) && isset($ticket->input['_users_id_requester'])) {
             $actors['requester'][] = ['itemtype'          => 'User',
                                       'items_id'          => $ticket->input['_users_id_requester'],
                                       'use_notification'  => "1",
@@ -421,7 +423,8 @@ class PluginBehaviorsTicket {
       }
       
       if ($config->getField('use_assign_user_group') > 0) {
-          
+
+          $actors = [];
           if (isset($ticket->input['_actors'])) {
               $actors = ($ticket->input['_actors'] ?? []);
           }
@@ -720,7 +723,7 @@ class PluginBehaviorsTicket {
           && ($_SESSION['glpiactiveprofile']['interface'] == 'central')) {
 
          if (strstr($_SERVER['PHP_SELF'], "/front/ticket.form.php")
-             && isset($_POST['id'])
+//             && isset($_POST['id'])
              && (!isset($_POST['id']) || ($_POST['id'] == 0))) {
 
             $config = PluginBehaviorsConfig::getInstance();

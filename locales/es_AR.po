@@ -69,7 +69,7 @@ msgstr "Cambiar estado"
 
 #: templates/config.html.twig:233
 msgid "Change's number format"
-msgstr "Formato de número de cambio"
+msgstr "Formato de número del cambio"
 
 #: src/Common.php:123 src/Common.php:142 src/Common.php:176
 msgid "Clone"

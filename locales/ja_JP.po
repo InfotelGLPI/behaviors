@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# INOUE Daisuke, 2025
+# INOUE Daisuke, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-10 13:54+0000\n"
+"POT-Creation-Date: 2025-10-31 17:54+0000\n"
 "PO-Revision-Date: 2025-04-26 07:42+0000\n"
-"Last-Translator: INOUE Daisuke, 2025\n"
+"Last-Translator: INOUE Daisuke, 2026\n"
 "Language-Team: Japanese (Japan) (https://app.transifex.com/infotelGLPI/teams/250760/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,9 +25,17 @@ msgstr ""
 msgid "Add document to ticket"
 msgstr "チケットにドキュメントを追加"
 
-#: /home/runner/work/behaviors/behaviors/templates/config.html.twig:137
+#: templates/config.html.twig:137
 msgid "Adding the ticket solution"
 msgstr "チケットに解決を追加しています"
+
+#: templates/config.html.twig:278
+msgid "Additional notifications"
+msgstr "追加の通知"
+
+#: templates/config.html.twig:287
+msgid "Allow Clone"
+msgstr "クローンを許可"
 
 #: setup.php:132 src/Common.php:124 src/Config.php:71 src/Document_Item.php:57
 #: src/Document_Item.php:64 src/Ticket.php:73 src/Ticket.php:80
@@ -36,17 +44,30 @@ msgstr "チケットに解決を追加しています"
 msgid "Behaviours"
 msgstr "ビヘイビア"
 
+#: templates/config.html.twig:219
+msgid "Block the solving/closing of a problem if task do to"
+msgstr "問題にタスクが残っていたら解決・終了できなくする"
+
+#: templates/config.html.twig:192
+msgid "Block the solving/closing of a the ticket if task do to"
+msgstr "チケットにタスクが残っていたら解決・終了できなくする"
+
 #: src/Common.php:330 src/ITILSolution.php:171 src/Ticket.php:984
+#: templates/config.html.twig:164
 msgid "Category is mandatory before ticket is solved/closed"
 msgstr "チケットを解決・終了するにはカテゴリーの選択が必須"
 
-#: src/Ticket.php:1067
+#: src/Ticket.php:1067 templates/config.html.twig:89
 msgid "Category is mandatory when you assign a ticket"
 msgstr "チケットの割り当てをするにはカテゴリーの選択が必須"
 
 #: src/Ticket.php:81
 msgid "Change status"
 msgstr "変更の状態"
+
+#: templates/config.html.twig:233
+msgid "Change's number format"
+msgstr "変更の数値書式"
 
 #: src/Common.php:123 src/Common.php:142 src/Common.php:176
 msgid "Clone"
@@ -56,20 +77,34 @@ msgstr "クローン"
 msgid "Clone of"
 msgstr "クローン元 : "
 
-#: /home/runner/work/behaviors/behaviors/templates/config.html.twig:294
+#: templates/config.html.twig:294
 msgid "Comment"
 msgid_plural "Comments"
 msgstr[0] "コメント"
+
+#: templates/config.html.twig:300
+msgid "Comments"
+msgstr "コメント"
+
+#: templates/config.html.twig:248
+msgid "Delete computer in OCSNG when purged from GLPI"
+msgstr "GLPI でコンピューターを抹消したら OCSNG でも削除する"
 
 #: src/Document_Item.php:65
 msgid "Delete document to ticket"
 msgstr "チケットのドキュメントを削除"
 
+#: templates/config.html.twig:113
+msgid "Deny change of ticket's creation date"
+msgstr "チケットの作成日を変更不可に"
+
 #: src/ITILSolution.php:86 src/ITILSolution.php:366 src/Ticket.php:949
+#: templates/config.html.twig:178
 msgid "Description of solution is mandatory before ticket is solved/closed"
 msgstr "チケットを解決・終了するには解決策の記述を必須に"
 
 #: src/Common.php:325 src/ITILSolution.php:99 src/Ticket.php:971
+#: templates/config.html.twig:199
 msgid "Duration is mandatory before ticket is solved/closed"
 msgstr "チケットを解決・終了するには期間を必須に"
 
@@ -82,11 +117,12 @@ msgid "Error in creating glpi_plugin_behaviors_configs"
 msgstr "glpi_plugin_behaviors_configs の作成でエラー"
 
 #: src/Common.php:347 src/ITILSolution.php:198 src/Ticket.php:1011
+#: templates/config.html.twig:157
 msgid ""
 "Group of technicians assigned is mandatory before ticket is solved/closed"
 msgstr "チケットを解決・終了するには技術者グループの割り当てを必須に"
 
-#: /home/runner/work/behaviors/behaviors/templates/config.html.twig:240
+#: templates/config.html.twig:240
 msgid "Inventory"
 msgstr "インベントリー"
 
@@ -111,53 +147,97 @@ msgid "Last watcher added"
 msgstr "最終割り当て監視者"
 
 #: src/Common.php:355 src/ITILSolution.php:211 src/Ticket.php:1024
+#: templates/config.html.twig:171
 msgid "Location is mandatory before ticket is solved/closed"
 msgstr "チケットを解決・終了するには場所を必須に"
 
-#: /home/runner/work/behaviors/behaviors/templates/config.html.twig:226
+#: templates/config.html.twig:226
 msgid "New change"
 msgstr "新しい変更"
 
-#: /home/runner/work/behaviors/behaviors/templates/config.html.twig:42
+#: templates/config.html.twig:42
 msgid "New ticket"
 msgstr "新しいチケット"
+
+#: templates/config.html.twig:268
+msgid "Notification"
+msgid_plural "Notifications"
+msgstr[0] "通知"
 
 #: src/Ticket.php:74
 msgid "Reopen ticket"
 msgstr "チケットの再開"
 
-#: /home/runner/work/behaviors/behaviors/templates/config.html.twig:315
+#: templates/config.html.twig:315
 msgctxt "button"
 msgid "Save"
 msgstr "保存"
+
+#: templates/config.html.twig:150
+msgid "Set the solution writer as the technician of the ticket"
+msgstr "解決の記入者をチケットの技術者に設定する"
+
+#: templates/config.html.twig:123
+msgid "Single technician and group"
+msgstr "技術者とグループを 1 つしか割り当てできないように"
 
 #: src/Ticket.php:141
 msgid "Supervisor of last group assigned"
 msgstr "最終割り当てグループの監督"
 
+#: templates/config.html.twig:106
+msgid "Task category is mandatory in a task"
+msgstr "タスクのカテゴリーを必須に"
+
 #: src/Common.php:338 src/ITILSolution.php:185 src/Ticket.php:998
+#: templates/config.html.twig:143
 msgid "Technician assigned is mandatory before ticket is solved/closed"
 msgstr "チケットを解決・終了するには技術者の割り当てを必須に"
+
+#: templates/config.html.twig:130
+msgid "Technician assignment when adding follow up"
+msgstr "回答を追加する際に、技術者を割り当てる"
+
+#: templates/config.html.twig:131
+msgid "The technician must belong to the group assigned to the ticket"
+msgstr "技術者は、チケットに割り当てられているグループに所属していなければならない"
 
 #: src/Ticket.php:88
 msgid "Ticket waiting"
 msgstr "保留中チケット"
 
-#: src/ITILSolution.php:254 src/Problem.php:86
+#: templates/config.html.twig:50
+msgid "Ticket's number format"
+msgstr "チケットの数値書式"
+
+#: src/ITILSolution.php:254 src/Problem.php:86 templates/config.html.twig:213
 msgid "Type of solution is mandatory before problem is solved/closed"
 msgstr "問題を解決・終了するには解決の型を必須に"
 
 #: src/ITILSolution.php:73 src/ITILSolution.php:351 src/Ticket.php:937
+#: templates/config.html.twig:185
 msgid "Type of solution is mandatory before ticket is solved/closed"
 msgstr "チケットを解決・終了するには解決の型を必須に"
 
-#: /home/runner/work/behaviors/behaviors/templates/config.html.twig:207
+#: templates/config.html.twig:207
 msgid "Update of a problem"
 msgstr "問題の更新"
 
-#: /home/runner/work/behaviors/behaviors/templates/config.html.twig:83
+#: templates/config.html.twig:83
 msgid "Update of a ticket"
 msgstr "チケットの更新"
+
+#: templates/config.html.twig:57
+msgid "Use the associated item's group"
+msgstr "アイテムのグループへの関連を使う"
+
+#: templates/config.html.twig:67
+msgid "Use the requester's group"
+msgstr "依頼グループを使う"
+
+#: templates/config.html.twig:75 templates/config.html.twig:99
+msgid "Use the technician's group"
+msgstr "技術者グループを使う"
 
 #: src/ChangeTask.php:72
 msgid "You cannot change status of a task in a solved change"

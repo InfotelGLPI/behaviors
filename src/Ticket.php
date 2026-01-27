@@ -215,19 +215,25 @@ class Ticket
         if ($data = $result->current()) {
             $object = new $target->obj->userlinkclass();
             if ($object->getFromDB($data['lastid'])) {
-                $querylast = [$userlinktable.'users_id' => $object->fields['users_id']];
+                $querylast = [$userlinktable.'.users_id' => $object->fields['users_id']];
             }
         }
 
         $criteria = [
             'SELECT' => ['glpi_users.id AS users_id',
                 'glpi_users.language AS language',
-                $userlinktable.'use_notification AS notif',
-                $userlinktable.'alternative_email AS altemail',],
+                $userlinktable.'.use_notification AS notif',
+                $userlinktable.'.alternative_email AS altemail',],
             'DISTINCT'        => true,
             'FROM' => $userlinktable,
             'INNER JOIN' => [
-                'glpi_profiles_users' => [
+		'glpi_users' => [
+		    'ON' => [
+			$userlinktable => 'users_id',
+			'glpi_users' => 'id'
+		    ]
+		],
+	        'glpi_profiles_users' => [
                     'ON' => [
                         'glpi_profiles_users' => 'users_id',
                         'glpi_users' => 'id'
@@ -235,8 +241,8 @@ class Ticket
                 ],
             ],
             'WHERE' => [
-                $userlinktable.$fkfield => $target->obj->fields["id"],
-                $userlinktable.'type' => $type,
+                $userlinktable. '.' .$fkfield => $target->obj->fields["id"],
+                $userlinktable.'.type' => $type,
             ]
         ];
         $criteria['WHERE'] = $criteria['WHERE'] + $querylast;
@@ -1466,8 +1472,8 @@ class Ticket
                 ],
             ],
             'WHERE' => [
-                'glpi_groups_users'.'groups_id' => $group_id,
-                'glpi_groups'.'is_notify' => 1,
+                'glpi_groups_users'.'.groups_id' => $group_id,
+                'glpi_groups'.'.is_notify' => 1,
             ]
         ];
         if ($manager == 1) {

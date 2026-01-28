@@ -44,7 +44,7 @@ class Change
      * @param Change $change
      * @return false|void
      */
-    public static function beforeAdd(Change $change)
+    public static function beforeAdd(\Change $change)
     {
         global $DB;
 

@@ -387,19 +387,27 @@ class ITILSolution
 
             if ($config->getField('ticketsolved_updatetech')) {
                 $ticket_user = new \Ticket_User();
-                $ticket_user->getFromDBByCrit([
-                    'tickets_id' => $ticket->getID(),
-                    'type' => CommonITILActor::ASSIGN,
-                ]);
 
-                if (!isset($ticket_user->fields['users_id'])
-                    || (isset($ticket_user->fields['users_id'])
-                        && $ticket_user->fields['users_id'] <> Session::getLoginUserID())) {
-                    $ticket_user->add([
-                        'tickets_id' => $ticket->getID(),
-                        'users_id' => Session::getLoginUserID(),
-                        'type' => CommonITILActor::ASSIGN,
-                    ]);
+                if ($fields = $ticket_user->find(['tickets_id' => $ticket->getID(),
+                    'type' => CommonITILActor::ASSIGN])) {
+                    if (count($fields) == 1) {
+                        foreach ($fields as $f) {
+                            if (isset($f['users_id'])
+                                && $f['users_id'] <> Session::getLoginUserID()) {
+                                $ticket_user->add([
+                                    'tickets_id' => $ticket->getID(),
+                                    'users_id' => Session::getLoginUserID(),
+                                    'type' => CommonITILActor::ASSIGN,
+                                ]);
+                            }
+                        }
+                    } else if (count($fields) == 0) {
+                        $ticket_user->add([
+                            'tickets_id' => $ticket->getID(),
+                            'users_id' => Session::getLoginUserID(),
+                            'type' => CommonITILActor::ASSIGN,
+                        ]);
+                    }
                 }
             }
         }

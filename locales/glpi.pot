@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-01 14:44+0000\n"
+"POT-Creation-Date: 2026-02-01 14:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,12 +49,12 @@ msgstr ""
 msgid "Block the solving/closing of a the ticket if task do to"
 msgstr ""
 
-#: src/Common.php:330 src/ITILSolution.php:171 src/Ticket.php:984
+#: src/Common.php:330 src/ITILSolution.php:171 src/Ticket.php:990
 #: templates/config.html.twig:164
 msgid "Category is mandatory before ticket is solved/closed"
 msgstr ""
 
-#: src/Ticket.php:1067 templates/config.html.twig:89
+#: src/Ticket.php:1073 templates/config.html.twig:89
 msgid "Category is mandatory when you assign a ticket"
 msgstr ""
 
@@ -96,12 +96,12 @@ msgstr ""
 msgid "Deny change of ticket's creation date"
 msgstr ""
 
-#: src/ITILSolution.php:86 src/ITILSolution.php:366 src/Ticket.php:949
+#: src/ITILSolution.php:86 src/ITILSolution.php:366 src/Ticket.php:955
 #: templates/config.html.twig:178
 msgid "Description of solution is mandatory before ticket is solved/closed"
 msgstr ""
 
-#: src/Common.php:325 src/ITILSolution.php:99 src/Ticket.php:971
+#: src/Common.php:325 src/ITILSolution.php:99 src/Ticket.php:977
 #: templates/config.html.twig:199
 msgid "Duration is mandatory before ticket is solved/closed"
 msgstr ""
@@ -114,7 +114,7 @@ msgstr ""
 msgid "Error in creating glpi_plugin_behaviors_configs"
 msgstr ""
 
-#: src/Common.php:347 src/ITILSolution.php:198 src/Ticket.php:1011
+#: src/Common.php:347 src/ITILSolution.php:198 src/Ticket.php:1017
 #: templates/config.html.twig:157
 msgid ""
 "Group of technicians assigned is mandatory before ticket is solved/closed"
@@ -144,7 +144,7 @@ msgstr ""
 msgid "Last watcher added"
 msgstr ""
 
-#: src/Common.php:355 src/ITILSolution.php:211 src/Ticket.php:1024
+#: src/Common.php:355 src/ITILSolution.php:211 src/Ticket.php:1030
 #: templates/config.html.twig:171
 msgid "Location is mandatory before ticket is solved/closed"
 msgstr ""
@@ -188,7 +188,7 @@ msgstr ""
 msgid "Task category is mandatory in a task"
 msgstr ""
 
-#: src/Common.php:338 src/ITILSolution.php:185 src/Ticket.php:998
+#: src/Common.php:338 src/ITILSolution.php:185 src/Ticket.php:1004
 #: templates/config.html.twig:143
 msgid "Technician assigned is mandatory before ticket is solved/closed"
 msgstr ""
@@ -213,7 +213,7 @@ msgstr ""
 msgid "Type of solution is mandatory before problem is solved/closed"
 msgstr ""
 
-#: src/ITILSolution.php:73 src/ITILSolution.php:351 src/Ticket.php:937
+#: src/ITILSolution.php:73 src/ITILSolution.php:351 src/Ticket.php:943
 #: templates/config.html.twig:185
 msgid "Type of solution is mandatory before ticket is solved/closed"
 msgstr ""
@@ -270,7 +270,7 @@ msgstr ""
 msgid "You cannot solve/close a problem with task do to"
 msgstr ""
 
-#: src/Common.php:369 src/ITILSolution.php:233 src/Ticket.php:1047
+#: src/Common.php:369 src/ITILSolution.php:233 src/Ticket.php:1053
 msgid "You cannot solve/close a ticket with task do to"
 msgstr ""
 

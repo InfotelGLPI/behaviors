@@ -33,6 +33,11 @@
     </authors>
     <versions>
         <version>
+            <num>3.0.4</num>
+            <compatibility>~11.0</compatibility>
+            <download_url>https://github.com/InfotelGLPI/behaviors/releases/download/3.0.4/glpi-behaviors-3.0.4.tar.bz2</download_url>
+        </version>
+        <version>
             <num>3.0.3</num>
             <compatibility>~11.0</compatibility>
             <download_url>https://github.com/InfotelGLPI/behaviors/releases/download/3.0.3/glpi-behaviors-3.0.3.tar.bz2</download_url>

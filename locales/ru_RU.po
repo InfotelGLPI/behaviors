@@ -5,6 +5,7 @@
 # Translators:
 # Alexey Petukhov <lexx015@gmail.com>, 2014,2017
 # Nikolai Petrov <techobsl@yandex.ru>, 2018
+# Aleksandr Kolesnikov <1322421@gmail.com>, 2026
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Project - Plugin Behaviors\n"
@@ -116,7 +117,7 @@ msgstr "Тип решения обязателен для решения/зак�
 
 #: inc/config.class.php:311 inc/ticket.class.php:530
 msgid "Category is mandatory when you assign a ticket"
-msgstr ""
+msgstr "Категория является обязательной при назначении заявки."
 
 #: inc/config.class.php:317 inc/itilsolution.class.php:68
 #: inc/itilsolution.class.php:169 inc/ticket.class.php:460
@@ -125,7 +126,7 @@ msgstr "Описание решения обязательно для решен
 
 #: inc/config.class.php:322
 msgid "Change's number format"
-msgstr ""
+msgstr "Изменить формат чисел"
 
 #: inc/config.class.php:332 inc/itilsolution.class.php:94
 #: inc/ticket.class.php:493
@@ -136,7 +137,7 @@ msgstr "Назначение специалиста обязательно дл�
 #: inc/ticket.class.php:501
 msgid ""
 "Group of technicians assigned is mandatory before ticket is solved/closed"
-msgstr ""
+msgstr "Для решения/закрытия заявки обязательно необходимо указать назначенную группу технических специалистов."
 
 #: inc/config.class.php:362 inc/itilsolution.class.php:108
 #: inc/ticket.class.php:508
@@ -146,7 +147,7 @@ msgstr "Расположение обязательно для решения/з
 #: inc/config.class.php:368 inc/tickettask.class.php:58
 #: inc/tickettask.class.php:86
 msgid "Task category is mandatory in a task"
-msgstr ""
+msgstr "Категория задачи является обязательной в задании."
 
 #: inc/config.class.php:373
 msgid "Deny change of ticket's creation date"
@@ -174,7 +175,7 @@ msgstr "Блокировать закрытие заявки, если есть 
 
 #: inc/config.class.php:398
 msgid "Add the logged technician when solve ticket"
-msgstr ""
+msgstr "Добавьте зарегистрированного специалиста при решении заявки."
 
 #: inc/document_item.class.php:46
 msgid "Add document to ticket"
@@ -231,8 +232,32 @@ msgstr "Последняя назначенная группа без руков
 
 #: inc/ticket.class.php:435
 msgid "Can't save, item have been updated"
-msgstr "Невозможно сохранить, "
+msgstr "Не удается сохранить, элемент обновлен."
 
 #: inc/tickettask.class.php:96
 msgid "You cannot change status of a task in a solved ticket"
-msgstr ""
+msgstr "В решенном тикете нельзя изменить статус задачи."
+
+msgid "Technician assignment when adding follow up"
+msgstr "Назначение техника при добавлении последующего контроля"
+
+msgid "Adding the ticket solution"
+msgstr "Добавление решения для тикетов"
+
+msgid "Set the solution writer as the technician of the ticket"
+msgstr "Назначьте технического специалиста автором решения по данной заявке."
+
+msgid "Block the solving/closing of a problem if task do to"
+msgstr "Блокировка решения/закрытия проблемы, если есть задача к выполнению"
+
+msgid "You cannot resolve the ticket"
+msgstr "Вы не можете добавить решение к заявке:"
+
+msgid "You cannot resolve the change"
+msgstr "Вы не можете добавить решение к изменению:"
+
+msgid "You cannot resolve the problem"
+msgstr "Вы не можете добавить решение к проблеме:"
+
+msgid "You must add a description. it's mandatory"
+msgstr "Необходимо добавить описание. Это обязательно."

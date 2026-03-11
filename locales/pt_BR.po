@@ -79,13 +79,85 @@ msgstr ""
 msgid "Duration is mandatory before ticket is solved/closed"
 msgstr "Duração é obrigatória antes que o chamado seja solucionado/fechado"
 
+#: src/Config.php:134
+msgid "Error in creating glpi_plugin_behaviors_configs"
+msgstr "Ocorreu um erro na criação de glpi_plugin_behaviors_configs"
+
 #: src/Config.php:143
 msgid "Error during update glpi_plugin_behaviors_configs"
 msgstr "Ocorreu um erro na atualização de glpi_plugin_behaviors_configs"
 
-#: src/Config.php:134
-msgid "Error in creating glpi_plugin_behaviors_configs"
-msgstr "Ocorreu um erro na criação de glpi_plugin_behaviors_configs"
+#: src/Config.php:315
+msid "Ticket's number format"
+msgstr "Formato do número do chamado"
+
+#: src/Config.php:325
+msid "Delete computer in OCSNG when purged from GLPI"
+msgstr "Excluir computador no OCSNG quando removido do GLPI"
+
+# src/Config.php:340
+msid "Use the associated item's group"
+msgstr "Use o grupo de itens associados"
+
+#: src/Config.php:347
+msid "Use the requester's group"
+msgstr "Use o grupo do solicitante"
+
+#: src/Config.php:358,398
+msid "Use the technician's group"
+msgstr "Utilize o grupo de técnicos"
+
+#: src/Config.php:375
+msid "Additional notifications"
+msgstr "Notificações adicionais"
+
+#: src/Config.php:387
+msid "Allow Clone"
+msgstr "Permitir clonagem"
+
+#: src/Config.php:391
+msid "In the active entity"
+msgstr "Na entidade ativa"
+
+#: src/Config.php:392
+msid "In the item's entity"
+msgstr "Na entidade do item"
+
+#: src/Config.php:409
+msid "Task category is mandatory in a task"
+msgstr "A categoria da tarefa é obrigatória em uma tarefa"
+
+#: src/Config.php:425
+msid "Deny change of ticket's creation date"
+msgstr "Negar alteração da data de criação do ticket"
+
+# src/Config.php:428
+msid "Block the solving/closing of a problem if task do to"
+msgstr "Bloquear a resolução/conclusão de um problema se a tarefa não for concluída"
+
+#: src/Config.php:434
+msid "Single technician and group"
+msgstr "Técnico individual e grupo"
+
+#: src/Config.php:450
+msid "Technician assignment when adding follow up"
+msgstr "Atribuição de técnico ao adicionar acompanhamento"
+
+#: src/Config.php:451
+msid "The technician must belong to the group assigned to the ticket"
+msgstr "O técnico deve pertencer ao grupo atribuído ao chamado"
+
+#: src/Config.php:458
+msid "Change's number format"
+msgstr "Alterar o formato do número"
+
+# src/Config.php:493
+msid "Set the solution writer as the technician of the ticket"
+msgstr "Defina o autor da solução como o técnico responsável pelo ticket"
+
+# src/Config.php:572
+msid "Block the solving/closing of a the ticket if task do to"
+msgstr "Bloquear a resolução/fechamento do ticket se a tarefa for para"
 
 #: src/Common.php:347 src/ITILSolution.php:198 src/Ticket.php:1011
 msgid ""

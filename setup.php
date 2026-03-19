@@ -47,6 +47,7 @@ use GlpiPlugin\Behaviors\Change;
 use GlpiPlugin\Behaviors\ChangeTask;
 use GlpiPlugin\Behaviors\Problem;
 use GlpiPlugin\Behaviors\ProblemTask;
+use Glpi\Plugin\Hooks;
 
 define('PLUGIN_BEHAVIORS_VERSION', '3.0.4');
 // Init the hooks of the plugins -Needed
@@ -55,9 +56,9 @@ function plugin_init_behaviors()
     global $PLUGIN_HOOKS;
 
     Plugin::registerClass(Config::class, ['addtabon' => 'Config']);
-    $PLUGIN_HOOKS['config_page']['behaviors'] = 'front/config.form.php';
+    $PLUGIN_HOOKS[Hooks::CONFIG_PAGE]['behaviors'] = 'front/config.form.php';
 
-    $PLUGIN_HOOKS['item_add']['behaviors']
+    $PLUGIN_HOOKS[Hooks::ITEM_ADD]['behaviors']
         = [
             \Ticket_User::class => [Ticket_User::class, 'afterAdd'],
             \Group_Ticket::class => [Group_Ticket::class, 'afterAdd'],
@@ -66,10 +67,10 @@ function plugin_init_behaviors()
             \ITILSolution::class => [ITILSolution::class, 'afterAdd'],
         ];
 
-    $PLUGIN_HOOKS['item_update']['behaviors']
+    $PLUGIN_HOOKS[Hooks::ITEM_UPDATE]['behaviors']
         = [\Ticket::class => [Ticket::class, 'afterUpdate']];
 
-    $PLUGIN_HOOKS['pre_item_add']['behaviors']
+    $PLUGIN_HOOKS[Hooks::PRE_ITEM_ADD]['behaviors']
         = [
             \Ticket::class => [Ticket::class, 'beforeAdd'],
             \ITILSolution::class => [ITILSolution::class, 'beforeAdd'],
@@ -78,10 +79,10 @@ function plugin_init_behaviors()
             \ITILFollowup::class => [ITILFollowup::class, 'beforeAdd'],
         ];
 
-    $PLUGIN_HOOKS['post_prepareadd']['behaviors']
+    $PLUGIN_HOOKS[Hooks::POST_PREPAREADD]['behaviors']
         = [\Ticket::class => [Ticket::class, 'afterPrepareAdd']];
 
-    $PLUGIN_HOOKS['pre_item_update']['behaviors']
+    $PLUGIN_HOOKS[Hooks::PRE_ITEM_UPDATE]['behaviors']
         = [
             \Problem::class => [Problem::class, 'beforeUpdate'],
             \Ticket::class => [Ticket::class, 'beforeUpdate'],
@@ -92,29 +93,29 @@ function plugin_init_behaviors()
             \ProblemTask::class => [ProblemTask::class, 'beforeUpdate'],
         ];
 
-    $PLUGIN_HOOKS['pre_item_purge']['behaviors']
+    $PLUGIN_HOOKS[Hooks::PRE_ITEM_PURGE]['behaviors']
         = [\Computer::class => [Computer::class, 'beforePurge']];
 
-    $PLUGIN_HOOKS['item_purge']['behaviors']
+    $PLUGIN_HOOKS[Hooks::ITEM_PURGE]['behaviors']
         = [\Document_Item::class => [Document_Item::class, 'afterPurge']];
 
     // Notifications
-    $PLUGIN_HOOKS['item_get_events']['behaviors']
+    $PLUGIN_HOOKS[Hooks::ITEM_GET_EVENTS]['behaviors']
         = ['NotificationTargetTicket' => [Ticket::class, 'addEvents']];
 
-    $PLUGIN_HOOKS['item_add_targets']['behaviors']
+    $PLUGIN_HOOKS[Hooks::ITEM_ADD_TARGETS]['behaviors']
         = ['NotificationTargetTicket' => [Ticket::class, 'addTargets']];
 
-    $PLUGIN_HOOKS['item_action_targets']['behaviors']
+    $PLUGIN_HOOKS[Hooks::ITEM_ACTION_TARGETS]['behaviors']
         = ['NotificationTargetTicket' => [Ticket::class, 'addActionTargets']];
 
-    $PLUGIN_HOOKS['pre_item_form']['behaviors'] = [Common::class, 'messageWarning'];
-    $PLUGIN_HOOKS['post_item_form']['behaviors'] = [Common::class, 'deleteAddSolutionButton'];
+    $PLUGIN_HOOKS[Hooks::PRE_ITEM_FORM]['behaviors'] = [Common::class, 'messageWarning'];
+    $PLUGIN_HOOKS[Hooks::POST_ITEM_FORM]['behaviors'] = [Common::class, 'deleteAddSolutionButton'];
 
     // End init, when all types are registered
-    $PLUGIN_HOOKS['post_init']['behaviors'] = [Common::class, 'postInit'];
+    $PLUGIN_HOOKS[Hooks::POST_INIT]['behaviors'] = [Common::class, 'postInit'];
 
-    $PLUGIN_HOOKS['csrf_compliant']['behaviors'] = true;
+    $PLUGIN_HOOKS[Hooks::CSRF_COMPLIANT]['behaviors'] = true;
 
     //TO Disable in v11
     //    foreach ($CFG_GLPI["asset_types"] as $type) {

@@ -288,7 +288,7 @@ msgid "Supervisor of last group assigned"
 msgstr "Supervisore dell'ultimo gruppo assegnato"
 
 #: inc/ticket.class.php:134
-msgid "Last group assigned without supersivor"
+msgid "Last group assigned without supervisor"
 msgstr "Ultimo gruppo assegnato senza supervisore"
 
 #: inc/ticket.class.php:841

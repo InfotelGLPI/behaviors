@@ -134,7 +134,7 @@ msgid "Last group assigned"
 msgstr "Dernier groupe assigné"
 
 #: src/Ticket.php:149
-msgid "Last group assigned without supersivor"
+msgid "Last group assigned without supervisor"
 msgstr "Dernier groupe chargé du ticket sans superviseur"
 
 #: src/Ticket.php:125

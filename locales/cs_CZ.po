@@ -227,7 +227,7 @@ msgid "Supervisor of last group assigned"
 msgstr "Kontrolor poslední přiřazení skupiny"
 
 #: inc/ticket.class.php:88
-msgid "Last group assigned without supersivor"
+msgid "Last group assigned without supervisor"
 msgstr "Poslední přiřazená skupina bez kontrolora"
 
 #: inc/ticket.class.php:435

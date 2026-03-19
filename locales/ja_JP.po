@@ -127,7 +127,7 @@ msgid "Last group assigned"
 msgstr "最終割り当てグループ"
 
 #: src/Ticket.php:149
-msgid "Last group assigned without supersivor"
+msgid "Last group assigned without supervisor"
 msgstr "監督抜きの最終割り当てグループ"
 
 #: src/Ticket.php:125

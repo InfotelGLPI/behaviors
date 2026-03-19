@@ -146,7 +146,7 @@ class Ticket
                 self::LAST_GROUP_ASSIGN_WITHOUT_SUPERVISOR,
                 sprintf(
                     __('%1$s (%2$s)'),
-                    __('Last group assigned without supersivor', 'behaviors'),
+                    __('Last group assigned without supervisor', 'behaviors'),
                     __('Behaviours', 'behaviors')
                 )
             );

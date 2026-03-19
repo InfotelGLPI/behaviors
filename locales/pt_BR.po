@@ -103,7 +103,7 @@ msgid "Last group assigned"
 msgstr "Último grupo atribuído"
 
 #: src/Ticket.php:149
-msgid "Last group assigned without supersivor"
+msgid "Last group assigned without supervisor"
 msgstr "Último grupo atribuído sem supervisor"
 
 #: src/Ticket.php:125

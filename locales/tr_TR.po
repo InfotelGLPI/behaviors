@@ -256,7 +256,7 @@ msgid "Supervisor of last group assigned"
 msgstr "Son atanan grubun yöneticisi"
 
 #: inc/ticket.class.php:91
-msgid "Last group assigned without supersivor"
+msgid "Last group assigned without supervisor"
 msgstr "Yöneticisiz olarak atanan son grup"
 
 #: inc/ticket.class.php:441

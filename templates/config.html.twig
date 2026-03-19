@@ -116,8 +116,8 @@
                 {% set tab = {0: __("No"), 1: __('Single user and single group', 'behaviors'), 2: __('Single user or group', 'behaviors')} %}
 
                 {{ fields.dropdownArrayField(
-                    'use_assign_user_group_update',
-                    config["use_assign_user_group_update"],
+                    'single_tech_mode',
+                    config["single_tech_mode"],
                     tab,
                     __("Single technician and group", "behaviors"),
                     field_options

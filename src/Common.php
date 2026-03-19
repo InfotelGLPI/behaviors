@@ -41,7 +41,6 @@ use Dropdown;
 use Html;
 use Log;
 use Plugin;
-use PluginMoreticketConfig;
 use Session;
 use Toolbox;
 
@@ -315,11 +314,11 @@ class Common extends CommonGLPI
             $mandatory_solution = false;
             if ($config->getField('is_ticketrealtime_mandatory')) {
                 // for moreTicket plugin
-                $plugin = new Plugin();
-                if ($plugin->isActivated('moreticket')) {
-                    $configmoreticket = new PluginMoreticketConfig();
+		$plugin = new Plugin();
+		if ($plugin->isActivated('moreticket') && class_exists('PluginMoreticketConfig')) {
+    		    $configmoreticket = new PluginMoreticketConfig();
                     $mandatory_solution = $configmoreticket->isMandatorysolution();
-                }
+		}
 
                 if (($dur == 0) && ($mandatory_solution == false)) {
                     $warnings[] = __("Duration is mandatory before ticket is solved/closed", 'behaviors');

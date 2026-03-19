@@ -421,7 +421,7 @@ class Ticket
             foreach ($DB->request($sql) as $data) {
                 $max = $data['max'];
             }
-            $want = date($config->getField('tickets_id_format'));
+            $want = (int) date($config->getField('tickets_id_format'));
             if ($max < $want) {
                 $DB->doQuery("ALTER TABLE `glpi_tickets` AUTO_INCREMENT=$want");
             }

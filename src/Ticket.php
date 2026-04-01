@@ -432,10 +432,12 @@ class Ticket
                 || $ticket->input['_groups_id_requester'] == 0) {
                 $requesters = self::useRequesterUserGroup($ticket->input);
                 if (isset($ticket->input['_actors']['requester'])) {
-                    $ticket->input['_actors']['requester'] = array_merge(
-                        $ticket->input['_actors']['requester'],
-                        $requesters
-                    );
+                    if (is_array($requesters)) {
+                        $ticket->input['_actors']['requester'] = array_merge(
+                            $ticket->input['_actors']['requester'],
+                            $requesters
+                        );
+                    }
                 } else {
                     if ($requesters !== null) {
                         $ticket->input['_actors']['requester'] = $requesters;

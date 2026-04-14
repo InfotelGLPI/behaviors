@@ -64,7 +64,7 @@ class Change
             foreach ($DB->request($sql) as $data) {
                 $max = $data['max'];
             }
-            $want = date($config->getField('changes_id_format'));
+            $want = (int) date($config->getField('changes_id_format'));
             if ($max < $want) {
                 $DB->doQuery("ALTER TABLE `glpi_changes` AUTO_INCREMENT=$want");
             }

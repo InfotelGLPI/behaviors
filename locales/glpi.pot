@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-01 13:34+0000\n"
+"POT-Creation-Date: 2026-04-14 10:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -258,7 +258,7 @@ msgstr ""
 msgid "You cannot resolve the ticket"
 msgstr ""
 
-#: src/ITILSolution.php:309 src/Change.php:117 src/Common.php:408
+#: src/ITILSolution.php:309 src/Common.php:408 src/Change.php:117
 msgid "You cannot solve/close a change with task do to"
 msgstr ""
 
@@ -278,6 +278,6 @@ msgstr ""
 msgid "You must add a solution type. it's mandatory"
 msgstr ""
 
-#: src/TicketTask.php:68 src/TicketTask.php:107 src/Common.php:488
+#: src/Common.php:488 src/TicketTask.php:68 src/TicketTask.php:107
 msgid "You must define a category. it's mandatory"
 msgstr ""

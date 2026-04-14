@@ -194,7 +194,7 @@ class Config extends CommonDBTM
             $DB->update('glpi_notifications', ['event' => 'assign_group'],  ['event' => 'plugin_behaviors_ticketnewgrp']);
             $DB->update('glpi_notifications', ['event' => 'assign_supplier'],['event' => 'plugin_behaviors_ticketnewsupp']);
             $DB->update('glpi_notifications', ['event' => 'observer_user'], ['event' => 'plugin_behaviors_ticketnewwatch']);
-            
+
             $mig->addField($table, 'is_tickettasktodo', 'bool', ['after' => 'clone']);
 
             // version 2.1.0

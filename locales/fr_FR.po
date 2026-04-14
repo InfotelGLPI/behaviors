@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-03 11:36+0000\n"
+"POT-Creation-Date: 2026-04-14 10:23+0000\n"
 "PO-Revision-Date: 2025-04-26 07:42+0000\n"
 "Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2026\n"
 "Language-Team: French (France) (https://app.transifex.com/infotelGLPI/teams/250760/fr_FR/)\n"
@@ -37,10 +37,10 @@ msgstr "Notifications supplémentaires"
 msgid "Allow Clone"
 msgstr "Autoriser le clonage"
 
-#: src/Config.php:71 src/Common.php:124 src/Document_Item.php:57
-#: src/Document_Item.php:64 src/Ticket.php:73 src/Ticket.php:80
-#: src/Ticket.php:87 src/Ticket.php:110 src/Ticket.php:118 src/Ticket.php:126
-#: src/Ticket.php:134 src/Ticket.php:142 src/Ticket.php:150 setup.php:132
+#: src/Document_Item.php:57 src/Document_Item.php:64 src/Common.php:124
+#: src/Config.php:71 src/Ticket.php:73 src/Ticket.php:80 src/Ticket.php:87
+#: src/Ticket.php:110 src/Ticket.php:118 src/Ticket.php:126 src/Ticket.php:134
+#: src/Ticket.php:142 src/Ticket.php:150 setup.php:132
 msgid "Behaviours"
 msgstr "Comportements"
 
@@ -56,12 +56,12 @@ msgstr ""
 "Empêcher la résolution/fermeture d'un ticket avec des tâches au statut A "
 "faire"
 
-#: src/Common.php:330 src/ITILSolution.php:171 src/Ticket.php:990
+#: src/ITILSolution.php:171 src/Common.php:330 src/Ticket.php:992
 #: templates/config.html.twig:163
 msgid "Category is mandatory before ticket is solved/closed"
 msgstr "Catégorie obligatoire pour résoudre/fermer un ticket"
 
-#: src/Ticket.php:1073 templates/config.html.twig:88
+#: src/Ticket.php:1075 templates/config.html.twig:88
 msgid "Category is mandatory when you assign a ticket"
 msgstr "Catégorie obligatoire à l'assignation"
 
@@ -100,26 +100,21 @@ msgstr "Suppression d'un document du ticket"
 msgid "Deny change of ticket's creation date"
 msgstr "Interdire la modification de la date d'ouverture"
 
-#: src/ITILSolution.php:86 src/ITILSolution.php:366 src/Ticket.php:955
+#: src/ITILSolution.php:86 src/ITILSolution.php:366 src/Ticket.php:957
 #: templates/config.html.twig:177
 msgid "Description of solution is mandatory before ticket is solved/closed"
 msgstr "Description de la solution obligatoire pour résoudre/fermer un ticket"
 
-#: src/Common.php:325 src/ITILSolution.php:99 src/Ticket.php:977
+#: src/ITILSolution.php:99 src/Common.php:325 src/Ticket.php:979
 #: templates/config.html.twig:198
 msgid "Duration is mandatory before ticket is solved/closed"
 msgstr "Durée obligatoire pour résoudre/fermer un ticket"
-
-#: src/Config.php:143
-msgid "Error during update glpi_plugin_behaviors_configs"
-msgstr ""
-"Erreur lors de la mise à jour de la table glpi_plugin_behaviors_configs"
 
 #: src/Config.php:134
 msgid "Error in creating glpi_plugin_behaviors_configs"
 msgstr "Erreur lors de la création de la table glpi_plugin_behaviors_configs"
 
-#: src/Common.php:347 src/ITILSolution.php:198 src/Ticket.php:1017
+#: src/ITILSolution.php:198 src/Common.php:347 src/Ticket.php:1019
 #: templates/config.html.twig:156
 msgid ""
 "Group of technicians assigned is mandatory before ticket is solved/closed"
@@ -149,7 +144,7 @@ msgstr "Dernier technicien assigné"
 msgid "Last watcher added"
 msgstr "Dernier observateur ajouté"
 
-#: src/Common.php:355 src/ITILSolution.php:211 src/Ticket.php:1030
+#: src/ITILSolution.php:211 src/Common.php:355 src/Ticket.php:1032
 #: templates/config.html.twig:170
 msgid "Location is mandatory before ticket is solved/closed"
 msgstr "Lieu obligatoire pour résoudre/fermer un ticket"
@@ -194,7 +189,7 @@ msgstr "Superviseur du dernier groupe chargé du ticket"
 msgid "Task category is mandatory in a task"
 msgstr "Catégorie obligatoire dans une tâche"
 
-#: src/Common.php:338 src/ITILSolution.php:185 src/Ticket.php:1004
+#: src/ITILSolution.php:185 src/Common.php:338 src/Ticket.php:1006
 #: templates/config.html.twig:142
 msgid "Technician assigned is mandatory before ticket is solved/closed"
 msgstr "Technicien obligatoire pour résoudre/fermer un ticket"
@@ -215,11 +210,11 @@ msgstr "Ticket mis en attente"
 msgid "Ticket's number format"
 msgstr "Format de numérotation des tickets"
 
-#: src/Problem.php:86 src/ITILSolution.php:254 templates/config.html.twig:212
+#: src/ITILSolution.php:254 src/Problem.php:86 templates/config.html.twig:212
 msgid "Type of solution is mandatory before problem is solved/closed"
 msgstr "Type de solution obligatoire pour résoudre/fermer un problème"
 
-#: src/ITILSolution.php:73 src/ITILSolution.php:351 src/Ticket.php:943
+#: src/ITILSolution.php:73 src/ITILSolution.php:351 src/Ticket.php:945
 #: templates/config.html.twig:184
 msgid "Type of solution is mandatory before ticket is solved/closed"
 msgstr "Type de solution obligatoire pour résoudre/fermer un ticket"
@@ -259,42 +254,43 @@ msgid "You cannot change status of a task in a solved ticket"
 msgstr ""
 "Vous ne pouvez pas changer le statut d'une tâche dans un ticket résolu"
 
-#: src/Common.php:464
+#: templates/warning_solution.html.twig:49
 msgid "You cannot resolve the change"
 msgstr "Vous ne pouvez pas résoudre le changement"
 
-#: src/Common.php:462
+#: templates/warning_solution.html.twig:47
 msgid "You cannot resolve the problem"
 msgstr "Vous ne pouvez pas résoudre le problème"
 
-#: src/Common.php:460
+#: templates/warning_solution.html.twig:45
 msgid "You cannot resolve the ticket"
 msgstr "Vous ne pouvez pas résoudre ce ticket"
 
-#: src/Change.php:117 src/Common.php:408 src/ITILSolution.php:309
+#: src/ITILSolution.php:309 src/Common.php:408 src/Change.php:117
 msgid "You cannot solve/close a change with task do to"
 msgstr ""
 "Impossible de résoudre/fermer un changement avec des tâches au statut A "
 "faire"
 
-#: src/Common.php:387 src/ITILSolution.php:276
+#: src/ITILSolution.php:276 src/Common.php:387
 msgid "You cannot solve/close a problem with task do to"
 msgstr ""
 "Impossible de résoudre/fermer un problème avec des tâches au statut A faire"
 
-#: src/Common.php:369 src/ITILSolution.php:233 src/Ticket.php:1053
+#: src/ITILSolution.php:233 src/Common.php:369 src/Ticket.php:1055
 msgid "You cannot solve/close a ticket with task do to"
 msgstr ""
 "Impossible de résoudre/fermer un ticket avec des tâches au statut A faire"
 
-#: src/Common.php:448
+#: templates/warning_solution.html.twig:35
 msgid "You must add a description. it's mandatory"
 msgstr "Vous devez ajouter une description. C'est obligatoire"
 
-#: src/Common.php:454
+#: templates/warning_solution.html.twig:39
 msgid "You must add a solution type. it's mandatory"
 msgstr "Vous devez ajouter un type de solution. C'est obligatoire"
 
-#: src/TicketTask.php:68 src/TicketTask.php:107 src/Common.php:488
+#: src/TicketTask.php:68 src/TicketTask.php:107
+#: templates/warning_task.html.twig:34
 msgid "You must define a category. it's mandatory"
 msgstr "Vous devez définir une catégorie. C'est obligatoire"

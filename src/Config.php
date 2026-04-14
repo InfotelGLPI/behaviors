@@ -95,56 +95,51 @@ class Config extends CommonDBTM
         $default_charset = DBConnection::getDefaultCharset();
         $default_collation = DBConnection::getDefaultCollation();
         $default_key_sign = DBConnection::getDefaultPrimaryKeySignOption();
-        if (!$DB->tableExists($table)) { //not installed
-            $query = "CREATE TABLE `" . $table . "`(
-                     `id` int $default_key_sign NOT NULL,
-                     `use_requester_item_group` tinyint NOT NULL default '0',
-                     `use_requester_user_group` tinyint NOT NULL default '0',
-                     `is_ticketsolutiontype_mandatory` tinyint NOT NULL default '0',
-                     `is_ticketsolution_mandatory` tinyint NOT NULL default '0',
-                     `is_ticketcategory_mandatory` tinyint NOT NULL default '0',
-                     `is_ticketcategory_mandatory_on_assign` tinyint NOT NULL default '0',
-                     `is_tickettaskcategory_mandatory` tinyint NOT NULL default '0',
-                     `is_tickettech_mandatory` tinyint NOT NULL default '0',
-                     `is_tickettechgroup_mandatory` tinyint NOT NULL default '0',
-                     `is_ticketrealtime_mandatory` tinyint NOT NULL default '0',
-                     `is_ticketlocation_mandatory` tinyint NOT NULL default '0',
-                     `is_ticketdate_locked` tinyint NOT NULL default '0',
-                     `use_assign_user_group` tinyint NOT NULL default '0',
-                     `use_assign_user_group_update` tinyint NOT NULL default '0',
-                     `ticketsolved_updatetech` tinyint NOT NULL default '0',
-                     `tickets_id_format` VARCHAR(15) NULL,
-                     `changes_id_format` VARCHAR(15) NULL,
-                     `is_problemsolutiontype_mandatory` tinyint NOT NULL default '0',
-                     `remove_from_ocs` tinyint NOT NULL default '0',
-                     `add_notif` tinyint NOT NULL default '0',
-                     `single_tech_mode` int $default_key_sign NOT NULL default '0',
-                     `clone` tinyint NOT NULL default '0',
-                     `addfup_updatetech` tinyint NOT NULL default '0',
-                     `is_tickettasktodo` tinyint NOT NULL default '0',
-                     `is_problemtasktodo` tinyint NOT NULL default '0',
-                     `is_changetasktodo` tinyint NOT NULL default '0',
-                     `date_mod` timestamp NULL DEFAULT NULL,
-                     `comment` text,
-                     PRIMARY KEY  (`id`)
-                   ) ENGINE=InnoDB  DEFAULT CHARSET = {$default_charset}
-                     COLLATE = {$default_collation} ROW_FORMAT=DYNAMIC";
-            $DB->doQuery(
-                $query,
-                __('Error in creating glpi_plugin_behaviors_configs', 'behaviors') .
-                "<br>" . $DB->error()
-            );
+	if (!$DB->tableExists($table)) { //not installed
+    		$query = "CREATE TABLE `" . $table . "`(
+             		`id` int $default_key_sign NOT NULL,
+             		`use_requester_item_group` tinyint NOT NULL default '0',
+             		`use_requester_user_group` tinyint NOT NULL default '0',
+             		`is_ticketsolutiontype_mandatory` tinyint NOT NULL default '0',
+             		`is_ticketsolution_mandatory` tinyint NOT NULL default '0',
+             		`is_ticketcategory_mandatory` tinyint NOT NULL default '0',
+             		`is_ticketcategory_mandatory_on_assign` tinyint NOT NULL default '0',
+             		`is_tickettaskcategory_mandatory` tinyint NOT NULL default '0',
+             		`is_tickettech_mandatory` tinyint NOT NULL default '0',
+             		`is_tickettechgroup_mandatory` tinyint NOT NULL default '0',
+             		`is_ticketrealtime_mandatory` tinyint NOT NULL default '0',
+             		`is_ticketlocation_mandatory` tinyint NOT NULL default '0',
+             		`is_ticketdate_locked` tinyint NOT NULL default '0',
+             		`use_assign_user_group` tinyint NOT NULL default '0',
+             		`use_assign_user_group_update` tinyint NOT NULL default '0',
+             		`ticketsolved_updatetech` tinyint NOT NULL default '0',
+             		`tickets_id_format` VARCHAR(15) NULL,
+             		`changes_id_format` VARCHAR(15) NULL,
+             		`is_problemsolutiontype_mandatory` tinyint NOT NULL default '0',
+             		`remove_from_ocs` tinyint NOT NULL default '0',
+             		`add_notif` tinyint NOT NULL default '0',
+             		`single_tech_mode` int $default_key_sign NOT NULL default '0',
+            		`clone` tinyint NOT NULL default '0',
+             		`addfup_updatetech` tinyint NOT NULL default '0',
+             		`is_tickettasktodo` tinyint NOT NULL default '0',
+             		`is_problemtasktodo` tinyint NOT NULL default '0',
+             		`is_changetasktodo` tinyint NOT NULL default '0',
+             		`date_mod` timestamp NULL DEFAULT NULL,
+             		`comment` text,
+             		PRIMARY KEY  (`id`)
+           	      ) ENGINE=InnoDB  DEFAULT CHARSET = {$default_charset}
+             		COLLATE = {$default_collation} ROW_FORMAT=DYNAMIC";
+    		$DB->doQueryOrDie(
+        		$query,
+        		__('Error in creating glpi_plugin_behaviors_configs', 'behaviors')
+    		);
 
-            $query = "INSERT INTO `$table`
-                         (id, date_mod)
-                   VALUES (1, NOW())";
-            $DB->doQuery(
-                $query,
-                __('Error during update glpi_plugin_behaviors_configs', 'behaviors') .
-                "<br>" . $DB->error()
-            );
-        } else {
-            // Upgrade
+    		$DB->insert($table, [
+        		'id'       => 1,
+        		'date_mod' => new \Glpi\DBAL\QueryExpression('NOW()'),
+    		]);
+	    } else {
+	    // Upgrade
 
             $mig->addField($table, 'tickets_id_format', 'string');
             $mig->addField($table, 'remove_from_ocs', 'bool');
@@ -195,25 +190,11 @@ class Config extends CommonDBTM
             $mig->addField($table, 'clone', 'bool', ['after' => 'groupasset']);
 
             // Version 1.6.0 - delete newtech, newgroup dans newsupplier for notif. Now there are in the core
-            $query = "UPDATE `glpi_notifications`
-                   SET `event` = 'assign_user'
-                   WHERE `event` = 'plugin_behaviors_ticketnewtech'";
-            $DB->doQuery($query, "9.2 change notification assign user to core one");
-
-            $query = "UPDATE `glpi_notifications`
-                   SET `event` = 'assign_group'
-                   WHERE `event` = 'plugin_behaviors_ticketnewgrp'";
-            $DB->doQuery($query, "9.2 change notification assign group to core one");
-
-            $query = "UPDATE `glpi_notifications`
-                   SET `event` = 'assign_supplier'
-                   WHERE `event` = 'plugin_behaviors_ticketnewsupp'";
-            $DB->doQuery($query, "9.2 change notification assign supplier to core one");
-
-            $query = "UPDATE `glpi_notifications`
-                   SET `event` = 'observer_user'
-                   WHERE `event` = 'plugin_behaviors_ticketnewwatch'";
-            $DB->doQuery($query, "9.2 change notification add watcher to core one");
+	    $DB->update('glpi_notifications', ['event' => 'assign_user'],   ['event' => 'plugin_behaviors_ticketnewtech']);
+	    $DB->update('glpi_notifications', ['event' => 'assign_group'],  ['event' => 'plugin_behaviors_ticketnewgrp']);
+            $DB->update('glpi_notifications', ['event' => 'assign_supplier'],['event' => 'plugin_behaviors_ticketnewsupp']);
+            $DB->update('glpi_notifications', ['event' => 'observer_user'], ['event' => 'plugin_behaviors_ticketnewwatch']);
+	
 
             $mig->addField($table, 'is_tickettasktodo', 'bool', ['after' => 'clone']);
 

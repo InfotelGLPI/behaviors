@@ -420,84 +420,46 @@ class Common extends CommonGLPI
      *
      * @param $params
      **/
-    public static function messageWarning($params)
-    {
-        if (isset($params['item'])) {
-            $item = $params['item'];
-            if ($item->getType() == 'ITILSolution') {
-                $warnings = self::checkWarnings($params);
-                $config = Config::getInstance();
-                $parentitem = $params['options']['item'];
-                if ((is_array($warnings) && count($warnings))
-                    || $config->getField('is_ticketsolution_mandatory')
-                    || $config->getField('is_ticketsolutiontype_mandatory')) {
-                    echo "<div class='alert alert-warning'>";
+     public static function messageWarning($params)
+     {
+     	if (isset($params['item'])) {
+        	$item = $params['item'];
 
-                    echo "<div style='display:flex;align-items: center;'>";
+        	if ($item->getType() == 'ITILSolution') {
+            		$warnings = self::checkWarnings($params);
+            		$config = Config::getInstance();
+            		$parentitem = $params['options']['item'];
 
-                    echo "<div style='margin-right: 20px;'>";
-                    echo "<i class='ti ti-alert-triangle' style='font-size:2em;color:orange;vertical-align: top;'></i>";
-                    echo "</div>";
+            		$show_solution_mandatory = $config->getField('is_ticketsolution_mandatory')
+                	   && is_array($warnings)
+                	   && count($warnings) == 0
+                           && $parentitem->getType() == 'Ticket';
 
-                    echo "<div>";
-                    if ($config->getField('is_ticketsolution_mandatory')
-                        && is_array($warnings)
-                        && count($warnings) == 0
-                    && $parentitem->getType() == 'Ticket') {
-                        echo "<h4 class='alert-title'>" . __(
-                            "You must add a description. it's mandatory",
-                            'behaviors'
-                        ) . "</h4>";
-                    }
-                    if ($config->getField('is_ticketsolutiontype_mandatory') && is_array($warnings) && count($warnings) == 0) {
-                        echo "<h4 class='alert-title'>" . __(
-                            "You must add a solution type. it's mandatory",
-                            'behaviors'
-                        ) . "</h4>";
-                    }
-                    if (is_array($warnings) && count($warnings)) {
-                        if ($parentitem->getType() == 'Ticket') {
-                            echo "<h4 class='alert-title'>" . __('You cannot resolve the ticket', 'behaviors') . " :</h4>";
-                        } elseif ($parentitem->getType() == 'Problem') {
-                            echo "<h4 class='alert-title'>" . __('You cannot resolve the problem', 'behaviors') . " :</h4>";
-                        } elseif ($parentitem->getType() == 'Change') {
-                            echo "<h4 class='alert-title'>" . __('You cannot resolve the change', 'behaviors') . " :</h4>";
-                        }
+            		$show_solutiontype_mandatory = $config->getField('is_ticketsolutiontype_mandatory')
+                	   && is_array($warnings)
+                           && count($warnings) == 0;
 
-                        echo "<div class='text-muted'>" . implode('</div><div>', $warnings) . "</div>";
-                    }
-                    echo "</div>";
+            		if ($show_solution_mandatory || $show_solutiontype_mandatory || (is_array($warnings) && count($warnings))) {
+                		TemplateRenderer::getInstance()->display(
+                    			'@behaviors/warning_solution.html.twig',
+                    			[
+                        			'warnings'                  => is_array($warnings) ? $warnings : [],
+                        			'parent_type'               => $parentitem->getType(),
+                        			'show_solution_mandatory'   => $show_solution_mandatory,
+                        			'show_solutiontype_mandatory' => $show_solutiontype_mandatory,
+                    			]
+                		);
+            		}
+        	} elseif ($item->getType() == 'TicketTask') {
+            		$config = Config::getInstance();
+            		if ($config->getField('is_tickettaskcategory_mandatory')) {
+                		TemplateRenderer::getInstance()->display('@behaviors/warning_task.html.twig', []);
+            		}
+        	}
+    	}
+    	return $params;
+     }
 
-                    echo "</div>";
-
-                    echo "</div>";
-                }
-            } elseif ($item->getType() == 'TicketTask') {
-                $config = Config::getInstance();
-                if ($config->getField('is_tickettaskcategory_mandatory')) {
-                    echo "<div class='alert alert-warning'>";
-
-                    echo "<div class='d-flex'>";
-
-                    echo "<div class='me-2'>";
-                    echo "<i class='ti ti-alert-triangle' style='font-size:2em;color:orange'></i>";
-                    echo "</div>";
-
-                    echo "<div>";
-                    echo "<h4 class='alert-title'>" . __(
-                        "You must define a category. it's mandatory",
-                        'behaviors'
-                    ) . "</h4>";
-                    echo "</div>";
-
-                    echo "</div>";
-
-                    echo "</div>";
-                }
-            }
-        }
-        return $params;
-    }
 
 
     /**
@@ -506,54 +468,21 @@ class Common extends CommonGLPI
      * @param $params
      *
      * @return array
-     **/
-    public static function deleteAddSolutionButton($params)
-    {
-        if (isset($params['item'])) {
-            $item = $params['item'];
-            if ($item->getType() == 'ITILSolution') {
-                //                $options = $params['options'];
-                //                $config = Config::getInstance();
-                //                if ($config->getField('is_ticketrealtime_mandatory')) {
-                //                    $ticket = $options['item'];
-                //                    echo "<div class='row mx-n3 mx-xxl-auto'>";
-                //                    echo "<div class='col-12 mb-3'>";
-                //                    echo __('Duration');
-                //                    echo "&nbsp;<span style='color:red'>*</span>&nbsp;";
-                //
-                //                    $rand = mt_rand();
-                //                    echo "<span id='duration_solution_" . $rand . $ticket->fields['id'] . "'>";
-                //                    $toadd = [];
-                //                    for ($i = 9; $i <= 100; $i++) {
-                //                        $toadd[] = $i * HOUR_TIMESTAMP;
-                //                    }
-                //                    echo Html::scriptBlock(
-                //                        "function showsolutionbutton(){
-                //                                 $('.itilsolution').children().find(':submit').show();
-                //                              }"
-                //                    );
-                //
-                //                    Dropdown::showTimeStamp("duration_solution", [
-                //                        'min' => 0,
-                //                        'max' => 8 * HOUR_TIMESTAMP,
-                //                        'inhours' => true,
-                //                        'toadd' => $toadd,
-                //                        'on_change' => 'showsolutionbutton();'
-                //                    ]);
-                //
-                //                    echo "</span>";
-                //                    echo "</div>";
-                //                    echo "</div>";
-                //                }
-                $warnings = self::checkWarnings($params);
-                if (is_array($warnings) && count($warnings) > 0) {
-                    echo Html::scriptBlock(
-                        "$(document).ready(function(){
-                        $('.itilsolution').children().find(':submit').hide();
-                     });"
-                    );
-                }
-            }
-        }
-    }
+     /**/
+	public static function deleteAddSolutionButton($params)
+	{
+    		if (isset($params['item'])) {
+        		$item = $params['item'];
+        		if ($item->getType() == 'ITILSolution') {
+            			$warnings = self::checkWarnings($params);
+            			if (is_array($warnings) && count($warnings) > 0) {
+                			TemplateRenderer::getInstance()->display(
+                    			'@behaviors/warning_hide_submit.html.twig',
+                    			[]
+                			);
+            			}
+        		}
+    		}
+	}
+
 }

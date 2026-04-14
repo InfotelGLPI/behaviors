@@ -1,0 +1,30 @@
+{
+    "name": "infotelglpi/behaviors",
+    "type": "glpi-plugin",
+    "description": "This plugin allows you to add optional behaviors to GLPI.",
+    "homepage": "https://github.com/InfotelGLPI/behaviors",
+    "license": "AGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Infotel"
+        },
+        {
+            "name": "Remi Collet"
+        },
+        {
+            "name": "Nelly Mahu-Lasson"
+        }
+    ],
+    "require": {
+        "php": ">=8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "GlpiPlugin\\Behaviors\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+}

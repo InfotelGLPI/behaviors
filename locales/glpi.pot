@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-14 10:22+0000\n"
+"POT-Creation-Date: 2026-04-14 10:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,10 +100,6 @@ msgstr ""
 #: src/ITILSolution.php:99 src/Common.php:325 src/Ticket.php:979
 #: templates/config.html.twig:198
 msgid "Duration is mandatory before ticket is solved/closed"
-msgstr ""
-
-#: src/Config.php:143
-msgid "Error during update glpi_plugin_behaviors_configs"
 msgstr ""
 
 #: src/Config.php:134

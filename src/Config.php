@@ -190,12 +190,11 @@ class Config extends CommonDBTM
             $mig->addField($table, 'clone', 'bool', ['after' => 'groupasset']);
 
             // Version 1.6.0 - delete newtech, newgroup dans newsupplier for notif. Now there are in the core
-	    $DB->update('glpi_notifications', ['event' => 'assign_user'],   ['event' => 'plugin_behaviors_ticketnewtech']);
-	    $DB->update('glpi_notifications', ['event' => 'assign_group'],  ['event' => 'plugin_behaviors_ticketnewgrp']);
+            $DB->update('glpi_notifications', ['event' => 'assign_user'],   ['event' => 'plugin_behaviors_ticketnewtech']);
+            $DB->update('glpi_notifications', ['event' => 'assign_group'],  ['event' => 'plugin_behaviors_ticketnewgrp']);
             $DB->update('glpi_notifications', ['event' => 'assign_supplier'],['event' => 'plugin_behaviors_ticketnewsupp']);
             $DB->update('glpi_notifications', ['event' => 'observer_user'], ['event' => 'plugin_behaviors_ticketnewwatch']);
-	
-
+            
             $mig->addField($table, 'is_tickettasktodo', 'bool', ['after' => 'clone']);
 
             // version 2.1.0
@@ -550,7 +549,7 @@ class Config extends CommonDBTM
 //        echo "<td colspan='2'></td></tr>";
 //
 //        echo "<tr class='tab_bg_1'>";
-//        echo "<td>" . __('Block the solving/closing of a the ticket if task do to', 'behaviors');
+//        echo "<td>" . __('Block the solving/closing of a the ticket if it remains a task to do', 'behaviors');
 //        echo "</td><td>";
 ////        Dropdown::showYesNo("is_tickettasktodo", $config->fields['is_tickettasktodo']);
 //        echo "</td>";

@@ -44,6 +44,7 @@ use Glpi\Application\View\TemplateRenderer;
 use Plugin;
 use Session;
 use Toolbox;
+use GlpiPlugin\Moreticket\Config as MoreticketConfig;
 
 class Common extends CommonGLPI
 {
@@ -278,7 +279,7 @@ class Common extends CommonGLPI
 
         // Check is the connected user is a tech
         if (!is_numeric(Session::getLoginUserID(false))
-            || (!Session::haveRight('ticket', UPDATE)
+            || (!(Session::haveRight('ticket', UPDATE) || Session::haveRight('ITILSolution', CREATE))
                 && !Session::haveRight('problem', UPDATE)
                 && !Session::haveRight('change', UPDATE))) {
             return false; // No check
@@ -294,8 +295,8 @@ class Common extends CommonGLPI
             if ($config->getField('is_ticketrealtime_mandatory')) {
                 // for moreTicket plugin
 		$plugin = new Plugin();
-		if ($plugin->isActivated('moreticket') && class_exists('PluginMoreticketConfig')) {
-    		    $configmoreticket = new PluginMoreticketConfig();
+		if ($plugin->isActivated('moreticket') && class_exists(MoreticketConfig::class)) {
+    		    $configmoreticket = new MoreticketConfig();
                     $mandatory_solution = $configmoreticket->isMandatorysolution();
 		}
 

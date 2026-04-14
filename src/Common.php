@@ -40,8 +40,8 @@ use DbUtils;
 use Dropdown;
 use Html;
 use Log;
+use Glpi\Application\View\TemplateRenderer;
 use Plugin;
-use PluginMoreticketConfig;
 use Session;
 use Toolbox;
 
@@ -133,55 +133,33 @@ class Common extends CommonGLPI
      * @param CommonGLPI $item
      * @return void
      */
-    public static function showCloneForm(CommonGLPI $item)
-    {
-        echo "<form name='form' method='post' action='" . Toolbox::getItemTypeFormURL(__CLASS__) . "' >";
-        echo "<div class='spaced' id='tabsbody'>";
-        echo "<table class='tab_cadre_fixe'>";
+     	public static function showCloneForm(CommonGLPI $item)
+	{
+    		$config = Config::getInstance();
+    		$entity_name = null;
 
-        echo "<tr><th>" . __('Clone', 'behaviors') . "</th></tr>";
+    		if ($item->isEntityAssign()) {
+        		if ($config->getField('clone') == 1) {
+            			$entities_id = $_SESSION['glpiactive_entity'];
+        		} elseif ($config->getField('clone') == 2) {
+            			$entities_id = $item->getEntityID();
+        		}
+        		if (isset($entities_id)) {
+            			$entity_name = Dropdown::getDropdownName('glpi_entities', $entities_id);
+        		}
+    		}
 
-        if ($item->isEntityAssign()) {
-            $config = Config::getInstance();
-
-            if ($config->getField('clone') == 1) {
-                $entities_id = $_SESSION['glpiactive_entity'];
-            } elseif ($config->getField('clone') == 2) {
-                $entities_id = $item->getEntityID();
-            }
-            echo "<tr class='tab_bg_1'><td class='center'>";
-            printf(
-                __('%1$s: %2$s'),
-                __('Destination entity'),
-                "<span class='b'>" . Dropdown::getDropdownName(
-                    'glpi_entities',
-                    $entities_id
-                )
-                . "</span>"
-            );
-            echo "</td></tr>";
-        }
-
-        $name = sprintf(__('%1$s %2$s'), __('Clone of', 'behaviors'), $item->getName());
-        echo "<tr class='tab_bg_1'><td class='center'>" . sprintf(__('%1$s: %2$s'), __('Name'), $name);
-        echo Html::input('name', [
-            'value' => $name,
-            'size' => 60,
-        ]);
-        echo Html::hidden('itemtype', ['value' => $item->getType()]);
-        echo Html::hidden('id', ['value' => $item->getID()]);
-        echo "</td></tr>";
-
-        echo "<tr class='tab_bg_1'><td class='center'>";
-        echo Html::submit(__('Clone', 'behaviors'), [
-            'name' => '_clone',
-            'class' => 'btn btn-primary',
-        ]);
-        echo "</th></tr>";
-
-        echo "</table></div>";
-        Html::closeForm();
-    }
+    		TemplateRenderer::getInstance()->display(
+        		'@behaviors/clone_form.html.twig',
+        		[
+            			'action'      => Toolbox::getItemTypeFormURL(__CLASS__),
+            			'itemtype'    => $item->getType(),
+            			'id'          => $item->getID(),
+            			'name'        => sprintf(__('%1$s %2$s'), __('Clone of', 'behaviors'), $item->getName()),
+            			'entity_name' => $entity_name,
+        		]
+    		);
+	}
 
 
     /**
@@ -315,11 +293,11 @@ class Common extends CommonGLPI
             $mandatory_solution = false;
             if ($config->getField('is_ticketrealtime_mandatory')) {
                 // for moreTicket plugin
-                $plugin = new Plugin();
-                if ($plugin->isActivated('moreticket')) {
-                    $configmoreticket = new PluginMoreticketConfig();
+		$plugin = new Plugin();
+		if ($plugin->isActivated('moreticket') && class_exists('PluginMoreticketConfig')) {
+    		    $configmoreticket = new PluginMoreticketConfig();
                     $mandatory_solution = $configmoreticket->isMandatorysolution();
-                }
+		}
 
                 if (($dur == 0) && ($mandatory_solution == false)) {
                     $warnings[] = __("Duration is mandatory before ticket is solved/closed", 'behaviors');

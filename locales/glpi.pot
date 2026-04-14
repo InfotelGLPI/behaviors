@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-14 10:21+0000\n"
+"POT-Creation-Date: 2026-04-14 10:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -246,15 +246,15 @@ msgstr ""
 msgid "You cannot change status of a task in a solved ticket"
 msgstr ""
 
-#: src/Common.php:464
+#: templates/warning_solution.html.twig:49
 msgid "You cannot resolve the change"
 msgstr ""
 
-#: src/Common.php:462
+#: templates/warning_solution.html.twig:47
 msgid "You cannot resolve the problem"
 msgstr ""
 
-#: src/Common.php:460
+#: templates/warning_solution.html.twig:45
 msgid "You cannot resolve the ticket"
 msgstr ""
 
@@ -270,14 +270,15 @@ msgstr ""
 msgid "You cannot solve/close a ticket with task do to"
 msgstr ""
 
-#: src/Common.php:448
+#: templates/warning_solution.html.twig:35
 msgid "You must add a description. it's mandatory"
 msgstr ""
 
-#: src/Common.php:454
+#: templates/warning_solution.html.twig:39
 msgid "You must add a solution type. it's mandatory"
 msgstr ""
 
-#: src/Common.php:488 src/TicketTask.php:68 src/TicketTask.php:107
+#: src/TicketTask.php:68 src/TicketTask.php:107
+#: templates/warning_task.html.twig:34
 msgid "You must define a category. it's mandatory"
 msgstr ""

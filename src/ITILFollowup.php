@@ -51,40 +51,58 @@ class ITILFollowup
             if ($config->getField('addfup_updatetech')
                 && Session::haveRight('ticket', UPDATE)) {
                 $ticket_user = new \Ticket_User();
-                $ticket_user->getFromDBByCrit([
-                    'tickets_id' => $ticket->getID(),
-                    'type' => CommonITILActor::ASSIGN,
-                ]);
 
-                if (!isset($ticket_user->fields['users_id'])
-                    || (isset($ticket_user->fields['users_id'])
-                    && $ticket_user->fields['users_id'] <> Session::getLoginUserID())) {
+                if ($fields = $ticket_user->find(['tickets_id' => $ticket->getID(),
+                    'type' => CommonITILActor::ASSIGN])) {
 
-                    $group_ticket = new \Group_Ticket();
-                    $group_ticket->getFromDBByCrit([
-                        'tickets_id' => $ticket->getID(),
-                        'type' => CommonITILActor::ASSIGN,
-                    ]);
-                    if (count($group_ticket->fields) > 0) {
-                        if (isset($group_ticket->fields['groups_id'])) {
-                            $usergroup = \Group_User::getGroupUsers($group_ticket->fields['groups_id']);
-                            $users = [];
-                            foreach ($usergroup as $user) {
-                                $users[$user['id']] = $user['id'];
-                            }
+                    foreach ($fields as $field) {
 
-                            if (in_array(Session::getLoginUserID(), $users)) {
+                        if (!isset($field['users_id'])
+                            || (isset($field['users_id'])
+                                && $field['users_id'] <> Session::getLoginUserID())) {
 
-                                if (isset($ticket_user->fields['users_id'])) {
+                            $group_ticket = new \Group_Ticket();
+                            $group_ticket->getFromDBByCrit([
+                                'tickets_id' => $ticket->getID(),
+                                'type' => CommonITILActor::ASSIGN,
+                            ]);
+                            if (count($group_ticket->fields) > 0) {
+                                if (isset($group_ticket->fields['groups_id'])) {
+                                    $usergroup = \Group_User::getGroupUsers($group_ticket->fields['groups_id']);
+                                    $users = [];
+                                    foreach ($usergroup as $user) {
+                                        $users[$user['id']] = $user['id'];
+                                    }
+
+                                    if (in_array(Session::getLoginUserID(), $users)) {
+
+                                        if (isset($field['users_id'])) {
+                                            $ticket_user_delete = new \Ticket_User();
+                                            $ticket_user_delete->deleteByCriteria([
+                                                'tickets_id' => $ticket->getID(),
+                                                'users_id' => $field['users_id'],
+                                                'type' => CommonITILActor::ASSIGN,
+                                            ]);
+                                        }
+
+                                        $ticket_user = new \Ticket_User();
+                                        $ticket_user->add([
+                                            'tickets_id' => $ticket->getID(),
+                                            'users_id' => Session::getLoginUserID(),
+                                            'type' => CommonITILActor::ASSIGN,
+                                        ]);
+                                    }
+                                }
+                            } else {
+                                if (isset($field['users_id'])) {
                                     $ticket_user_delete = new \Ticket_User();
                                     $ticket_user_delete->deleteByCriteria([
                                         'tickets_id' => $ticket->getID(),
-                                        'users_id' => $ticket_user->fields['users_id'],
+                                        'users_id' => $field['users_id'],
                                         'type' => CommonITILActor::ASSIGN,
                                     ]);
                                 }
 
-                                $ticket_user = new \Ticket_User();
                                 $ticket_user->add([
                                     'tickets_id' => $ticket->getID(),
                                     'users_id' => Session::getLoginUserID(),
@@ -92,21 +110,6 @@ class ITILFollowup
                                 ]);
                             }
                         }
-                    } else {
-                        if (isset($ticket_user->fields['users_id'])) {
-                            $ticket_user_delete = new \Ticket_User();
-                            $ticket_user_delete->deleteByCriteria([
-                                'tickets_id' => $ticket->getID(),
-                                'users_id' => $ticket_user->fields['users_id'],
-                                'type' => CommonITILActor::ASSIGN,
-                            ]);
-                        }
-
-                        $ticket_user->add([
-                            'tickets_id' => $ticket->getID(),
-                            'users_id' => Session::getLoginUserID(),
-                            'type' => CommonITILActor::ASSIGN,
-                        ]);
                     }
                 }
             }

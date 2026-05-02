@@ -32,9 +32,10 @@
  */
 
 if (!defined('GLPI_ROOT')) {
-   include ('../../../inc/includes.php');
+   die("Restricted access");
 }
 
+Session::checkRight('config', UPDATE);
 
 // for big database
 ini_set("max_execution_time", "0");

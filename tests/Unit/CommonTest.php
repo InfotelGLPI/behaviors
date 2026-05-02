@@ -52,10 +52,10 @@ class CommonTest extends TestCase
         $this->assertSame('MyPlugin\\CustomManager', $types['MyPlugin\\CustomType']);
     }
 
-    public function testAddCloneTypeOverwritesExistingManager(): void
+    public function testAddCloneTypeDoesNotOverwriteExistingEntry(): void
     {
         Common::addCloneType('RuleTicket', 'NewManagerClass');
 
-        $this->assertSame('NewManagerClass', Common::getCloneTypes()['RuleTicket']);
+        $this->assertSame('GlpiPlugin\\Behaviors\\Rule', Common::getCloneTypes()['RuleTicket']);
     }
 }

@@ -171,4 +171,88 @@ class TicketBehaviorsTest extends DbTestCase
 
         $this->assertFalse($ticket->input);
     }
+
+    // ── use_requester_user_group : vérification DB après création ─────────────
+
+    public function testRequesterGroupAssociatedToTicketAfterCreation(): void
+    {
+        $this->login();
+        $this->enableBehavior('use_requester_user_group', 1);
+
+        $group = $this->createItem(\Group::class, [
+            'name'         => 'Groupe demandeur auto',
+            'entities_id'  => 0,
+            'is_requester' => 1,
+            'is_recursive' => 1,
+        ]);
+
+        $user = $this->createItem(\User::class, [
+            'name'        => 'demandeur.groupe.auto',
+            'entities_id' => 0,
+        ]);
+
+        $this->createItem(\Group_User::class, [
+            'groups_id' => $group->getID(),
+            'users_id'  => $user->getID(),
+        ]);
+
+        $ticket = $this->createItem(\Ticket::class, [
+            'name'                => 'Ticket groupe demandeur auto',
+            'content'             => 'Contenu',
+            'entities_id'         => 0,
+            '_users_id_requester' => $user->getID(),
+        ]);
+
+        $requesterGroups = $ticket->getGroups(CommonITILActor::REQUESTER);
+        $groupIds = array_column($requesterGroups, 'groups_id');
+
+        $this->assertContains(
+            $group->getID(),
+            $groupIds,
+            "Le groupe demandeur de l'utilisateur doit être associé au ticket."
+        );
+    }
+
+    // ── use_assign_user_group : vérification DB après création ───────────────
+
+    public function testAssignGroupAssociatedToTicketAfterCreation(): void
+    {
+        $this->login();
+        $this->enableBehavior('use_assign_user_group', 1);
+
+        $group = $this->createItem(\Group::class, [
+            'name'         => 'Groupe technicien auto',
+            'entities_id'  => 0,
+            'is_assign'    => 1,
+            'is_recursive' => 1,
+        ]);
+
+        $tech = $this->createItem(\User::class, [
+            'name'         => 'tech.groupe.auto',
+            'entities_id'  => 0,
+            'profiles_id'  => 4,
+            '_profiles_id' => 4,
+        ]);
+
+        $this->createItem(\Group_User::class, [
+            'groups_id' => $group->getID(),
+            'users_id'  => $tech->getID(),
+        ]);
+
+        $ticket = $this->createItem(\Ticket::class, [
+            'name'             => 'Ticket groupe technicien auto',
+            'content'          => 'Contenu',
+            'entities_id'      => 0,
+            '_users_id_assign' => $tech->getID(),
+        ]);
+
+        $assignGroups = $ticket->getGroups(CommonITILActor::ASSIGN);
+        $groupIds = array_column($assignGroups, 'groups_id');
+
+        $this->assertContains(
+            $group->getID(),
+            $groupIds,
+            "Le groupe du technicien doit être associé au ticket."
+        );
+    }
 }

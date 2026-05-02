@@ -422,7 +422,8 @@ class Ticket
                 $max = $data['max'];
             }
             $want = (int) date($config->getField('tickets_id_format'));
-            if ($max < $want) {
+            // Borne max = YYYYMMDDHHMMSS (14 chiffres) pour éviter la corruption de séquence
+            if ($want > $max && $want > 0 && $want <= 99999999999999) {
                 $DB->doQuery("ALTER TABLE `glpi_tickets` AUTO_INCREMENT=$want");
             }
         }
@@ -1144,6 +1145,9 @@ class Ticket
                 if ($config->getField('use_requester_user_group') > 0
                     && isset($_POST['_actors'])) {
                     $actors = json_decode($_POST['_actors'], true);
+                    if (!is_array($actors)) {
+                        $actors = [];
+                    }
                     if (isset($actors['requester'])) {
                         $requesters = $actors['requester'];
                         // Select first group of this user
@@ -1156,8 +1160,8 @@ class Ticket
                                 if ($config->getField('use_requester_user_group') == 1) {
                                     // First group
                                     $grp = User::getRequesterGroup(
-                                        $_POST['entities_id'],
-                                        $requester['items_id'],
+                                        (int) $_POST['entities_id'],
+                                        (int) $requester['items_id'],
                                         true
                                     );
                                     if ($grp > 0 && !isset($_SESSION['glpi_behaviors_auto_group_request'])
@@ -1178,8 +1182,8 @@ class Ticket
                                 } else {
                                     // All groups
                                     $grps = User::getRequesterGroup(
-                                        $_POST['entities_id'],
-                                        $requester['items_id'],
+                                        (int) $_POST['entities_id'],
+                                        (int) $requester['items_id'],
                                         false
                                     );
                                     foreach ($grps as $grp) {
@@ -1210,6 +1214,9 @@ class Ticket
                 if ($config->getField('use_assign_user_group') > 0
                     && isset($_POST['_actors'])) {
                     $actors = json_decode($_POST['_actors'], true);
+                    if (!is_array($actors)) {
+                        $actors = [];
+                    }
                     if (isset($actors['assign'])) {
                         $assigneds = $actors['assign'];
                         // Select first group of this user
@@ -1222,8 +1229,8 @@ class Ticket
                                 if ($config->getField('use_assign_user_group') == 1) {
                                     // First group
                                     $grp = User::getTechnicianGroup(
-                                        $_POST['entities_id'],
-                                        $assigned['items_id'],
+                                        (int) $_POST['entities_id'],
+                                        (int) $assigned['items_id'],
                                         true
                                     );
                                     if ($grp > 0 && !isset($_SESSION['glpi_behaviors_auto_group_assign'])
@@ -1244,8 +1251,8 @@ class Ticket
                                 } else {
                                     // All groups
                                     $grps = User::getTechnicianGroup(
-                                        $_POST['entities_id'],
-                                        $assigned['items_id'],
+                                        (int) $_POST['entities_id'],
+                                        (int) $assigned['items_id'],
                                         false
                                     );
                                     foreach ($grps as $grp) {

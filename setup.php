@@ -115,8 +115,6 @@ function plugin_init_behaviors()
     // End init, when all types are registered
     $PLUGIN_HOOKS[Hooks::POST_INIT]['behaviors'] = [Common::class, 'postInit'];
 
-    $PLUGIN_HOOKS[Hooks::CSRF_COMPLIANT]['behaviors'] = true;
-
     //TO Disable in v11
     //    foreach ($CFG_GLPI["asset_types"] as $type) {
     //        $PLUGIN_HOOKS['item_can']['behaviors'][$type] = [$type => ['Config', 'item_can']];

@@ -34,6 +34,8 @@
 
 use GlpiPlugin\Behaviors\Config;
 
+Session::checkRight('config', UPDATE);
+
 global $CFG_GLPI;
 $config = new Config();
 if (isset($_POST["update"])) {

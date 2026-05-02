@@ -65,7 +65,8 @@ class Change
                 $max = $data['max'];
             }
             $want = (int) date($config->getField('changes_id_format'));
-            if ($max < $want) {
+            // Borne max = YYYYMMDDHHMMSS (14 chiffres) pour éviter la corruption de séquence
+            if ($want > $max && $want > 0 && $want <= 99999999999999) {
                 $DB->doQuery("ALTER TABLE `glpi_changes` AUTO_INCREMENT=$want");
             }
         }

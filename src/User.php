@@ -44,16 +44,19 @@ class User
      * @param $first
      * @return array|int|mixed
      */
-    private static function getUserGroup($entity, $userid, $filter = '', $first = true)
+    private static function getUserGroup($entity, $userid, $column = '', $first = true)
     {
         global $DB;
 
         $config = Config::getInstance();
         $dbu = new DbUtils();
 
-        $where = '';
-        if ($filter) {
-            $where = $filter;
+        $where = [
+            'glpi_groups_users.users_id' => $userid,
+            $dbu->getEntitiesRestrictCriteria('glpi_groups', '', $entity, true),
+        ];
+        if ($column !== '') {
+            $where['glpi_groups.' . $column] = 1;
         }
         $query = [
             'SELECT' => ['glpi_groups' => ['id']],
@@ -66,11 +69,7 @@ class User
                     ],
                 ],
             ],
-            'WHERE' => [
-                'users_id' => $userid,
-                $dbu->getEntitiesRestrictCriteria('glpi_groups', '', $entity, true),
-                $where,
-            ],
+            'WHERE' => $where,
         ];
 
         $rep = [];
@@ -92,7 +91,7 @@ class User
      */
     public static function getRequesterGroup($entity, $userid, $first = true)
     {
-        return self::getUserGroup($entity, $userid, '`is_requester`', $first);
+        return self::getUserGroup($entity, $userid, 'is_requester', $first);
     }
 
 
@@ -104,6 +103,6 @@ class User
      */
     public static function getTechnicianGroup($entity, $userid, $first = true)
     {
-        return self::getUserGroup($entity, $userid, '`is_assign`', $first);
+        return self::getUserGroup($entity, $userid, 'is_assign', $first);
     }
 }

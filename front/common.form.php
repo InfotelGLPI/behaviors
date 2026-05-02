@@ -34,6 +34,8 @@
 use Glpi\Exception\Http\BadRequestHttpException;
 use GlpiPlugin\Behaviors\Common;
 
+Session::checkLoginUser();
+
 $config = new Common();
 if (isset($_POST["_clone"])) {
     Common::cloneItem($_POST);

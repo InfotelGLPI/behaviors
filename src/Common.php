@@ -44,7 +44,6 @@ use Glpi\Application\View\TemplateRenderer;
 use Plugin;
 use Session;
 use Toolbox;
-use GlpiPlugin\Moreticket\Config as MoreticketConfig;
 
 class Common extends CommonGLPI
 {
@@ -295,8 +294,8 @@ class Common extends CommonGLPI
             if ($config->getField('is_ticketrealtime_mandatory')) {
                 // for moreTicket plugin
 		$plugin = new Plugin();
-		if ($plugin->isActivated('moreticket') && class_exists(MoreticketConfig::class)) {
-    		    $configmoreticket = new MoreticketConfig();
+		if ($plugin->isActivated('moreticket') && class_exists(\GlpiPlugin\Moreticket\Config::class)) {
+    		    $configmoreticket = new \GlpiPlugin\Moreticket\Config();
                     $mandatory_solution = $configmoreticket->isMandatorysolution();
 		}
 

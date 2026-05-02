@@ -20,6 +20,7 @@ class TicketTaskTest extends DbTestCase
     public function tearDown(): void
     {
         Config::getInstance()->fields = $this->savedFields;
+        $_SESSION['MESSAGE_AFTER_REDIRECT'] = [];
         parent::tearDown();
     }
 

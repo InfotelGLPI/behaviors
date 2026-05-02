@@ -20,6 +20,7 @@ class TicketBehaviorsTest extends DbTestCase
     public function tearDown(): void
     {
         Config::getInstance()->fields = $this->savedFields;
+        $_SESSION['MESSAGE_AFTER_REDIRECT'] = [];
         parent::tearDown();
     }
 
@@ -162,14 +163,18 @@ class TicketBehaviorsTest extends DbTestCase
         ]);
 
         $ticket->input = [
-            'id'                  => $ticket->getID(),
-            '_users_id_assign'    => $tech->getID(),
-            'itilcategories_id'   => 0,
+            'id'               => $ticket->getID(),
+            'itilcategories_id' => 0,
+            '_actors'          => [
+                'assign' => [
+                    ['itemtype' => 'User', 'items_id' => $tech->getID()],
+                ],
+            ],
         ];
 
         BehaviorsTicket::beforeUpdate($ticket);
 
-        $this->assertFalse($ticket->input);
+        $this->assertEmpty($ticket->input);
     }
 
     // ── use_requester_user_group : vérification DB après création ─────────────

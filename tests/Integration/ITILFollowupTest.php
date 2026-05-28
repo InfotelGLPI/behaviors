@@ -85,6 +85,29 @@ class ITILFollowupTest extends DbTestCase
         return array_map(static fn($r) => (int) $r['users_id'], array_values($rows));
     }
 
+    /**
+     * Create a bare ticket and immediately assign a user as technician via Ticket_User.
+     * Using Ticket_User::add() directly bypasses CommonITILObject::updateActors() which
+     * filters assignable users through User::getSqlSearchResult() and would silently drop
+     * users that have no profile attached (e.g. users created on-the-fly in tests).
+     */
+    private function createTicketWithAssignedUser(\User $user, string $ticket_name): \Ticket
+    {
+        $ticket = $this->createItem(\Ticket::class, [
+            'name'        => $ticket_name,
+            'content'     => 'Content',
+            'entities_id' => 0,
+        ]);
+
+        $this->createItem(\Ticket_User::class, [
+            'tickets_id' => $ticket->getID(),
+            'users_id'   => $user->getID(),
+            'type'       => CommonITILActor::ASSIGN,
+        ]);
+
+        return $ticket;
+    }
+
     // ── Option désactivée ────────────────────────────────────────────────────
 
     public function testDoesNothingWhenBehaviorDisabled(): void
@@ -97,12 +120,7 @@ class ITILFollowupTest extends DbTestCase
             'entities_id' => 0,
         ]);
 
-        $ticket = $this->createItem(\Ticket::class, [
-            'name'             => 'Ticket behavior disabled',
-            'content'          => 'Content',
-            'entities_id'      => 0,
-            '_users_id_assign' => $other_tech->getID(),
-        ]);
+        $ticket = $this->createTicketWithAssignedUser($other_tech, 'Ticket behavior disabled');
 
         $fup = new \ITILFollowup();
         $fup->input = $this->makeFupInput($ticket);
@@ -125,12 +143,7 @@ class ITILFollowupTest extends DbTestCase
             'entities_id' => 0,
         ]);
 
-        $ticket = $this->createItem(\Ticket::class, [
-            'name'             => 'Ticket non-itemtype check',
-            'content'          => 'Content',
-            'entities_id'      => 0,
-            '_users_id_assign' => $other_tech->getID(),
-        ]);
+        $ticket = $this->createTicketWithAssignedUser($other_tech, 'Ticket non-itemtype check');
 
         $fup = new \ITILFollowup();
         $fup->input = [
@@ -154,6 +167,7 @@ class ITILFollowupTest extends DbTestCase
 
         $current_user_id = \Session::getLoginUserID();
 
+        // TU_USER has a profile so _users_id_assign goes through updateActors fine.
         $ticket = $this->createItem(\Ticket::class, [
             'name'             => 'Ticket current user already assigned',
             'content'          => 'Content',
@@ -182,12 +196,7 @@ class ITILFollowupTest extends DbTestCase
             'entities_id' => 0,
         ]);
 
-        $ticket = $this->createItem(\Ticket::class, [
-            'name'             => 'Ticket replace tech no group',
-            'content'          => 'Content',
-            'entities_id'      => 0,
-            '_users_id_assign' => $other_tech->getID(),
-        ]);
+        $ticket = $this->createTicketWithAssignedUser($other_tech, 'Ticket replace tech no group');
 
         $fup = new \ITILFollowup();
         $fup->input = $this->makeFupInput($ticket);
@@ -225,12 +234,7 @@ class ITILFollowupTest extends DbTestCase
             'entities_id' => 0,
         ]);
 
-        $ticket = $this->createItem(\Ticket::class, [
-            'name'             => 'Ticket replace tech in group',
-            'content'          => 'Content',
-            'entities_id'      => 0,
-            '_users_id_assign' => $other_tech->getID(),
-        ]);
+        $ticket = $this->createTicketWithAssignedUser($other_tech, 'Ticket replace tech in group');
 
         // Assign the group to the ticket
         $this->createItem(\Group_Ticket::class, [
@@ -256,8 +260,6 @@ class ITILFollowupTest extends DbTestCase
         $this->login();
         $this->enableBehavior('addfup_updatetech');
 
-        $current_user_id = \Session::getLoginUserID();
-
         $group = $this->createItem(\Group::class, [
             'name'        => 'Assigned group fup outsider',
             'entities_id' => 0,
@@ -271,12 +273,7 @@ class ITILFollowupTest extends DbTestCase
             'entities_id' => 0,
         ]);
 
-        $ticket = $this->createItem(\Ticket::class, [
-            'name'             => 'Ticket no replace tech outside group',
-            'content'          => 'Content',
-            'entities_id'      => 0,
-            '_users_id_assign' => $other_tech->getID(),
-        ]);
+        $ticket = $this->createTicketWithAssignedUser($other_tech, 'Ticket no replace tech outside group');
 
         $this->createItem(\Group_Ticket::class, [
             'tickets_id' => $ticket->getID(),
@@ -324,12 +321,7 @@ class ITILFollowupTest extends DbTestCase
             'entities_id' => 0,
         ]);
 
-        $ticket = $this->createItem(\Ticket::class, [
-            'name'             => 'Ticket multi-group replace',
-            'content'          => 'Content',
-            'entities_id'      => 0,
-            '_users_id_assign' => $other_tech->getID(),
-        ]);
+        $ticket = $this->createTicketWithAssignedUser($other_tech, 'Ticket multi-group replace');
 
         $this->createItem(\Group_Ticket::class, [
             'tickets_id' => $ticket->getID(),
@@ -370,12 +362,7 @@ class ITILFollowupTest extends DbTestCase
             'entities_id' => 0,
         ]);
 
-        $ticket = $this->createItem(\Ticket::class, [
-            'name'             => 'Ticket multiple techs',
-            'content'          => 'Content',
-            'entities_id'      => 0,
-            '_users_id_assign' => $tech1->getID(),
-        ]);
+        $ticket = $this->createTicketWithAssignedUser($tech1, 'Ticket multiple techs');
 
         // Manually add a second assigned technician
         $this->createItem(\Ticket_User::class, [

@@ -82,6 +82,11 @@ class ITILFollowup
             'type'       => CommonITILActor::ASSIGN,
         ]);
 
+        // No assigned tech and no assigned group — nothing to replace
+        if (count($assigned_users) === 0 && count($assigned_groups) === 0) {
+            return;
+        }
+
         $user_in_assigned_group = false;
         if (count($assigned_groups) > 0) {
             foreach ($assigned_groups as $grp) {

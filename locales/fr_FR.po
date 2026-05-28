@@ -53,7 +53,7 @@ msgstr ""
 #: templates/config.html.twig:193
 msgid "Block the solving/closing of a the ticket if it remains a task to do"
 msgstr ""
-"Bloquer la résolution/clôture d'un ticket s'il reste des tâches à faire"
+"Empêcher la résolution/clôture d'un ticket s'il reste des tâches à faire"
 
 #: src/Ticket.php:990 src/ITILSolution.php:168 src/Common.php:305
 #: templates/config.html.twig:165

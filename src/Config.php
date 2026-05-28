@@ -127,7 +127,7 @@ class Config extends CommonDBTM
              		PRIMARY KEY  (`id`)
            	      ) ENGINE=InnoDB  DEFAULT CHARSET = {$default_charset}
              		COLLATE = {$default_collation} ROW_FORMAT=DYNAMIC";
-    		$DB->doQueryOrDie(
+    		$DB->doQuery(
         		$query,
         		__('Error in creating glpi_plugin_behaviors_configs', 'behaviors')
     		);

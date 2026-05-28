@@ -36,80 +36,87 @@ use Session;
 class ITILFollowup
 {
     /**
-     * @param ITILFollowup $fup
+     * @param \ITILFollowup $fup
      * @return void
      */
     public static function beforeAdd(\ITILFollowup $fup)
     {
-        $ticket = new \Ticket();
+        if ($fup->input['itemtype'] !== 'Ticket') {
+            return;
+        }
+
         $config = Config::getInstance();
-        if ($ticket->getFromDB($fup->input['items_id'])
-            && $fup->input['itemtype'] == 'Ticket') {
-            if ($config->getField('addfup_updatetech')
-                && Session::haveRight('ticket', UPDATE)) {
-                $ticket_user = new \Ticket_User();
+        if (!$config->getField('addfup_updatetech')) {
+            return;
+        }
 
-                if ($fields = $ticket_user->find(['tickets_id' => $ticket->getID(),
-                    'type' => CommonITILActor::ASSIGN])) {
+        if (!Session::haveRight('ticket', UPDATE)) {
+            return;
+        }
 
-                    foreach ($fields as $field) {
+        $ticket = new \Ticket();
+        if (!$ticket->getFromDB($fup->input['items_id'])) {
+            return;
+        }
 
-                        if (!isset($field['users_id'])
-                            || (isset($field['users_id'])
-                                && $field['users_id'] <> Session::getLoginUserID())) {
+        $current_user_id = Session::getLoginUserID();
+        $tickets_id = $ticket->getID();
 
-                            $group_ticket = new \Group_Ticket();
-                            $group_ticket->getFromDBByCrit([
-                                'tickets_id' => $ticket->getID(),
-                                'type' => CommonITILActor::ASSIGN,
-                            ]);
-                            if (count($group_ticket->fields) > 0) {
-                                if (isset($group_ticket->fields['groups_id'])) {
-                                    $usergroup = \Group_User::getGroupUsers($group_ticket->fields['groups_id']);
-                                    $users = [];
-                                    foreach ($usergroup as $user) {
-                                        $users[$user['id']] = $user['id'];
-                                    }
+        // Collect all currently assigned users
+        $ticket_user = new \Ticket_User();
+        $assigned_users = $ticket_user->find([
+            'tickets_id' => $tickets_id,
+            'type'       => CommonITILActor::ASSIGN,
+        ]);
 
-                                    if (in_array(Session::getLoginUserID(), $users)) {
+        // Already assigned as the sole tech — nothing to do
+        if (count($assigned_users) === 1
+            && (int) reset($assigned_users)['users_id'] === $current_user_id) {
+            return;
+        }
 
-                                        if (isset($field['users_id'])) {
-                                            $ticket_user_delete = new \Ticket_User();
-                                            $ticket_user_delete->deleteByCriteria([
-                                                'tickets_id' => $ticket->getID(),
-                                                'users_id' => $field['users_id'],
-                                                'type' => CommonITILActor::ASSIGN,
-                                            ]);
-                                        }
+        // Check whether the current user belongs to any group assigned to the ticket
+        $group_ticket = new \Group_Ticket();
+        $assigned_groups = $group_ticket->find([
+            'tickets_id' => $tickets_id,
+            'type'       => CommonITILActor::ASSIGN,
+        ]);
 
-                                        $ticket_user = new \Ticket_User();
-                                        $ticket_user->add([
-                                            'tickets_id' => $ticket->getID(),
-                                            'users_id' => Session::getLoginUserID(),
-                                            'type' => CommonITILActor::ASSIGN,
-                                        ]);
-                                    }
-                                }
-                            } else {
-                                if (isset($field['users_id'])) {
-                                    $ticket_user_delete = new \Ticket_User();
-                                    $ticket_user_delete->deleteByCriteria([
-                                        'tickets_id' => $ticket->getID(),
-                                        'users_id' => $field['users_id'],
-                                        'type' => CommonITILActor::ASSIGN,
-                                    ]);
-                                }
-
-                                $ticket_user->add([
-                                    'tickets_id' => $ticket->getID(),
-                                    'users_id' => Session::getLoginUserID(),
-                                    'type' => CommonITILActor::ASSIGN,
-                                ]);
-                            }
-                        }
-                    }
+        $user_in_assigned_group = false;
+        if (count($assigned_groups) > 0) {
+            foreach ($assigned_groups as $grp) {
+                $group_users = \Group_User::getGroupUsers($grp['groups_id']);
+                $group_user_ids = array_column($group_users, 'id');
+                if (in_array($current_user_id, $group_user_ids)) {
+                    $user_in_assigned_group = true;
+                    break;
                 }
             }
+            // When groups are assigned, only proceed if the user belongs to one of them
+            if (!$user_in_assigned_group) {
+                return;
+            }
         }
+
+        // Remove every currently assigned user (there may be several)
+        foreach ($assigned_users as $field) {
+            if (!isset($field['users_id'])) {
+                continue;
+            }
+            $to_delete = new \Ticket_User();
+            $to_delete->deleteByCriteria([
+                'tickets_id' => $tickets_id,
+                'users_id'   => $field['users_id'],
+                'type'       => CommonITILActor::ASSIGN,
+            ]);
+        }
+
+        // Assign the current user exactly once
+        $new_assign = new \Ticket_User();
+        $new_assign->add([
+            'tickets_id' => $tickets_id,
+            'users_id'   => $current_user_id,
+            'type'       => CommonITILActor::ASSIGN,
+        ]);
     }
 }

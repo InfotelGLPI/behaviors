@@ -1,39 +1,38 @@
+## Behaviors plugin for GLPI
 
-## FRENCH
+[![License](https://img.shields.io/badge/License-GNU%20v3-blue.svg?style=flat-square)](https://github.com/infotelGLPI/behaviors/blob/master/LICENSE)
+[![Translate](https://img.shields.io/badge/Translate-Transifex-cyan)](https://explore.transifex.com/infotelGLPI/GLPI_behaviors/)
 
-Cette extension permet d'ajouter des comportements optionnels à GLPI.
-<br />- champs obligatoires
-<br />- affectation groupe du demandeur / groupe du technicien
-<br />- format des numéros de tickets
-<br />- nouveaux évènements dans les notifications
-<br />- cloner les profils / notifications
+---
 
-Ce projet est sur Transifex - Aidez nous à le traduire dans votre langue
+### English
 
-https://app.transifex.com/infotelGLPI/GLPI_behaviors
+This plugin adds optional behaviors to GLPI to improve the management of tickets, problems, and changes.
 
-Si vous souhaitez utiliser le format personnalisé 'ymd0001' pour les tickets et/ou les changements
-la structure de la base de GLPI ne permet pas cette utilisation au-delà du 31.12.2021.
-Pour corriger ce problème, vous devez passer le script migrationFor2022.php.
+* Make fields **mandatory** before resolving or closing a ticket (solution type, description, category, technician, group, duration, location).
+* Automatically add the **requester's group** or **technician's group** when creating or updating a ticket.
+* Define a **custom number format** for tickets and changes (date-based prefix).
+* Automatically assign the **solving technician** (logged-in user) when a ticket is resolved or a followup is added.
+* Send **additional notifications** (reopening, status change, waiting, document added/removed) with new recipient targets.
+* **Clone** profiles, notification templates, rules, and tickets in one click.
 
-Ce problème est corrigé dans le coeur de GLPI à compter de la version 9.5.7
+The configuration is accessible from **Setup › General setup › Behaviours tab**.
 
+**[Full English documentation →](docs/en/index.md)**
 
-## ENGLISH
+---
 
-This plugin allows you to add optional behaviors to GLPI.
-<br />- mandatory fields
-<br />- add requester's group / technician's group
-<br />- ticket's number format
-<br />- new events in notifications
-<br />- clone profiles / notifications
+### Français
 
-This project in on Transifex - Help up to translate it in your language
+Ce plugin ajoute des comportements optionnels à GLPI pour améliorer la gestion des tickets, problèmes et changements.
 
-https://app.transifex.com/infotelGLPI/GLPI_behaviors
+* Rendre des champs **obligatoires** avant de résoudre ou clôturer un ticket (type et description de solution, catégorie, technicien, groupe, durée, emplacement).
+* Ajouter automatiquement le **groupe du demandeur** ou le **groupe du technicien** à la création ou modification d'un ticket.
+* Définir un **format de numérotation** personnalisé pour les tickets et les changements (préfixe basé sur la date).
+* Affecter automatiquement le **technicien résolvant** (utilisateur connecté) lors de la résolution ou de l'ajout d'un suivi.
+* Envoyer des **notifications supplémentaires** (réouverture, changement de statut, mise en attente, document ajouté/supprimé) avec de nouveaux destinataires.
+* **Cloner** des profils, modèles de notification, règles et tickets en un clic.
 
-If you want to use custom format 'ymd0001' for tickets and/or changes
-the structure of the GLPI database does not allow this use beyond 31.12.2021.
-To correct this problem, you need to pass the migrationFor2022.php script.
+La configuration est accessible depuis **Configuration › Configuration générale › onglet Behaviours**.
 
-This issue is corrected in GLPI core with version 9.5.7
+**[Documentation complète en français →](docs/fr/index.md)**

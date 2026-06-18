@@ -38,7 +38,7 @@
 
 ## Présentation
 
-Le plugin **Behaviors** ajoute des comportements optionnels à GLPI pour améliorer la gestion des tickets, problèmes et changements. Il permet de :
+Le plugin **Comportements** ajoute des comportements optionnels à GLPI pour améliorer la gestion des tickets, problèmes et changements. Il permet de :
 
 - Rendre certains champs **obligatoires** avant de résoudre ou clôturer un ticket
 - Ajouter **automatiquement** le groupe du demandeur ou du technicien lors de la création/modification d'un ticket
@@ -54,13 +54,13 @@ Le plugin **Behaviors** ajoute des comportements optionnels à GLPI pour amélio
 1. Télécharger le plugin depuis [GitHub](https://github.com/InfotelGLPI/behaviors) ou la marketplace GLPI.
 2. Décompresser l'archive dans le dossier `plugins/` (ou `marketplace/`) de votre installation GLPI.
 3. Se connecter à GLPI en tant qu'administrateur.
-4. Aller dans **Configuration › Plugins**, cliquer sur **Installer** puis **Activer** pour *Behaviors*.
+4. Aller dans **Configuration › Plugins**, cliquer sur **Installer** puis **Activer** pour *Comportements*.
 
 ---
 
 ## Configuration
 
-Accès : **Configuration › Configuration générale › onglet Behaviours**  
+Accès : **Configuration › Configuration générale › onglet Comportements**  
 (Droit requis : `config`)
 
 ### Groupes automatiques
@@ -250,7 +250,7 @@ Ces destinataires ne s'appliquent pas aux notifications globales (`alertnotclose
 
 ### Clonage d'objets GLPI
 
-Quand `clone` est activé, un onglet **Cloner (Behaviours)** apparaît sur les types d'objets suivants :
+Quand `clone` est activé, un onglet **Cloner (Comportements)** apparaît sur les types d'objets suivants :
 
 - Modèle de notification (`NotificationTemplate`)
 - Profil (`Profile`) — avec copie complète des droits
@@ -273,6 +273,6 @@ La configuration du plugin nécessite le droit GLPI standard **`config`** (lectu
 ## Désinstallation
 
 1. Aller dans **Configuration › Plugins**.
-2. Cliquer sur **Désactiver** puis **Désinstaller** pour *Behaviors*.
+2. Cliquer sur **Désactiver** puis **Désinstaller** pour *Comportements*.
 
 > **Attention :** La désinstallation supprime la table `glpi_plugin_behaviors_configs`. Les notifications créées avec les événements du plugin (ex. `plugin_behaviors_ticketreopen`) doivent être supprimées manuellement si elles ne sont plus nécessaires.

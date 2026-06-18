@@ -125,7 +125,7 @@ function plugin_init_behaviors()
 function plugin_version_behaviors()
 {
     return [
-        'name' => __('Behaviours', 'behaviors'),
+        'name' => __('Behaviors', 'behaviors'),
         'version' => PLUGIN_BEHAVIORS_VERSION,
         'license' => 'AGPLv3+',
         'author' => "<a href='https//blogglpi.infotel.com'>Infotel</a>, Xavier CAILLAUD, Remi COLLET, Nelly MAHU-LASSON",

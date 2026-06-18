@@ -118,7 +118,7 @@ class Common extends CommonGLPI
                 sprintf(
                     __('%1$s (%2$s)'),
                     __('Clone', 'behaviors'),
-                    __('Behaviours', 'behaviors')
+                    __('Behaviors', 'behaviors')
                 )
             );
         }

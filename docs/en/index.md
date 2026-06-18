@@ -54,13 +54,13 @@ The **Behaviors** plugin adds optional behaviors to GLPI to improve the manageme
 1. Download the plugin from [GitHub](https://github.com/InfotelGLPI/behaviors) or the GLPI marketplace.
 2. Extract the archive into the `plugins/` (or `marketplace/`) directory of your GLPI installation.
 3. Log in to GLPI as an administrator.
-4. Go to **Setup › General setup › Behaviours tab**, then **Install** and **Enable** *Behaviors*.
+4. Go to **Setup › General setup › Behaviors tab**, then **Install** and **Enable** *Behaviors*.
 
 ---
 
 ## Configuration
 
-Access: **Setup › General setup › Behaviours tab**  
+Access: **Setup › General setup › Behaviors tab**  
 (Required right: `config`)
 
 ### Automatic groups
@@ -250,7 +250,7 @@ These recipients do not apply to global notifications (`alertnotclosed`, `recall
 
 ### Cloning GLPI objects
 
-When `clone` is enabled, a **Clone (Behaviours)** tab appears on the following object types:
+When `clone` is enabled, a **Clone (Behaviors)** tab appears on the following object types:
 
 - Notification template (`NotificationTemplate`)
 - Profile (`Profile`) — with a full copy of all rights

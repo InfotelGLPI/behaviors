@@ -66,7 +66,7 @@ class Config extends CommonDBTM
 
     function getName($with_comment = 0)
     {
-        return __('Behaviours', 'behaviors');
+        return __('Behaviors', 'behaviors');
     }
 
 

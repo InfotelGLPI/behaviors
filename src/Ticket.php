@@ -67,21 +67,21 @@ class Ticket
             $target->events['plugin_behaviors_ticketreopen']
                 = sprintf(
                     __('%1$s - %2$s'),
-                    __('Behaviours', 'behaviors'),
+                    __('Behaviors', 'behaviors'),
                     __('Reopen ticket', 'behaviors')
                 );
 
             $target->events['plugin_behaviors_ticketstatus']
                 = sprintf(
                     __('%1$s - %2$s'),
-                    __('Behaviours', 'behaviors'),
+                    __('Behaviors', 'behaviors'),
                     __('Change status', 'behaviors')
                 );
 
             $target->events['plugin_behaviors_ticketwaiting']
                 = sprintf(
                     __('%1$s - %2$s'),
-                    __('Behaviours', 'behaviors'),
+                    __('Behaviors', 'behaviors'),
                     __('Ticket waiting', 'behaviors')
                 );
 
@@ -104,7 +104,7 @@ class Ticket
                 sprintf(
                     __('%1$s (%2$s)'),
                     __('Last technician assigned', 'behaviors'),
-                    __('Behaviours', 'behaviors')
+                    __('Behaviors', 'behaviors')
                 )
             );
             $target->addTarget(
@@ -112,7 +112,7 @@ class Ticket
                 sprintf(
                     __('%1$s (%2$s)'),
                     __('Last group assigned', 'behaviors'),
-                    __('Behaviours', 'behaviors')
+                    __('Behaviors', 'behaviors')
                 )
             );
             $target->addTarget(
@@ -120,7 +120,7 @@ class Ticket
                 sprintf(
                     __('%1$s (%2$s)'),
                     __('Last supplier assigned', 'behaviors'),
-                    __('Behaviours', 'behaviors')
+                    __('Behaviors', 'behaviors')
                 )
             );
             $target->addTarget(
@@ -128,7 +128,7 @@ class Ticket
                 sprintf(
                     __('%1$s (%2$s)'),
                     __('Last watcher added', 'behaviors'),
-                    __('Behaviours', 'behaviors')
+                    __('Behaviors', 'behaviors')
                 )
             );
             $target->addTarget(
@@ -136,7 +136,7 @@ class Ticket
                 sprintf(
                     __('%1$s (%2$s)'),
                     __('Supervisor of last group assigned', 'behaviors'),
-                    __('Behaviours', 'behaviors')
+                    __('Behaviors', 'behaviors')
                 )
             );
             $target->addTarget(
@@ -144,7 +144,7 @@ class Ticket
                 sprintf(
                     __('%1$s (%2$s)'),
                     __('Last group assigned without supervisor', 'behaviors'),
-                    __('Behaviours', 'behaviors')
+                    __('Behaviors', 'behaviors')
                 )
             );
         }

@@ -51,14 +51,14 @@ class Document_Item
             $target->events['plugin_behaviors_document_itemnew']
                 = sprintf(
                     __('%1$s - %2$s'),
-                    __('Behaviours', 'behaviors'),
+                    __('Behaviors', 'behaviors'),
                     __('Add document to ticket', 'behaviors')
                 );
 
             $target->events['plugin_behaviors_document_itemdel']
                 = sprintf(
                     __('%1$s - %2$s'),
-                    __('Behaviours', 'behaviors'),
+                    __('Behaviors', 'behaviors'),
                     __('Delete document to ticket', 'behaviors')
                 );
         }

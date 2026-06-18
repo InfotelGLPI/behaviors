@@ -16,7 +16,7 @@ This plugin adds optional behaviors to GLPI to improve the management of tickets
 * Send **additional notifications** (reopening, status change, waiting, document added/removed) with new recipient targets.
 * **Clone** profiles, notification templates, rules, and tickets in one click.
 
-The configuration is accessible from **Setup › General setup › Behaviours tab**.
+The configuration is accessible from **Setup › General setup › Behaviors tab**.
 
 **[Full English documentation →](docs/en/index.md)**
 
@@ -33,6 +33,6 @@ Ce plugin ajoute des comportements optionnels à GLPI pour améliorer la gestion
 * Envoyer des **notifications supplémentaires** (réouverture, changement de statut, mise en attente, document ajouté/supprimé) avec de nouveaux destinataires.
 * **Cloner** des profils, modèles de notification, règles et tickets en un clic.
 
-La configuration est accessible depuis **Configuration › Configuration générale › onglet Behaviours**.
+La configuration est accessible depuis **Configuration › Configuration générale › onglet Comportements**.
 
 **[Documentation complète en français →](docs/fr/index.md)**

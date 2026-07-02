@@ -27,34 +27,30 @@
 --------------------------------------------------------------------------
  #}
 
-<div class="alert alert-warning">
-    <div class="d-flex align-items-center">
-        <div class="me-3">
-            <i class="ti ti-alert-triangle" style="font-size:2em;color:orange"></i>
-        </div>
-        <div>
-            {% if show_solution_mandatory %}
-                <h4 class="alert-title">{{ __("You must add a description. it's mandatory", 'behaviors') }}</h4>
-            {% endif %}
+<div class="alert alert-danger d-flex align-items-center gap-2 mb-3" role="alert">
+    <i class="ti ti-ban fs-4"></i>
+    <div>
+        {% if show_solution_mandatory %}
+            <strong>{{ __("You must add a description. it's mandatory", 'behaviors') }}</strong>
+        {% endif %}
 
-            {% if show_solutiontype_mandatory %}
-                <h4 class="alert-title">{{ __("You must add a solution type. it's mandatory", 'behaviors') }}</h4>
-            {% endif %}
+        {% if show_solutiontype_mandatory %}
+            <strong>{{ __("You must add a solution type. it's mandatory", 'behaviors') }}</strong>
+        {% endif %}
 
-            {% if warnings|length > 0 %}
-                <h4 class="alert-title">
-                    {% if parent_type == 'Ticket' %}
-                        {{ __('You cannot resolve the ticket', 'behaviors') }} :
-                    {% elseif parent_type == 'Problem' %}
-                        {{ __('You cannot resolve the problem', 'behaviors') }} :
-                    {% elseif parent_type == 'Change' %}
-                        {{ __('You cannot resolve the change', 'behaviors') }} :
-                    {% endif %}
-                </h4>
-                {% for warning in warnings %}
-                    <div class="text-muted">{{ warning }}</div>
-                {% endfor %}
-            {% endif %}
-        </div>
+        {% if warnings|length > 0 %}
+            <strong>
+                {% if parent_type == 'Ticket' %}
+                    {{ __('You cannot resolve the ticket', 'behaviors') }} :
+                {% elseif parent_type == 'Problem' %}
+                    {{ __('You cannot resolve the problem', 'behaviors') }} :
+                {% elseif parent_type == 'Change' %}
+                    {{ __('You cannot resolve the change', 'behaviors') }} :
+                {% endif %}
+            </strong>
+            {% for warning in warnings %}
+                <div class="text-muted">{{ warning }}</div>
+            {% endfor %}
+        {% endif %}
     </div>
 </div>

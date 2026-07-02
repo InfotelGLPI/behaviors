@@ -27,13 +27,9 @@
 --------------------------------------------------------------------------
  #}
 
-<div class="alert alert-warning">
-    <div class="d-flex align-items-center">
-        <div class="me-3">
-            <i class="ti ti-alert-triangle" style="font-size:2em;color:orange"></i>
-        </div>
-        <div>
-            <h4 class="alert-title">{{ __("You must define a category. it's mandatory", 'behaviors') }}</h4>
-        </div>
+<div class="alert alert-danger d-flex align-items-center gap-2 mb-3" role="alert">
+    <i class="ti ti-ban fs-4"></i>
+    <div>
+        <strong>{{ __("You must define a category. it's mandatory", 'behaviors') }}</strong>
     </div>
 </div>

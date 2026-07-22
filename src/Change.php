@@ -64,7 +64,11 @@ class Change
             $want = (int) date($config->getField('changes_id_format'));
             // Borne max = YYYYMMDDHHMMSS (14 chiffres) pour éviter la corruption de séquence
             if ($want > $max && $want > 0 && $want <= 99999999999999) {
-                $DB->doQuery("ALTER TABLE `glpi_changes` AUTO_INCREMENT=$want");
+                // Force the new record id to the date-based value via DML instead of a
+                // runtime `ALTER TABLE ... AUTO_INCREMENT` (raw DDL). Since $want > current
+                // MAX(id), inserting this explicit id is collision-free and advances MySQL's
+                // AUTO_INCREMENT to $want + 1, matching the previous behaviour without raw SQL.
+                $change->input['id'] = $want;
             }
         }
     }

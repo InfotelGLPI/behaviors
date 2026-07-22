@@ -181,6 +181,12 @@ class Common extends CommonGLPI
      */
     public static function cloneItem(array $param)
     {
+        // Feature gate: the clone tab/form are only shown when the "clone"
+        // config flag is enabled, so reject direct POSTs when it is disabled.
+        if (Config::getInstance()->getField('clone') <= 0) {
+            return false;
+        }
+
         $dbu = new DbUtils();
         // Sanity check
         if (!isset($param['itemtype']) || !isset($param['id']) || !isset($param['name'])

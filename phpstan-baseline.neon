@@ -1,0 +1,265 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^PHPDoc tag @param for parameter \$change with type GlpiPlugin\\Behaviors\\Change is incompatible with native type Change\.$#'
+			identifier: parameter.phpDocType
+			count: 2
+			path: src/Change.php
+
+		-
+			message: '#^Property GlpiPlugin\\Behaviors\\Change\:\:\$input is unused\.$#'
+			identifier: property.unused
+			count: 1
+			path: src/Change.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$task with type GlpiPlugin\\Behaviors\\ChangeTask is incompatible with native type ChangeTask\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: src/ChangeTask.php
+
+		-
+			message: '#^Call to an undefined method CommonGLPI\:\:getEntityID\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Common.php
+
+		-
+			message: '#^Call to an undefined method CommonGLPI\:\:getID\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Common.php
+
+		-
+			message: '#^Call to an undefined method CommonGLPI\:\:getName\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Common.php
+
+		-
+			message: '#^Call to an undefined method CommonGLPI\:\:isEntityAssign\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Common.php
+
+		-
+			message: '#^Call to function is_array\(\) with array\<mixed, mixed\> will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/Common.php
+
+		-
+			message: '#^Comparison operation "\=\=" between \*NEVER\* and 0 results in an error\.$#'
+			identifier: equal.invalid
+			count: 2
+			path: src/Common.php
+
+		-
+			message: '#^Comparison operation "\>" between \*NEVER\* and 0 results in an error\.$#'
+			identifier: greater.invalid
+			count: 1
+			path: src/Common.php
+
+		-
+			message: '#^Method CommonDBTM\:\:getNameID\(\) invoked with 2 parameters, 0\-1 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: src/Common.php
+
+		-
+			message: '#^Method GlpiPlugin\\Behaviors\\Common\:\:checkWarnings\(\) should return false but returns array\{\}\|list\{0\: string, 1\?\: string, 2\?\: string, 3\?\: string, 4\?\: string, 5\?\: string, 6\?\: string, 7\?\: string\}\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Common.php
+
+		-
+			message: '#^Method GlpiPlugin\\Behaviors\\Common\:\:deleteAddSolutionButton\(\) should return array but return statement is missing\.$#'
+			identifier: return.missing
+			count: 2
+			path: src/Common.php
+
+		-
+			message: '#^Parameter \#1 \$options of method CommonDBTM\:\:getNameID\(\) expects array\{complete\?\: bool, additional\?\: bool, forceid\?\: bool\}, 0 given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Common.php
+
+		-
+			message: '#^Variable \$entities_id might not be defined\.$#'
+			identifier: variable.undefined
+			count: 1
+			path: src/Common.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$comp with type GlpiPlugin\\Behaviors\\Computer is incompatible with native type Computer\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: src/Computer.php
+
+		-
+			message: '#^Default value of the parameter \#1 \$history \(int\) of method GlpiPlugin\\Behaviors\\Config\:\:post_updateItem\(\) is incompatible with type bool\.$#'
+			identifier: parameter.defaultValue
+			count: 1
+			path: src/Config.php
+
+		-
+			message: '#^Default value of the parameter \#1 \$with_comment \(0\) of method GlpiPlugin\\Behaviors\\Config\:\:getName\(\) is incompatible with type array\{complete\?\: bool, additional\?\: bool\}\.$#'
+			identifier: parameter.defaultValue
+			count: 1
+			path: src/Config.php
+
+		-
+			message: '#^Method DBmysql\:\:doQuery\(\) invoked with 2 parameters, 1 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: src/Config.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$document_item with type GlpiPlugin\\Behaviors\\Document_Item is incompatible with native type Document_Item\.$#'
+			identifier: parameter.phpDocType
+			count: 2
+			path: src/Document_Item.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$item with type GlpiPlugin\\Behaviors\\Group_Ticket is incompatible with native type Group_Ticket\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: src/Group_Ticket.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$soluce with type GlpiPlugin\\Behaviors\\ITILSolution is incompatible with native type ITILSolution\.$#'
+			identifier: parameter.phpDocType
+			count: 3
+			path: src/ITILSolution.php
+
+		-
+			message: '#^Call to an undefined method GlpiPlugin\\Behaviors\\NotificationTemplate\:\:getID\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/NotificationTemplate.php
+
+		-
+			message: '#^Call to an undefined method GlpiPlugin\\Behaviors\\NotificationTemplate\:\:getTable\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/NotificationTemplate.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$problem with type GlpiPlugin\\Behaviors\\Problem is incompatible with native type Problem\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: src/Problem.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$task with type GlpiPlugin\\Behaviors\\ProblemTask is incompatible with native type ProblemTask\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: src/ProblemTask.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$srce with type GlpiPlugin\\Behaviors\\Profile is incompatible with native type Profile\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: src/Profile.php
+
+		-
+			message: '#^Call to an undefined method GlpiPlugin\\Behaviors\\Rule\:\:getID\(\)\.$#'
+			identifier: method.notFound
+			count: 2
+			path: src/Rule.php
+
+		-
+			message: '#^Call to an undefined method GlpiPlugin\\Behaviors\\Rule\:\:getTable\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Rule.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$srce with type GlpiPlugin\\Behaviors\\Rule is incompatible with native type Rule\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: src/Rule.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$item with type GlpiPlugin\\Behaviors\\Supplier_Ticket is incompatible with native type Supplier_Ticket\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: src/Supplier_Ticket.php
+
+		-
+			message: '#^Access to an undefined property User\:\:\$getID\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Ticket.php
+
+		-
+			message: '#^Instantiating an object from an unrestricted dynamic string is forbidden \(see https\://github\.com/glpi\-project/phpstan\-glpi\?tab\=readme\-ov\-file\#forbiddynamicinstantiationrule\)\.$#'
+			identifier: glpi.forbidDynamicInstantiation
+			count: 3
+			path: src/Ticket.php
+
+		-
+			message: '#^Loose comparison using \=\= between 0 and 0 will always evaluate to true\.$#'
+			identifier: equal.alwaysTrue
+			count: 1
+			path: src/Ticket.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$clone with type GlpiPlugin\\Behaviors\\Ticket is incompatible with native type Ticket\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: src/Ticket.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$srce with type GlpiPlugin\\Behaviors\\Ticket is incompatible with native type Ticket\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: src/Ticket.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$ticket with type GlpiPlugin\\Behaviors\\Ticket is incompatible with native type Ticket\.$#'
+			identifier: parameter.phpDocType
+			count: 4
+			path: src/Ticket.php
+
+		-
+			message: '#^Result of && is always false\.$#'
+			identifier: booleanAnd.alwaysFalse
+			count: 1
+			path: src/Ticket.php
+
+		-
+			message: '#^Undefined variable\: \$ticket$#'
+			identifier: variable.undefined
+			count: 2
+			path: src/Ticket.php
+
+		-
+			message: '#^Variable \$object might not be defined\.$#'
+			identifier: variable.undefined
+			count: 1
+			path: src/Ticket.php
+
+		-
+			message: '#^Variable \$ticket in isset\(\) is never defined\.$#'
+			identifier: isset.variable
+			count: 2
+			path: src/Ticket.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$ticketsatisfaction with type GlpiPlugin\\Behaviors\\TicketSatisfaction is incompatible with native type TicketSatisfaction\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: src/TicketSatisfaction.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$taskticket with type GlpiPlugin\\Behaviors\\TicketTask is incompatible with native type TicketTask\.$#'
+			identifier: parameter.phpDocType
+			count: 2
+			path: src/TicketTask.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$item with type GlpiPlugin\\Behaviors\\Ticket_User is incompatible with native type Ticket_User\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: src/Ticket_User.php

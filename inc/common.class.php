@@ -457,6 +457,28 @@ class PluginBehaviorsCommon extends CommonGLPI
 
                     echo "</div>";
                 }
+            } elseif (($item->getType() == 'ITILFollowup')) {
+                $config = PluginBehaviorsConfig::getInstance();
+                if ($config->getField('is_itilfollowupcategory_mandatory')) {
+                    echo "<div class='alert alert-warning'>";
+
+                    echo "<div class='d-flex'>";
+
+                    echo "<div class='me-2'>";
+                    echo "<i class='fas fa-exclamation-triangle fa-2x' style='color:orange'></i>";
+                    echo "</div>";
+
+                    echo "<div>";
+                    echo "<h4 class='alert-title'>" . __(
+                            "You must define a category. it's mandatory",
+                            'behaviors'
+                        ) . "</h4>";
+                    echo "</div>";
+
+                    echo "</div>";
+
+                    echo "</div>";
+                }
             }
         }
         return $params;

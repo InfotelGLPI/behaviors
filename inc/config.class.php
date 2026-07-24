@@ -117,6 +117,7 @@ class PluginBehaviorsConfig extends CommonDBTM
                      `is_changetasktodo` tinyint NOT NULL default '0',
                      `date_mod` timestamp NULL DEFAULT NULL,
                      `comment` text,
+                     `is_itilfollowupcategory_mandatory` tinyint NOT NULL default '0',
                      PRIMARY KEY  (`id`)
                    ) ENGINE=InnoDB  DEFAULT CHARSET = {$default_charset}
                      COLLATE = {$default_collation} ROW_FORMAT=DYNAMIC";
@@ -261,6 +262,14 @@ class PluginBehaviorsConfig extends CommonDBTM
             //version 2.7.6
             $mig->dropField($table, 'is_requester_mandatory');
             $mig->dropField($table, 'use_lock');
+
+            //version 2.7.9
+            $mig->addField(
+                $table,
+                'is_itilfollowupcategory_mandatory',
+                'bool',
+                ['after' => 'is_ticketcategory_mandatory']
+            );
         }
     }
 
@@ -403,13 +412,24 @@ class PluginBehaviorsConfig extends CommonDBTM
         echo "</td></tr>";
 
         echo "<tr class='tab_bg_1'>";
-        echo "<td>" . __("Deny change of ticket's creation date", "behaviors") . "</td><td>";
-        Dropdown::showYesNo("is_ticketdate_locked", $config->fields['is_ticketdate_locked']);
+        echo "<td>" . __('Category ticket is mandatory in a followup', 'behaviors') . "</td><td>";
+        Dropdown::showYesNo(
+            "is_itilfollowupcategory_mandatory",
+            $config->fields['is_itilfollowupcategory_mandatory']
+        );
         echo "</td>";
+
         echo "<td>" . __('Block the solving/closing of a problem if task do to', 'behaviors');
         echo "</td><td>";
         Dropdown::showYesNo("is_problemtasktodo", $config->fields['is_problemtasktodo']);
         echo "</td></tr>";
+
+        echo "<tr class='tab_bg_1'>";
+        echo "<td>" . __("Deny change of ticket's creation date", "behaviors") . "</td><td>";
+        Dropdown::showYesNo("is_ticketdate_locked", $config->fields['is_ticketdate_locked']);
+        echo "</td>";
+        echo "<th colspan=2' class='center'>" . __('New change');
+        echo "</th></tr>";
 
         echo "<tr class='tab_bg_1'>";
         echo "<td>" . __('Single technician and group', 'behaviors') . "</td><td>";
@@ -424,18 +444,6 @@ class PluginBehaviorsConfig extends CommonDBTM
             ['value' => $config->fields['single_tech_mode']]
         );
         echo "</td>";
-        echo "<th colspan=2' class='center'>" . __('New change');
-        echo "</th></tr>";
-
-        echo "<tr class='tab_bg_1'>";
-        echo "<td>" . __('Technician assignment when adding follow up', 'behaviors');
-        $content = __('The technician must belong to the group assigned to the ticket', 'behaviors');
-        Html::showToolTip($content);
-        echo "</td>";
-        echo "<td>";
-        Dropdown::showYesNo("addfup_updatetech", $config->fields['addfup_updatetech']);
-        echo "</td>";
-
         echo "<td>" . __("Change's number format", "behaviors") . "</td><td width='20%'>";
         $tab = ['NULL' => Dropdown::EMPTY_VALUE];
         foreach (['Y000001', 'Ym0001', 'Ymd01', 'ymd0001'] as $fmt) {
@@ -449,10 +457,24 @@ class PluginBehaviorsConfig extends CommonDBTM
         echo "</td></tr>";
 
         echo "<tr class='tab_bg_1'>";
-        echo "<th colspan='2' class='center'>" . __('Adding the ticket solution', 'behaviors');
-        echo "</th>";
+        echo "<td>" . __('Technician assignment when adding follow up', 'behaviors');
+        $content = __('The technician must belong to the group assigned to the ticket', 'behaviors');
+        Html::showToolTip($content);
+        echo "</td>";
+        echo "<td>";
+        Dropdown::showYesNo("addfup_updatetech", $config->fields['addfup_updatetech']);
+        echo "</td>";
+
         echo "<th colspan=2' class='center'>" . __('Update of a change');
         echo "</th></tr>";
+
+        echo "<tr class='tab_bg_1'>";
+        echo "<th colspan='2' class='center'>" . __('Adding the ticket solution', 'behaviors');
+        echo "</th>";
+        echo "<td>" . __('Block the solving/closing of a change if task do to', 'behaviors');
+        echo "</td><td>";
+        Dropdown::showYesNo("is_changetasktodo", $config->fields['is_changetasktodo']);
+        echo "</td></tr>";
 
         echo "<tr class='tab_bg_1'>";
         echo "<td>" . __('Technician assigned is mandatory before ticket is solved/closed', 'behaviors');
@@ -464,10 +486,9 @@ class PluginBehaviorsConfig extends CommonDBTM
         );
         echo "</td>";
 
-        echo "<td>" . __('Block the solving/closing of a change if task do to', 'behaviors');
-        echo "</td><td>";
-        Dropdown::showYesNo("is_changetasktodo", $config->fields['is_changetasktodo']);
-        echo "</td></tr>";
+        echo "<th colspan='2' class='center'>" . __('Comments');
+        echo "</th>";
+        echo "</tr>\n";
 
         echo "<tr class='tab_bg_1'>";
         echo "<td>" . __('Set the solution writer as the technician of the ticket', 'behaviors');
@@ -475,9 +496,15 @@ class PluginBehaviorsConfig extends CommonDBTM
         Dropdown::showYesNo("ticketsolved_updatetech", $config->fields['ticketsolved_updatetech']);
         echo "</td>";
 
-        echo "<th colspan='2' class='center'>" . __('Comments');
-        echo "</th>";
-        echo "</tr>\n";
+        echo "<td rowspan='7' colspan='2' class='center'>";
+        Html::textarea([
+            'name' => 'comment',
+            'value' => $config->fields['comment'],
+            'cols' => '60',
+            'rows' => '12',
+            'enable_ricktext' => false
+        ]);
+        echo "</td></tr>";
 
         echo "<tr class='tab_bg_1'>";
         echo "<td>" . __(
@@ -492,15 +519,7 @@ class PluginBehaviorsConfig extends CommonDBTM
         );
         echo "</td>";
 
-        echo "<td rowspan='7' colspan='2' class='center'>";
-        Html::textarea([
-            'name' => 'comment',
-            'value' => $config->fields['comment'],
-            'cols' => '60',
-            'rows' => '12',
-            'enable_ricktext' => false
-        ]);
-        echo "</td></tr>";
+        echo "</tr>";
 
         echo "<tr class='tab_bg_1'>";
         echo "<td>" . __('Category is mandatory before ticket is solved/closed', 'behaviors') . "</td><td>";

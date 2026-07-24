@@ -436,7 +436,12 @@ class Common extends CommonGLPI
             		if ($config->getField('is_tickettaskcategory_mandatory')) {
                 		TemplateRenderer::getInstance()->display('@behaviors/warning_task.html.twig', []);
             		}
-        	}
+        	}elseif ($item->getType() == 'ITILFollowup') {
+                $config = Config::getInstance();
+                if ($config->getField('is_itilfollowupcategory_mandatory')) {
+                    TemplateRenderer::getInstance()->display('@behaviors/warning_task.html.twig', []);
+                }
+            }
     	}
     	return $params;
      }

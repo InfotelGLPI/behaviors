@@ -124,6 +124,7 @@ class Config extends CommonDBTM
              		`is_changetasktodo` tinyint NOT NULL default '0',
              		`date_mod` timestamp NULL DEFAULT NULL,
              		`comment` text,
+             		`is_itilfollowupcategory_mandatory` tinyint NOT NULL default '0',
              		PRIMARY KEY  (`id`)
            	      ) ENGINE=InnoDB  DEFAULT CHARSET = {$default_charset}
              		COLLATE = {$default_collation} ROW_FORMAT=DYNAMIC";
@@ -252,6 +253,9 @@ class Config extends CommonDBTM
             //version 3.0.0
             $mig->dropField($table, 'myasset');
             $mig->dropField($table, 'groupasset');
+
+            //version 3.0.9
+            $mig->addField($table,'is_itilfollowupcategory_mandatory','bool', ['after' => 'is_ticketcategory_mandatory']);
         }
     }
 

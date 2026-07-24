@@ -131,6 +131,13 @@
                     __("Technician assignment when adding follow up", 'behaviors'),
                 {helper: __('The technician must belong to the group assigned to the ticket', 'behaviors')}
                 ) }}
+
+                {{ fields.sliderField(
+                    'is_itilfollowupcategory_mandatory',
+                    config["is_itilfollowupcategory_mandatory"],
+                    __('Category ticket is mandatory in a followup', 'behaviors'),
+                    field_options
+                ) }}
             </div>
 
                 <div class="hr-text">

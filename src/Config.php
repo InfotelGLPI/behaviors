@@ -284,7 +284,7 @@ class Config extends CommonDBTM
 //        if (!$plugin->isActivated('ocsinventoryng')) {
 //            echo __("Plugin \"OCS Inventory NG\" not installed", "behaviors");
 //        }
-
+        $is_cloud = defined('GLPI_INSTALL_MODE') && GLPI_INSTALL_MODE === 'CLOUD';
         TemplateRenderer::getInstance()->display(
             '@behaviors/config.html.twig',
             [
@@ -293,6 +293,7 @@ class Config extends CommonDBTM
                 'config'            => $config->fields,
                 'action'            => plugin_behaviors_geturl() . 'front/config.form.php',
                 'dateformat'    => $dateformat,
+                'is_cloud' => $is_cloud,
             ],
         );
         return true;

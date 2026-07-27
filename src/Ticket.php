@@ -408,24 +408,25 @@ class Ticket
         }
 
         $config = Config::getInstance();
-
-        if ($config->getField('tickets_id_format')) {
-            $max = 0;
-            $sql = [
-                'SELECT' => ['MAX' => 'id AS max'],
-                'FROM' => 'glpi_tickets',
-            ];
-            foreach ($DB->request($sql) as $data) {
-                $max = $data['max'];
-            }
-            $want = (int) date($config->getField('tickets_id_format'));
-            // Borne max = YYYYMMDDHHMMSS (14 chiffres) pour éviter la corruption de séquence
-            if ($want > $max && $want > 0 && $want <= 99999999999999) {
-                // Force the new record id to the date-based value via DML instead of a
-                // runtime `ALTER TABLE ... AUTO_INCREMENT` (raw DDL). Since $want > current
-                // MAX(id), inserting this explicit id is collision-free and advances MySQL's
-                // AUTO_INCREMENT to $want + 1, matching the previous behaviour without raw SQL.
-                $ticket->input['id'] = $want;
+        if (defined('GLPI_INSTALL_MODE') && GLPI_INSTALL_MODE !== 'CLOUD') {
+            if ($config->getField('tickets_id_format')) {
+                $max = 0;
+                $sql = [
+                    'SELECT' => ['MAX' => 'id AS max'],
+                    'FROM' => 'glpi_tickets',
+                ];
+                foreach ($DB->request($sql) as $data) {
+                    $max = $data['max'];
+                }
+                $want = (int)date($config->getField('tickets_id_format'));
+                // Borne max = YYYYMMDDHHMMSS (14 chiffres) pour éviter la corruption de séquence
+                if ($want > $max && $want > 0 && $want <= 99999999999999) {
+                    // Force the new record id to the date-based value via DML instead of a
+                    // runtime `ALTER TABLE ... AUTO_INCREMENT` (raw DDL). Since $want > current
+                    // MAX(id), inserting this explicit id is collision-free and advances MySQL's
+                    // AUTO_INCREMENT to $want + 1, matching the previous behaviour without raw SQL.
+                    $ticket->input['id'] = $want;
+                }
             }
         }
 

@@ -43,7 +43,7 @@
                 <span>{{ __('New ticket') }}</span>
             </div>
             <div class="row">
-
+                {% if not is_cloud %}
                 {{ fields.dropdownArrayField(
                     'tickets_id_format',
                     config["tickets_id_format"],
@@ -51,6 +51,7 @@
                     __("Ticket's number format", "behaviors"),
                     field_options
                 ) }}
+                {% endif %}
 
                 {{ fields.sliderField(
                     'use_requester_item_group',

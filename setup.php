@@ -46,7 +46,7 @@ use GlpiPlugin\Behaviors\Problem;
 use GlpiPlugin\Behaviors\ProblemTask;
 use Glpi\Plugin\Hooks;
 
-define('PLUGIN_BEHAVIORS_VERSION', '3.0.8');
+define('PLUGIN_BEHAVIORS_VERSION', '3.0.9');
 // Init the hooks of the plugins -Needed
 function plugin_init_behaviors()
 {

@@ -85,6 +85,50 @@ class Config extends CommonDBTM
     }
 
 
+    /**
+     * Whitelist the config fields accepted from the update form.
+     *
+     * The single config record only holds behavior toggles and two id-format
+     * strings. Filtering the raw $_POST here prevents mass-assignment of any
+     * unexpected key and documents the exact set of writable columns.
+     */
+    function prepareInputForUpdate($input)
+    {
+        $allowed = [
+            'id',
+            'use_requester_item_group',
+            'use_requester_user_group',
+            'is_ticketsolutiontype_mandatory',
+            'is_ticketsolution_mandatory',
+            'is_ticketcategory_mandatory',
+            'is_ticketcategory_mandatory_on_assign',
+            'is_tickettaskcategory_mandatory',
+            'is_tickettech_mandatory',
+            'is_tickettechgroup_mandatory',
+            'is_ticketrealtime_mandatory',
+            'is_ticketlocation_mandatory',
+            'is_ticketdate_locked',
+            'use_assign_user_group',
+            'use_assign_user_group_update',
+            'ticketsolved_updatetech',
+            'tickets_id_format',
+            'changes_id_format',
+            'is_problemsolutiontype_mandatory',
+            'remove_from_ocs',
+            'add_notif',
+            'single_tech_mode',
+            'clone',
+            'addfup_updatetech',
+            'is_tickettasktodo',
+            'is_problemtasktodo',
+            'is_changetasktodo',
+            'comment',
+        ];
+
+        return array_intersect_key($input, array_flip($allowed));
+    }
+
+
     static function install(Migration $mig)
     {
         global $DB;

@@ -246,12 +246,11 @@ class Common extends CommonGLPI
         if ($clone->dohistory) {
             $changes[0] = '0';
             $changes[1] = '';
-            $changes[2] = addslashes(
-                sprintf(
-                    __('%1$s %2$s'),
-                    __('Clone of', 'behaviors'),
-                    $item->getNameID(0, true)
-                )
+            // Let Log::history() / the $DB layer handle persistence escaping.
+            $changes[2] = sprintf(
+                __('%1$s %2$s'),
+                __('Clone of', 'behaviors'),
+                $item->getNameID(0, true)
             );
             Log::history(
                 $clone->getID(),

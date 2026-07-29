@@ -109,6 +109,10 @@ function plugin_init_behaviors()
     $PLUGIN_HOOKS[Hooks::PRE_ITEM_FORM]['behaviors'] = [Common::class, 'messageWarning'];
     $PLUGIN_HOOKS[Hooks::POST_ITEM_FORM]['behaviors'] = [Common::class, 'deleteAddSolutionButton'];
 
+    // Externalised (CSP-friendly) replacement for the former inline <script> in
+    // warning_hide_submit.html.twig; hides the "Add solution" submit button.
+    $PLUGIN_HOOKS[Hooks::ADD_JAVASCRIPT]['behaviors'] = 'js/warning_hide_submit.js';
+
     // End init, when all types are registered
     $PLUGIN_HOOKS[Hooks::POST_INIT]['behaviors'] = [Common::class, 'postInit'];
 

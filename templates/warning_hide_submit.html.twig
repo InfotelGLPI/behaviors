@@ -27,8 +27,6 @@
 --------------------------------------------------------------------------
  #}
 
-<script>
-$(document).ready(function(){
-    $('.itilsolution').children().find(':submit').hide();
-});
-</script>
+{# Marker consumed by js/warning_hide_submit.js to hide the "Add solution"
+   submit button. No inline <script> here (CSP friendly). #}
+<div id="behaviors-hide-solution-submit" hidden></div>

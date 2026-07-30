@@ -37,15 +37,34 @@ class ITILFollowup
 {
     /**
      * @param \ITILFollowup $fup
-     * @return void
+     * @return false|void
      */
     public static function beforeAdd(\ITILFollowup $fup)
     {
         if ($fup->input['itemtype'] !== 'Ticket') {
             return;
         }
-
         $config = Config::getInstance();
+        $ticket = new \Ticket();
+        if (!$ticket->getFromDB($fup->input['items_id'])) {
+            return;
+        }
+        if ($config->getField('is_itilfollowupcategory_mandatory')) {
+            if (!isset($ticket->fields['itilcategories_id'])
+                || $ticket->fields['itilcategories_id'] == 0) {
+                $fup->input = false;
+                Session::addMessageAfterRedirect(
+                    __(
+                        "You must define a category. it's mandatory",
+                        'behaviors'
+                    ),
+                    true,
+                    ERROR
+                );
+                return false;
+            }
+        }
+
         if (!$config->getField('addfup_updatetech')) {
             return;
         }
@@ -54,10 +73,7 @@ class ITILFollowup
             return;
         }
 
-        $ticket = new \Ticket();
-        if (!$ticket->getFromDB($fup->input['items_id'])) {
-            return;
-        }
+
 
         $current_user_id = Session::getLoginUserID();
         $tickets_id = $ticket->getID();

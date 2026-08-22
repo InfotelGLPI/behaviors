@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * LICENSE
  *
  * This file is part of Behaviors plugin for GLPI.
@@ -18,19 +18,20 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Behaviors. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   behaviors
  * @author    Infotel, Remi Collet, Nelly Mahu-Lasson
  * @copyright Copyright (c) 2018-2026 Behaviors plugin team
  * @license   AGPL License 3.0 or (at your option) any later version
- * http://www.gnu.org/licenses/agpl-3.0-standalone.html
  * @link      https://github.com/InfotelGLPI/behaviors/
  * @link      http://www.glpi-project.org/
+ * @package   behaviors
  * @since     2010
- --------------------------------------------------------------------------
+ * http://www.gnu.org/licenses/agpl-3.0-standalone.html
+ * --------------------------------------------------------------------------
  */
 
 namespace GlpiPlugin\Behaviors;
 
+use Glpi\Exception\Http\AccessDeniedHttpException;
 use ProfileRight;
 
 class Profile extends Common
@@ -42,6 +43,17 @@ class Profile extends Common
      */
     public static function preClone(\Profile $srce, array $input)
     {
+        // Prevent privilege escalation. postClone() copies every ProfileRight of
+        // the source profile verbatim into the clone, without re-checking that the
+        // operator actually holds those rights. Deny the clone unless the current
+        // operator already has at least all the rights of the source profile -
+        // this reuses GLPI core's own guard for profile editing/creation, so a
+        // delegated "profile manager" cannot duplicate a higher-privileged profile
+        // (e.g. Super-Admin) and grant themselves rights they do not possess.
+        if (!\Profile::currentUserHaveMoreRightThan([(int) $srce->getID()])) {
+            throw new AccessDeniedHttpException();
+        }
+
         // decode array
         if (isset($input['helpdesk_item_type'])
             && !is_array($input['helpdesk_item_type'])) {

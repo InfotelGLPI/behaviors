@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * LICENSE
  *
  * This file is part of Behaviors plugin for GLPI.
@@ -18,15 +18,15 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Behaviors. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   behaviors
  * @author    Infotel, Remi Collet, Nelly Mahu-Lasson
  * @copyright Copyright (c) 2018-2026 Behaviors plugin team
  * @license   AGPL License 3.0 or (at your option) any later version
- * http://www.gnu.org/licenses/agpl-3.0-standalone.html
  * @link      https://github.com/InfotelGLPI/behaviors/
  * @link      http://www.glpi-project.org/
+ * @package   behaviors
  * @since     2010
- --------------------------------------------------------------------------
+ * http://www.gnu.org/licenses/agpl-3.0-standalone.html
+ * --------------------------------------------------------------------------
  */
 
 namespace GlpiPlugin\Behaviors;
@@ -63,10 +63,10 @@ class TicketTask
                 Session::addMessageAfterRedirect(
                     __(
                         "You must define a category. it's mandatory",
-                        'behaviors'
+                        'behaviors',
                     ),
                     true,
-                    ERROR
+                    ERROR,
                 );
                 return;
             }
@@ -102,10 +102,10 @@ class TicketTask
                 Session::addMessageAfterRedirect(
                     __(
                         "You must define a category. it's mandatory",
-                        'behaviors'
+                        'behaviors',
                     ),
                     true,
-                    ERROR
+                    ERROR,
                 );
                 return;
             }
@@ -117,16 +117,16 @@ class TicketTask
                     $ticket->fields['status'],
                     array_merge(
                         \Ticket::getSolvedStatusArray(),
-                        \Ticket::getClosedStatusArray()
-                    )
+                        \Ticket::getClosedStatusArray(),
+                    ),
                 )) {
                     Session::addMessageAfterRedirect(
                         __(
                             "You cannot change status of a task in a solved ticket",
-                            'behaviors'
+                            'behaviors',
                         ),
                         true,
-                        ERROR
+                        ERROR,
                     );
                     unset($taskticket->input['state']);
                 }

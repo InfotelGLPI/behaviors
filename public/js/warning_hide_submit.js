@@ -1,16 +1,32 @@
-/*
- * Behaviors plugin for GLPI.
+/**
+ * LICENSE
  *
- * Hide the "Add solution" submit button when the plugin flags missing mandatory
- * fields. The logic used to live in an inline <script> emitted by
- * warning_hide_submit.html.twig; it is externalised here so no inline script is
- * needed (Content-Security-Policy friendly, per GLPI 11 conventions).
+ * This file is part of Behaviors plugin for GLPI.
  *
- * The Twig template only emits a hidden marker element. This script is loaded
- * globally through the add_javascript hook (footer), while the ITIL solution
- * form may be injected asynchronously (helpdesk timeline), so we try once on
- * load and otherwise watch the DOM until the marker appears.
+ * Behaviors is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Behaviors is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with Behaviors. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @author    Infotel, Remi Collet, Nelly Mahu-Lasson
+ * @copyright Copyright (c) 2018-2026 Behaviors plugin team
+ * @license   AGPL License 3.0 or (at your option) any later version
+ * @link      https://github.com/InfotelGLPI/behaviors/
+ * @link      http://www.glpi-project.org/
+ * @package   behaviors
+ * @since     2010
+ * http://www.gnu.org/licenses/agpl-3.0-standalone.html
+ * --------------------------------------------------------------------------
  */
+
 /* global MutationObserver */
 (function () {
     'use strict';

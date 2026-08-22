@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * LICENSE
  *
  * This file is part of Behaviors plugin for GLPI.
@@ -18,19 +18,19 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Behaviors. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   behaviors
  * @author    Infotel, Remi Collet, Nelly Mahu-Lasson
  * @copyright Copyright (c) 2018-2026 Behaviors plugin team
  * @license   AGPL License 3.0 or (at your option) any later version
- * http://www.gnu.org/licenses/agpl-3.0-standalone.html
  * @link      https://github.com/InfotelGLPI/behaviors/
  * @link      http://www.glpi-project.org/
+ * @package   behaviors
  * @since     2010
- --------------------------------------------------------------------------
+ * http://www.gnu.org/licenses/agpl-3.0-standalone.html
+ * --------------------------------------------------------------------------
  */
 
 if (!defined('GLPI_ROOT')) {
-   die("Restricted access");
+    die("Restricted access");
 }
 
 Session::checkRight('config', UPDATE);
@@ -43,23 +43,23 @@ global $DB;
 
 $sql = "SELECT `table_name`
         FROM information_schema.tables
-        WHERE `table_schema` = '".$DB->dbdefault."'
+        WHERE `table_schema` = '" . $DB->dbdefault . "'
         AND `table_name` LIKE 'glpi_%'";
 $tables = $DB->request($sql);
 
 foreach ($tables as $table) {
-   if ($DB->FieldExists($table['table_name'], 'tickets_id')) {
-         $query = "ALTER TABLE ".$table['table_name'] ." CHANGE `tickets_id` `tickets_id` INT(11) UNSIGNED NOT NULL;";
-         $DB->doQuery($query);
-   }
-   if ($DB->FieldExists($table['table_name'], 'changes_id')) {
-      $query = "ALTER TABLE ".$table['table_name'] ." CHANGE `changes_id` `changes_id` INT(11) UNSIGNED NOT NULL;";
-      $DB->doQuery($query);
-   }
-   if ($DB->FieldExists($table['table_name'], 'items_id')) {
-         $query = "ALTER TABLE ".$table['table_name'] ." CHANGE `items_id` `items_id` INT(11) UNSIGNED NOT NULL;";
-         $DB->doQuery($query);
-   }
+    if ($DB->FieldExists($table['table_name'], 'tickets_id')) {
+        $query = "ALTER TABLE " . $table['table_name'] . " CHANGE `tickets_id` `tickets_id` INT(11) UNSIGNED NOT NULL;";
+        $DB->doQuery($query);
+    }
+    if ($DB->FieldExists($table['table_name'], 'changes_id')) {
+        $query = "ALTER TABLE " . $table['table_name'] . " CHANGE `changes_id` `changes_id` INT(11) UNSIGNED NOT NULL;";
+        $DB->doQuery($query);
+    }
+    if ($DB->FieldExists($table['table_name'], 'items_id')) {
+        $query = "ALTER TABLE " . $table['table_name'] . " CHANGE `items_id` `items_id` INT(11) UNSIGNED NOT NULL;";
+        $DB->doQuery($query);
+    }
 }
 
 $query = "ALTER TABLE `glpi_tickets` CHANGE `id` `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT;";

@@ -85,12 +85,6 @@ parameters:
 			path: src/Common.php
 
 		-
-			message: '#^Variable \$entities_id might not be defined\.$#'
-			identifier: variable.undefined
-			count: 1
-			path: src/Common.php
-
-		-
 			message: '#^PHPDoc tag @param for parameter \$comp with type GlpiPlugin\\Behaviors\\Computer is incompatible with native type Computer\.$#'
 			identifier: parameter.phpDocType
 			count: 1
@@ -111,6 +105,12 @@ parameters:
 		-
 			message: '#^Method DBmysql\:\:doQuery\(\) invoked with 2 parameters, 1 required\.$#'
 			identifier: arguments.count
+			count: 1
+			path: src/Config.php
+
+		-
+			message: '#^Result of && is always false\.$#'
+			identifier: booleanAnd.alwaysFalse
 			count: 1
 			path: src/Config.php
 
@@ -232,12 +232,6 @@ parameters:
 			message: '#^Undefined variable\: \$ticket$#'
 			identifier: variable.undefined
 			count: 2
-			path: src/Ticket.php
-
-		-
-			message: '#^Variable \$object might not be defined\.$#'
-			identifier: variable.undefined
-			count: 1
 			path: src/Ticket.php
 
 		-

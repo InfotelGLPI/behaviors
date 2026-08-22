@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * LICENSE
  *
  * This file is part of Behaviors plugin for GLPI.
@@ -18,15 +18,15 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Behaviors. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   behaviors
  * @author    Infotel, Remi Collet, Nelly Mahu-Lasson
  * @copyright Copyright (c) 2018-2026 Behaviors plugin team
  * @license   AGPL License 3.0 or (at your option) any later version
- * http://www.gnu.org/licenses/agpl-3.0-standalone.html
  * @link      https://github.com/InfotelGLPI/behaviors/
  * @link      http://www.glpi-project.org/
+ * @package   behaviors
  * @since     2010
- --------------------------------------------------------------------------
+ * http://www.gnu.org/licenses/agpl-3.0-standalone.html
+ * --------------------------------------------------------------------------
  */
 
 namespace GlpiPlugin\Behaviors;
@@ -57,12 +57,10 @@ class Common extends CommonGLPI
         'Ticket' => Ticket::class,
     ];
 
-
     public static function getCloneTypes()
     {
         return self::$clone_types;
     }
-
 
     /**
      * Declare that a type is clonable
@@ -82,7 +80,6 @@ class Common extends CommonGLPI
         return false;
     }
 
-
     /**
      * @return void
      */
@@ -90,7 +87,7 @@ class Common extends CommonGLPI
     {
         Plugin::registerClass(
             Common::class,
-            ['addtabon' => array_keys(Common::getCloneTypes())]
+            ['addtabon' => array_keys(Common::getCloneTypes())],
         );
 
         Ticket::onNewTicket();
@@ -118,46 +115,44 @@ class Common extends CommonGLPI
                 sprintf(
                     __('%1$s (%2$s)'),
                     __('Clone', 'behaviors'),
-                    __('Behaviors', 'behaviors')
-                )
+                    __('Behaviors', 'behaviors'),
+                ),
             );
         }
         return '';
     }
 
-
     /**
      * @param CommonGLPI $item
      * @return void
      */
-     	public static function showCloneForm(CommonGLPI $item)
-	{
-    		$config = Config::getInstance();
-    		$entity_name = null;
+    public static function showCloneForm(CommonGLPI $item)
+    {
+        $config = Config::getInstance();
+        $entity_name = null;
 
-    		if ($item->isEntityAssign()) {
-        		if ($config->getField('clone') == 1) {
-            			$entities_id = $_SESSION['glpiactive_entity'];
-        		} elseif ($config->getField('clone') == 2) {
-            			$entities_id = $item->getEntityID();
-        		}
-        		if (isset($entities_id)) {
-            			$entity_name = Dropdown::getDropdownName('glpi_entities', $entities_id);
-        		}
-    		}
+        if ($item->isEntityAssign()) {
+            if ($config->getField('clone') == 1) {
+                $entities_id = $_SESSION['glpiactive_entity'];
+            } elseif ($config->getField('clone') == 2) {
+                $entities_id = $item->getEntityID();
+            }
+            if (isset($entities_id)) {
+                $entity_name = Dropdown::getDropdownName('glpi_entities', $entities_id);
+            }
+        }
 
-    		TemplateRenderer::getInstance()->display(
-        		'@behaviors/clone_form.html.twig',
-        		[
-            			'action'      => Toolbox::getItemTypeFormURL(__CLASS__),
-            			'itemtype'    => $item->getType(),
-            			'id'          => $item->getID(),
-            			'name'        => sprintf(__('%1$s %2$s'), __('Clone of', 'behaviors'), $item->getName()),
-            			'entity_name' => $entity_name,
-        		]
-    		);
-	}
-
+        TemplateRenderer::getInstance()->display(
+            '@behaviors/clone_form.html.twig',
+            [
+                'action'      => Toolbox::getItemTypeFormURL(__CLASS__),
+                'itemtype'    => $item->getType(),
+                'id'          => $item->getID(),
+                'name'        => sprintf(__('%1$s %2$s'), __('Clone of', 'behaviors'), $item->getName()),
+                'entity_name' => $entity_name,
+            ],
+        );
+    }
 
     /**
      * @param CommonGLPI $item
@@ -173,7 +168,6 @@ class Common extends CommonGLPI
         }
         return true;
     }
-
 
     /**
      * @param array $param
@@ -207,6 +201,7 @@ class Common extends CommonGLPI
         if ($item->isEntityAssign()) {
             $config = Config::getInstance();
 
+            $entities_id = null;
             if ($config->getField('clone') == 1) {
                 $entities_id = $_SESSION['glpiactive_entity'];
             } elseif ($config->getField('clone') == 2) {
@@ -215,19 +210,16 @@ class Common extends CommonGLPI
             $input['entities_id'] = $entities_id;
         }
 
-        // Manage NULL fields in original
-        foreach ($input as $k => $v) {
-            if (is_null($input[$k])) {
-                $input[$k] = "NULL";
-            }
-        }
+        // Leave NULL source fields as NULL: the $DB layer persists them
+        // correctly. Rewriting them to the literal string "NULL" corrupted
+        // nullable columns of the clone (dates, foreign keys) with a bogus value.
 
         // Specific to itemtype - before clone
         if (method_exists(self::$clone_types[$param['itemtype']], 'preClone')) {
             $input = call_user_func(
                 [self::$clone_types[$param['itemtype']], 'preClone'],
                 $item,
-                $input
+                $input,
             );
         }
 
@@ -250,14 +242,14 @@ class Common extends CommonGLPI
             $changes[2] = sprintf(
                 __('%1$s %2$s'),
                 __('Clone of', 'behaviors'),
-                $item->getNameID(0, true)
+                $item->getNameID(0, true),
             );
             Log::history(
                 $clone->getID(),
                 $clone->getType(),
                 $changes,
                 0,
-                Log::HISTORY_LOG_SIMPLE_MESSAGE
+                Log::HISTORY_LOG_SIMPLE_MESSAGE,
             );
         }
     }
@@ -295,11 +287,11 @@ class Common extends CommonGLPI
             $mandatory_solution = false;
             if ($config->getField('is_ticketrealtime_mandatory')) {
                 // for moreTicket plugin
-		$plugin = new Plugin();
-		if ($plugin->isActivated('moreticket') && class_exists(\GlpiPlugin\Moreticket\Config::class)) {
-    		    $configmoreticket = new \GlpiPlugin\Moreticket\Config();
+                $plugin = new Plugin();
+                if ($plugin->isActivated('moreticket') && class_exists(\GlpiPlugin\Moreticket\Config::class)) {
+                    $configmoreticket = new \GlpiPlugin\Moreticket\Config();
                     $mandatory_solution = $configmoreticket->isMandatorysolution();
-		}
+                }
 
                 if (($dur == 0) && ($mandatory_solution == false)) {
                     $warnings[] = __("Duration is mandatory before ticket is solved/closed", 'behaviors');
@@ -316,7 +308,7 @@ class Common extends CommonGLPI
                     && !$config->getField('ticketsolved_updatetech')) {
                     $warnings[] = __(
                         "Technician assigned is mandatory before ticket is solved/closed",
-                        'behaviors'
+                        'behaviors',
                     );
                 }
             }
@@ -325,7 +317,7 @@ class Common extends CommonGLPI
                 if (($obj->countGroups(CommonITILActor::ASSIGN) == 0)) {
                     $warnings[] = __(
                         "Group of technicians assigned is mandatory before ticket is solved/closed",
-                        'behaviors'
+                        'behaviors',
                     );
                 }
             }
@@ -381,7 +373,7 @@ class Common extends CommonGLPI
                 ];
 
                 foreach ($DB->request(
-                    $crit
+                    $crit,
                 ) as $task
                 ) {
                     if ($task['state'] == 1) {
@@ -394,53 +386,50 @@ class Common extends CommonGLPI
         return $warnings;
     }
 
-
     /**
      * Displaying message solution
      *
      * @param $params
      **/
-     public static function messageWarning($params)
-     {
-     	if (isset($params['item'])) {
-        	$item = $params['item'];
+    public static function messageWarning($params)
+    {
+        if (isset($params['item'])) {
+            $item = $params['item'];
 
-        	if ($item->getType() == 'ITILSolution') {
-            		$warnings = self::checkWarnings($params);
-            		$config = Config::getInstance();
-            		$parentitem = $params['options']['item'];
+            if ($item->getType() == 'ITILSolution') {
+                $warnings = self::checkWarnings($params);
+                $config = Config::getInstance();
+                $parentitem = $params['options']['item'];
 
-            		$show_solution_mandatory = $config->getField('is_ticketsolution_mandatory')
-                	   && is_array($warnings)
-                	   && count($warnings) == 0
-                           && $parentitem->getType() == 'Ticket';
+                $show_solution_mandatory = $config->getField('is_ticketsolution_mandatory')
+                   && is_array($warnings)
+                   && count($warnings) == 0
+                       && $parentitem->getType() == 'Ticket';
 
-            		$show_solutiontype_mandatory = $config->getField('is_ticketsolutiontype_mandatory')
-                	   && is_array($warnings)
-                           && count($warnings) == 0;
+                $show_solutiontype_mandatory = $config->getField('is_ticketsolutiontype_mandatory')
+                   && is_array($warnings)
+                       && count($warnings) == 0;
 
-            		if ($show_solution_mandatory || $show_solutiontype_mandatory || (is_array($warnings) && count($warnings))) {
-                		TemplateRenderer::getInstance()->display(
-                    			'@behaviors/warning_solution.html.twig',
-                    			[
-                        			'warnings'                  => is_array($warnings) ? $warnings : [],
-                        			'parent_type'               => $parentitem->getType(),
-                        			'show_solution_mandatory'   => $show_solution_mandatory,
-                        			'show_solutiontype_mandatory' => $show_solutiontype_mandatory,
-                    			]
-                		);
-            		}
-        	} elseif ($item->getType() == 'TicketTask') {
-            		$config = Config::getInstance();
-            		if ($config->getField('is_tickettaskcategory_mandatory')) {
-                		TemplateRenderer::getInstance()->display('@behaviors/warning_task.html.twig', []);
-            		}
-        	}
-    	}
-    	return $params;
-     }
-
-
+                if ($show_solution_mandatory || $show_solutiontype_mandatory || (is_array($warnings) && count($warnings))) {
+                    TemplateRenderer::getInstance()->display(
+                        '@behaviors/warning_solution.html.twig',
+                        [
+                            'warnings'                  => is_array($warnings) ? $warnings : [],
+                            'parent_type'               => $parentitem->getType(),
+                            'show_solution_mandatory'   => $show_solution_mandatory,
+                            'show_solutiontype_mandatory' => $show_solutiontype_mandatory,
+                        ],
+                    );
+                }
+            } elseif ($item->getType() == 'TicketTask') {
+                $config = Config::getInstance();
+                if ($config->getField('is_tickettaskcategory_mandatory')) {
+                    TemplateRenderer::getInstance()->display('@behaviors/warning_task.html.twig', []);
+                }
+            }
+        }
+        return $params;
+    }
 
     /**
      * Displaying Add solution button or not
@@ -449,20 +438,20 @@ class Common extends CommonGLPI
      *
      * @return array
      /**/
-	public static function deleteAddSolutionButton($params)
-	{
-    		if (isset($params['item'])) {
-        		$item = $params['item'];
-        		if ($item->getType() == 'ITILSolution') {
-            			$warnings = self::checkWarnings($params);
-            			if (is_array($warnings) && count($warnings) > 0) {
-                			TemplateRenderer::getInstance()->display(
-                    			'@behaviors/warning_hide_submit.html.twig',
-                    			[]
-                			);
-            			}
-        		}
-    		}
-	}
+    public static function deleteAddSolutionButton($params)
+    {
+        if (isset($params['item'])) {
+            $item = $params['item'];
+            if ($item->getType() == 'ITILSolution') {
+                $warnings = self::checkWarnings($params);
+                if (is_array($warnings) && count($warnings) > 0) {
+                    TemplateRenderer::getInstance()->display(
+                        '@behaviors/warning_hide_submit.html.twig',
+                        [],
+                    );
+                }
+            }
+        }
+    }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * LICENSE
  *
  * This file is part of Behaviors plugin for GLPI.
@@ -18,18 +18,19 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Behaviors. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   behaviors
  * @author    Infotel, Remi Collet, Nelly Mahu-Lasson
  * @copyright Copyright (c) 2018-2026 Behaviors plugin team
  * @license   AGPL License 3.0 or (at your option) any later version
- * http://www.gnu.org/licenses/agpl-3.0-standalone.html
  * @link      https://github.com/InfotelGLPI/behaviors/
  * @link      http://www.glpi-project.org/
+ * @package   behaviors
  * @since     2010
- --------------------------------------------------------------------------
+ * http://www.gnu.org/licenses/agpl-3.0-standalone.html
+ * --------------------------------------------------------------------------
  */
 
 namespace GlpiPlugin\Behaviors;
+
 use CommonITILActor;
 use Session;
 
@@ -59,7 +60,9 @@ class ITILFollowup
             return;
         }
 
-        $current_user_id = Session::getLoginUserID();
+        // Cast to int so strict comparisons below behave whatever the raw type
+        // returned by the session/DB layer.
+        $current_user_id = (int) Session::getLoginUserID();
         $tickets_id = $ticket->getID();
 
         // Collect all currently assigned users
@@ -82,11 +85,11 @@ class ITILFollowup
             'type'       => CommonITILActor::ASSIGN,
         ]);
 
-        // No assigned tech and no assigned group — nothing to replace
-        if (count($assigned_users) === 0 && count($assigned_groups) === 0) {
-            return;
-        }
-
+        // Note: an unassigned ticket (no tech AND no group) must still let the
+        // follow-up author become the technician — this is the primary purpose of
+        // the feature (issue #62). We therefore do NOT bail out here; when no group
+        // is assigned the author is eligible unconditionally, and when groups are
+        // assigned the membership check below still gates the assignment.
         $user_in_assigned_group = false;
         if (count($assigned_groups) > 0) {
             foreach ($assigned_groups as $grp) {

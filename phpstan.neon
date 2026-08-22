@@ -1,5 +1,5 @@
 includes:
-    - vendor/glpi-project/phpstan-glpi/extension.neon
+    - ../../vendor/glpi-project/phpstan-glpi/extension.neon
     - phpstan-baseline.neon
 
 parameters:
@@ -17,3 +17,13 @@ parameters:
         - ../../vendor/autoload.php
         - setup.php
     treatPhpDocTypesAsCertain: false
+    ignoreErrors:
+        # GLPI_INSTALL_MODE folds to a different literal value between the local
+        # dev environment and the CI runner, so the exact baselined message never
+        # matches there. Match any folded value to keep local == CI.
+        -
+            message: '#^Strict comparison using \=\=\= between ''[A-Z]+'' and ''CLOUD'' will always evaluate to false\.$#'
+            identifier: identical.alwaysFalse
+        -
+            message: '#^Strict comparison using \!\=\= between ''[A-Z]+'' and ''CLOUD'' will always evaluate to true\.$#'
+            identifier: notIdentical.alwaysTrue

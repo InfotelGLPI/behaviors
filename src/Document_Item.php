@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * LICENSE
  *
  * This file is part of Behaviors plugin for GLPI.
@@ -18,15 +18,15 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Behaviors. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   behaviors
  * @author    Infotel, Remi Collet, Nelly Mahu-Lasson
  * @copyright Copyright (c) 2018-2026 Behaviors plugin team
  * @license   AGPL License 3.0 or (at your option) any later version
- * http://www.gnu.org/licenses/agpl-3.0-standalone.html
  * @link      https://github.com/InfotelGLPI/behaviors/
  * @link      http://www.glpi-project.org/
+ * @package   behaviors
  * @since     2010
- --------------------------------------------------------------------------
+ * http://www.gnu.org/licenses/agpl-3.0-standalone.html
+ * --------------------------------------------------------------------------
  */
 
 namespace GlpiPlugin\Behaviors;
@@ -52,14 +52,14 @@ class Document_Item
                 = sprintf(
                     __('%1$s - %2$s'),
                     __('Behaviors', 'behaviors'),
-                    __('Add document to ticket', 'behaviors')
+                    __('Add document to ticket', 'behaviors'),
                 );
 
             $target->events['plugin_behaviors_document_itemdel']
                 = sprintf(
                     __('%1$s - %2$s'),
                     __('Behaviors', 'behaviors'),
-                    __('Delete document to ticket', 'behaviors')
+                    __('Delete document to ticket', 'behaviors'),
                 );
         }
     }

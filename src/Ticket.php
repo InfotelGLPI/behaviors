@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * LICENSE
  *
  * This file is part of Behaviors plugin for GLPI.
@@ -18,15 +18,15 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with Behaviors. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   behaviors
  * @author    Infotel, Remi Collet, Nelly Mahu-Lasson
  * @copyright Copyright (c) 2018-2026 Behaviors plugin team
  * @license   AGPL License 3.0 or (at your option) any later version
- * http://www.gnu.org/licenses/agpl-3.0-standalone.html
  * @link      https://github.com/InfotelGLPI/behaviors/
  * @link      http://www.glpi-project.org/
+ * @package   behaviors
  * @since     2010
- --------------------------------------------------------------------------
+ * http://www.gnu.org/licenses/agpl-3.0-standalone.html
+ * --------------------------------------------------------------------------
  */
 
 namespace GlpiPlugin\Behaviors;
@@ -53,7 +53,6 @@ class Ticket
     public const SUPERVISOR_LAST_GROUP_ASSIGN = 54;
     public const LAST_GROUP_ASSIGN_WITHOUT_SUPERVISOR = 55;
 
-
     /**
      * @param NotificationTargetTicket $target
      * @return void
@@ -68,27 +67,26 @@ class Ticket
                 = sprintf(
                     __('%1$s - %2$s'),
                     __('Behaviors', 'behaviors'),
-                    __('Reopen ticket', 'behaviors')
+                    __('Reopen ticket', 'behaviors'),
                 );
 
             $target->events['plugin_behaviors_ticketstatus']
                 = sprintf(
                     __('%1$s - %2$s'),
                     __('Behaviors', 'behaviors'),
-                    __('Change status', 'behaviors')
+                    __('Change status', 'behaviors'),
                 );
 
             $target->events['plugin_behaviors_ticketwaiting']
                 = sprintf(
                     __('%1$s - %2$s'),
                     __('Behaviors', 'behaviors'),
-                    __('Ticket waiting', 'behaviors')
+                    __('Ticket waiting', 'behaviors'),
                 );
 
             Document_Item::addEvents($target);
         }
     }
-
 
     /**
      * @param NotificationTargetTicket $target
@@ -104,52 +102,51 @@ class Ticket
                 sprintf(
                     __('%1$s (%2$s)'),
                     __('Last technician assigned', 'behaviors'),
-                    __('Behaviors', 'behaviors')
-                )
+                    __('Behaviors', 'behaviors'),
+                ),
             );
             $target->addTarget(
                 self::LAST_GROUP_ASSIGN,
                 sprintf(
                     __('%1$s (%2$s)'),
                     __('Last group assigned', 'behaviors'),
-                    __('Behaviors', 'behaviors')
-                )
+                    __('Behaviors', 'behaviors'),
+                ),
             );
             $target->addTarget(
                 self::LAST_SUPPLIER_ASSIGN,
                 sprintf(
                     __('%1$s (%2$s)'),
                     __('Last supplier assigned', 'behaviors'),
-                    __('Behaviors', 'behaviors')
-                )
+                    __('Behaviors', 'behaviors'),
+                ),
             );
             $target->addTarget(
                 self::LAST_WATCHER_ADDED,
                 sprintf(
                     __('%1$s (%2$s)'),
                     __('Last watcher added', 'behaviors'),
-                    __('Behaviors', 'behaviors')
-                )
+                    __('Behaviors', 'behaviors'),
+                ),
             );
             $target->addTarget(
                 self::SUPERVISOR_LAST_GROUP_ASSIGN,
                 sprintf(
                     __('%1$s (%2$s)'),
                     __('Supervisor of last group assigned', 'behaviors'),
-                    __('Behaviors', 'behaviors')
-                )
+                    __('Behaviors', 'behaviors'),
+                ),
             );
             $target->addTarget(
                 self::LAST_GROUP_ASSIGN_WITHOUT_SUPERVISOR,
                 sprintf(
                     __('%1$s (%2$s)'),
                     __('Last group assigned without supervisor', 'behaviors'),
-                    __('Behaviors', 'behaviors')
-                )
+                    __('Behaviors', 'behaviors'),
+                ),
             );
         }
     }
-
 
     /**
      * @param NotificationTargetTicket $target
@@ -184,7 +181,6 @@ class Ticket
         }
     }
 
-
     /**
      * @param $type
      * @param $target
@@ -212,40 +208,43 @@ class Ticket
         if ($data = $result->current()) {
             $object = new $target->obj->userlinkclass();
             if ($object->getFromDB($data['lastid'])) {
-                $querylast = [$userlinktable.'.users_id' => $object->fields['users_id']];
+                $querylast = [$userlinktable . '.users_id' => $object->fields['users_id']];
             }
         }
 
         $criteria = [
             'SELECT' => ['glpi_users.id AS users_id',
                 'glpi_users.language AS language',
-                $userlinktable.'.use_notification AS notif',
-                $userlinktable.'.alternative_email AS altemail',],
+                $userlinktable . '.use_notification AS notif',
+                $userlinktable . '.alternative_email AS altemail',],
             'DISTINCT'        => true,
             'FROM' => $userlinktable,
             'INNER JOIN' => [
-		'glpi_users' => [
-		    'ON' => [
-			$userlinktable => 'users_id',
-			'glpi_users' => 'id'
-		    ]
-		],
-	        'glpi_profiles_users' => [
+                'glpi_users' => [
+                    'ON' => [
+                        $userlinktable => 'users_id',
+                        'glpi_users' => 'id',
+                    ],
+                ],
+                'glpi_profiles_users' => [
                     'ON' => [
                         'glpi_profiles_users' => 'users_id',
-                        'glpi_users' => 'id'
-                    ]
+                        'glpi_users' => 'id',
+                    ],
                 ],
             ],
             'WHERE' => [
-                $userlinktable. '.' .$fkfield => $target->obj->fields["id"],
-                $userlinktable.'.type' => $type,
-            ]
+                $userlinktable . '.' . $fkfield => $target->obj->fields["id"],
+                $userlinktable . '.type' => $type,
+            ],
         ];
         $criteria['WHERE'] = $criteria['WHERE'] + $querylast;
         $criteria['WHERE'] = $criteria['WHERE'] + getEntitiesRestrictCriteria(
-                'glpi_profiles_users', 'entities_id', $target->getEntity(), true
-            );
+            'glpi_profiles_users',
+            'entities_id',
+            $target->getEntity(),
+            true,
+        );
 
         foreach ($DB->request($criteria) as $data) {
             //Add the user email and language in the notified users list
@@ -296,7 +295,6 @@ class Ticket
         }
     }
 
-
     /**
      * @param $type
      * @param $target
@@ -331,18 +329,21 @@ class Ticket
             ],
         ];
 
+        $object = null;
         if ($data = $result->current()) {
             $object = new $target->obj->grouplinkclass();
             if ($object->getFromDB($data['lastid'])) {
                 $query['WHERE']['groups_id'] = $object->fields['groups_id'];
             }
         }
+        if ($object === null) {
+            return;
+        }
         foreach ($DB->request($query) as $data) {
             //Add the group in the notified users list
             self::addForGroup($supervisor, $object->fields['groups_id'], $target);
         }
     }
-
 
     /**
      * @param $target
@@ -393,7 +394,6 @@ class Ticket
         }
     }
 
-
     /**
      * @param Ticket $ticket
      * @return false|void
@@ -418,8 +418,8 @@ class Ticket
                 foreach ($DB->request($sql) as $data) {
                     $max = $data['max'];
                 }
-                $want = (int)date($config->getField('tickets_id_format'));
-                // Borne max = YYYYMMDDHHMMSS (14 chiffres) pour éviter la corruption de séquence
+                $want = (int) date($config->getField('tickets_id_format'));
+                // Upper bound = YYYYMMDDHHMMSS (14 digits) to avoid sequence corruption
                 if ($want > $max && $want > 0 && $want <= 99999999999999) {
                     // Force the new record id to the date-based value via DML instead of a
                     // runtime `ALTER TABLE ... AUTO_INCREMENT` (raw DDL). Since $want > current
@@ -438,7 +438,7 @@ class Ticket
                     if (is_array($requesters)) {
                         $ticket->input['_actors']['requester'] = array_merge(
                             $ticket->input['_actors']['requester'],
-                            $requesters
+                            $requesters,
                         );
                     }
                 } else {
@@ -465,8 +465,8 @@ class Ticket
                     $ticket->input['status'],
                     array_merge(
                         \Ticket::getSolvedStatusArray(),
-                        \Ticket::getClosedStatusArray()
-                    )
+                        \Ticket::getClosedStatusArray(),
+                    ),
                 ))
             && isset($ticket->input['_users_id_assign'])
             && (($ticket->input['_users_id_assign'] == 0)
@@ -673,7 +673,7 @@ class Ticket
                             $grp = User::getRequesterGroup(
                                 $entities_id,
                                 $requester['items_id'],
-                                true
+                                true,
                             );
                         }
                         if ($grp > 0 && $requester['itemtype'] == 'Group'
@@ -694,7 +694,7 @@ class Ticket
                             $grps = User::getRequesterGroup(
                                 $entities_id,
                                 $requester['items_id'],
-                                false
+                                false,
                             );
                         }
                         if ($requester['itemtype'] == 'Group'
@@ -806,13 +806,13 @@ class Ticket
                             $grp = User::getTechnicianGroup(
                                 $entities_id,
                                 $assign['items_id'],
-                                true
+                                true,
                             );
                         }
-//                        if ($grp > 0 && $assign['itemtype'] == 'Group'
-//                            && $assign['items_id'] == $grp) {
-//                            $ko++;
-//                        }
+                        //                        if ($grp > 0 && $assign['itemtype'] == 'Group'
+                        //                            && $assign['items_id'] == $grp) {
+                        //                            $ko++;
+                        //                        }
                         if ($grp > 0 && $ko == 0) {
                             $actors_assign[] = [
                                 'itemtype' => 'Group',
@@ -827,7 +827,7 @@ class Ticket
                             $grps = User::getTechnicianGroup(
                                 $entities_id,
                                 $assign['items_id'],
-                                false
+                                false,
                             );
                         }
                         if ($assign['itemtype'] == 'Group'
@@ -875,7 +875,7 @@ class Ticket
                     = User::getTechnicianGroup(
                         $ticket->input['entities_id'],
                         $ticket->input['_users_id_assign'],
-                        true
+                        true,
                     );
             } else {
                 // All groups
@@ -883,12 +883,11 @@ class Ticket
                     = User::getTechnicianGroup(
                         $ticket->input['entities_id'],
                         $ticket->input['_users_id_assign'],
-                        false
+                        false,
                     );
             }
         }
     }
-
 
     /**
      * @param Ticket $ticket
@@ -923,8 +922,8 @@ class Ticket
                 $ticket->input['status'],
                 array_merge(
                     \Ticket::getSolvedStatusArray(),
-                    \Ticket::getClosedStatusArray()
-                )
+                    \Ticket::getClosedStatusArray(),
+                ),
             )) {
             $sql = [
                 'SELECT' => [
@@ -946,10 +945,10 @@ class Ticket
                     Session::addMessageAfterRedirect(
                         __(
                             "Type of solution is mandatory before ticket is solved/closed",
-                            'behaviors'
+                            'behaviors',
                         ),
                         true,
-                        ERROR
+                        ERROR,
                     );
                 }
                 if ($config->getField('is_ticketsolution_mandatory')
@@ -958,10 +957,10 @@ class Ticket
                     Session::addMessageAfterRedirect(
                         __(
                             "Description of solution is mandatory before ticket is solved/closed",
-                            'behaviors'
+                            'behaviors',
                         ),
                         true,
-                        ERROR
+                        ERROR,
                     );
                 }
             }
@@ -980,10 +979,10 @@ class Ticket
                     Session::addMessageAfterRedirect(
                         __(
                             "Duration is mandatory before ticket is solved/closed",
-                            'behaviors'
+                            'behaviors',
                         ),
                         true,
-                        ERROR
+                        ERROR,
                     );
                 }
             }
@@ -993,10 +992,10 @@ class Ticket
                     Session::addMessageAfterRedirect(
                         __(
                             "Category is mandatory before ticket is solved/closed",
-                            'behaviors'
+                            'behaviors',
                         ),
                         true,
-                        ERROR
+                        ERROR,
                     );
                 }
             }
@@ -1007,10 +1006,10 @@ class Ticket
                     Session::addMessageAfterRedirect(
                         __(
                             "Technician assigned is mandatory before ticket is solved/closed",
-                            'behaviors'
+                            'behaviors',
                         ),
                         true,
-                        ERROR
+                        ERROR,
                     );
                 }
             }
@@ -1020,10 +1019,10 @@ class Ticket
                     Session::addMessageAfterRedirect(
                         __(
                             "Group of technicians assigned is mandatory before ticket is solved/closed",
-                            'behaviors'
+                            'behaviors',
                         ),
                         true,
-                        ERROR
+                        ERROR,
                     );
                 }
             }
@@ -1033,10 +1032,10 @@ class Ticket
                     Session::addMessageAfterRedirect(
                         __(
                             "Location is mandatory before ticket is solved/closed",
-                            'behaviors'
+                            'behaviors',
                         ),
                         true,
-                        ERROR
+                        ERROR,
                     );
                 }
             }
@@ -1045,8 +1044,8 @@ class Ticket
                 $crit = [
                     'FROM' => 'glpi_tickettasks',
                     'WHERE' => [
-                        'tickets_id' => $ticket->getField('id')
-                    ]
+                        'tickets_id' => $ticket->getField('id'),
+                    ],
                 ];
 
                 foreach (
@@ -1056,10 +1055,10 @@ class Ticket
                         Session::addMessageAfterRedirect(
                             __(
                                 "You cannot solve/close a ticket with task do to",
-                                'behaviors'
+                                'behaviors',
                             ),
                             true,
-                            ERROR
+                            ERROR,
                         );
                         unset($ticket->input['status']);
                     }
@@ -1076,21 +1075,21 @@ class Ticket
                 Session::addMessageAfterRedirect(
                     __(
                         "Category is mandatory when you assign a ticket",
-                        'behaviors'
+                        'behaviors',
                     ),
                     true,
-                    ERROR
+                    ERROR,
                 );
             }
         }
 
-//        if ($config->getField('use_requester_item_group')
-//            && isset($ticket->input['_actors']['requester'])) {
-//            $requesters = self::useRequesterItemGroup($ticket->input);
-//            if ($requesters !== null) {
-//                $ticket->input['_actors']['requester'] = self::removeDuplicates($requesters);
-//            }
-//        }
+        //        if ($config->getField('use_requester_item_group')
+        //            && isset($ticket->input['_actors']['requester'])) {
+        //            $requesters = self::useRequesterItemGroup($ticket->input);
+        //            if ($requesters !== null) {
+        //                $ticket->input['_actors']['requester'] = self::removeDuplicates($requesters);
+        //            }
+        //        }
 
         if ($config->getField('use_assign_user_group_update')
             && isset($ticket->input['_actors']['assign'])) {
@@ -1107,8 +1106,8 @@ class Ticket
                 $ticket->input['status'],
                 array_merge(
                     \Ticket::getSolvedStatusArray(),
-                    \Ticket::getClosedStatusArray()
-                )
+                    \Ticket::getClosedStatusArray(),
+                ),
             )) {
             $ticket_user = new \Ticket_User();
             if (($ticket->countUsers(CommonITILActor::ASSIGN) == 0)
@@ -1120,8 +1119,8 @@ class Ticket
                         $ticket->fields['status'],
                         array_merge(
                             \Ticket::getSolvedStatusArray(),
-                            \Ticket::getClosedStatusArray()
-                        )
+                            \Ticket::getClosedStatusArray(),
+                        ),
                     ))) {
                 $ticket_user->add([
                     'tickets_id' => $ticket->getID(),
@@ -1131,7 +1130,6 @@ class Ticket
             }
         }
     }
-
 
     /**
      * @return void
@@ -1164,7 +1162,7 @@ class Ticket
                                     $grp = User::getRequesterGroup(
                                         (int) $_POST['entities_id'],
                                         (int) $requester['items_id'],
-                                        true
+                                        true,
                                     );
                                     if ($grp > 0 && !isset($_SESSION['glpi_behaviors_auto_group_request'])
                                         || (isset($_SESSION['glpi_behaviors_auto_group_request'])
@@ -1186,7 +1184,7 @@ class Ticket
                                     $grps = User::getRequesterGroup(
                                         (int) $_POST['entities_id'],
                                         (int) $requester['items_id'],
-                                        false
+                                        false,
                                     );
                                     foreach ($grps as $grp) {
                                         if (!isset($_SESSION['glpi_behaviors_auto_group_request'])
@@ -1233,7 +1231,7 @@ class Ticket
                                     $grp = User::getTechnicianGroup(
                                         (int) $_POST['entities_id'],
                                         (int) $assigned['items_id'],
-                                        true
+                                        true,
                                     );
                                     if ($grp > 0 && !isset($_SESSION['glpi_behaviors_auto_group_assign'])
                                         || (isset($_SESSION['glpi_behaviors_auto_group_assign'])
@@ -1255,7 +1253,7 @@ class Ticket
                                     $grps = User::getTechnicianGroup(
                                         (int) $_POST['entities_id'],
                                         (int) $assigned['items_id'],
-                                        false
+                                        false,
                                     );
                                     foreach ($grps as $grp) {
                                         if (!isset($_SESSION['glpi_behaviors_auto_group_assign'])
@@ -1288,7 +1286,6 @@ class Ticket
         }
     }
 
-
     /**
      * @param Ticket $ticket
      * @return void
@@ -1303,15 +1300,15 @@ class Ticket
                 $ticket->oldvalues['status'],
                 array_merge(
                     \Ticket::getSolvedStatusArray(),
-                    \Ticket::getClosedStatusArray()
-                )
+                    \Ticket::getClosedStatusArray(),
+                ),
             )
                 && !in_array(
                     $ticket->input['status'],
                     array_merge(
                         \Ticket::getSolvedStatusArray(),
-                        \Ticket::getClosedStatusArray()
-                    )
+                        \Ticket::getClosedStatusArray(),
+                    ),
                 )) {
                 NotificationEvent::raiseEvent('plugin_behaviors_ticketreopen', $ticket);
             } elseif ($ticket->oldvalues['status'] <> $ticket->input['status']) {
@@ -1323,7 +1320,6 @@ class Ticket
             }
         }
     }
-
 
     /**
      * @param Ticket $srce
@@ -1374,7 +1370,6 @@ class Ticket
         return $input;
     }
 
-
     /**
      * @param Ticket $clone
      * @param $oldid
@@ -1391,8 +1386,8 @@ class Ticket
         $crit = [
             'FROM' => $item->getTable(),
             'WHERE' => [
-                $fkey => $oldid
-            ]
+                $fkey => $oldid,
+            ],
         ];
         foreach ($DB->request($crit) as $dataitem) {
             $input = [
@@ -1417,7 +1412,7 @@ class Ticket
             [
                 'itemtype' => 'Ticket',
                 'items_id' => $oldid,
-            ]
+            ],
         )) {
             $docitem = new \Document_Item();
             $query = [
@@ -1425,7 +1420,7 @@ class Ticket
                 'WHERE' => [
                     'itemtype' => 'Ticket',
                     'items_id' => $oldid,
-                ]
+                ],
             ];
             foreach (
                 $DB->request($query) as $doc
@@ -1441,7 +1436,6 @@ class Ticket
             }
         }
     }
-
 
     /**
      * @param $manager
@@ -1466,26 +1460,26 @@ class Ticket
                 'glpi_users' => [
                     'ON' => [
                         'glpi_groups_users' => 'users_id',
-                        'glpi_users' => 'id'
-                    ]
+                        'glpi_users' => 'id',
+                    ],
                 ],
                 'glpi_profiles_users' => [
                     'ON' => [
                         'glpi_profiles_users' => 'users_id',
-                        'glpi_users' => 'id'
-                    ]
+                        'glpi_users' => 'id',
+                    ],
                 ],
                 'glpi_groups' => [
                     'ON' => [
                         'glpi_groups_users' => 'users_id',
-                        'glpi_users' => 'id'
-                    ]
+                        'glpi_users' => 'id',
+                    ],
                 ],
             ],
             'WHERE' => [
-                'glpi_groups_users'.'.groups_id' => $group_id,
-                'glpi_groups'.'.is_notify' => 1,
-            ]
+                'glpi_groups_users' . '.groups_id' => $group_id,
+                'glpi_groups' . '.is_notify' => 1,
+            ],
         ];
         if ($manager == 1) {
             $criteria['WHERE'] = $criteria['WHERE'] +  ['glpi_groups_users.is_manager' => 1];
@@ -1494,8 +1488,11 @@ class Ticket
         }
 
         $criteria['WHERE'] = $criteria['WHERE'] + getEntitiesRestrictCriteria(
-                'glpi_profiles_users', 'entities_id', $target->getEntity(), true
-            );
+            'glpi_profiles_users',
+            'entities_id',
+            $target->getEntity(),
+            true,
+        );
 
         foreach ($DB->request($criteria) as $data) {
             $target->addToRecipientsList($data);

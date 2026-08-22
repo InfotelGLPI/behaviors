@@ -383,10 +383,12 @@ class ITILFollowupTest extends DbTestCase
 
     // ── Aucun technicien assigné ─────────────────────────────────────────────
 
-    public function testDoesNothingWhenNoTechAssigned(): void
+    public function testAssignsAuthorWhenNoTechAssigned(): void
     {
         $this->login();
         $this->enableBehavior('addfup_updatetech');
+
+        $current_user_id = (int) \Session::getLoginUserID();
 
         $ticket = $this->createItem(\Ticket::class, [
             'name'        => 'Ticket no tech assigned',
@@ -399,7 +401,9 @@ class ITILFollowupTest extends DbTestCase
 
         BehaviorsITILFollowup::beforeAdd($fup);
 
+        // Issue #62: replying on an unassigned ticket (no tech AND no group) makes
+        // the follow-up author the technician — this is the feature's main purpose.
         $assigned = $this->getAssignedUserIds($ticket);
-        $this->assertEmpty($assigned, 'No tech assigned — nothing should happen.');
+        $this->assertSame([$current_user_id], $assigned, 'Follow-up author must become the technician on an unassigned ticket (issue #62).');
     }
 }

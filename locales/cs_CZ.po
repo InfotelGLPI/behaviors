@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # David Stepan <stepand@tiscali.cz>, 2017,2020
 # hanzz <hanzz.k@gmail.com>, 2016
@@ -10,77 +10,163 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Project - Plugin Behaviors\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-22 16:30+0200\n"
+"POT-Creation-Date: 2026-08-31 14:50+0000\n"
 "PO-Revision-Date: 2020-07-28 10:37+0000\n"
 "Last-Translator: David Stepan <stepand@tiscali.cz>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/yllen/glpi-project-plugin-behaviors/language/cs_CZ/)\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/yllen/glpi-"
+"project-plugin-behaviors/language/cs_CZ/)\n"
+"Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs_CZ\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: setup.php:99 inc/config.class.php:57
-msgid "Behaviours"
-msgstr "Chování"
+#: src/Document_Item.php:55
+msgid "Add document to ticket"
+msgstr "Přiřadit k požadavku dokument"
 
-#: inc/common.class.php:88 inc/common.class.php:100 inc/common.class.php:120
+#: templates/config.html.twig:139
+msgid "Adding the ticket solution"
+msgstr ""
+
+#: templates/config.html.twig:280
+msgid "Additional notifications"
+msgstr "Další oznámení"
+
+#: templates/config.html.twig:293
+msgid "Allow Clone"
+msgstr "Umožnit klonování"
+
+#: src/Common.php:118 src/Config.php:65 src/Document_Item.php:54
+#: src/Document_Item.php:61 src/Ticket.php:69 src/Ticket.php:76
+#: src/Ticket.php:83 src/Ticket.php:105 src/Ticket.php:113 src/Ticket.php:121
+#: src/Ticket.php:129 src/Ticket.php:137 src/Ticket.php:145 setup.php:131
+msgid "Behaviors"
+msgstr ""
+
+#: templates/config.html.twig:221
+msgid "Block the solving/closing of a problem if task do to"
+msgstr ""
+
+#: templates/config.html.twig:194
+msgid "Block the solving/closing of a the ticket if it remains a task to do"
+msgstr ""
+
+#: src/Common.php:302 src/ITILSolution.php:169 src/Ticket.php:994
+#: templates/config.html.twig:166
+msgid "Category is mandatory before ticket is solved/closed"
+msgstr "Aby bylo možné požadavek vyřešit/uzavřít, je třeba vyplnit kategorii"
+
+#: src/Ticket.php:1077 templates/config.html.twig:91
+msgid "Category is mandatory when you assign a ticket"
+msgstr "Kategorie je povinná pro přiřazení požadavku"
+
+#: src/Ticket.php:77
+msgid "Change status"
+msgstr "Změnit stav"
+
+#: templates/config.html.twig:235
+msgid "Change's number format"
+msgstr "Změnit formát čísla"
+
+#: src/Common.php:117 templates/clone_form.html.twig:62
 msgid "Clone"
 msgstr "Klonovat"
 
-#: inc/common.class.php:111 inc/common.class.php:190
+#: src/Common.php:151 src/Common.php:244
 msgid "Clone of"
 msgstr "Klonovat z"
 
-#: inc/config.class.php:115
-msgid "Error in creating glpi_plugin_behaviors_configs"
-msgstr "Chyba při vytváření db tabulky glpi_plugin_behaviors_configs"
+#: templates/config.html.twig:300 templates/config.html.twig:306
+msgid "Comment"
+msgid_plural "Comments"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
-#: inc/config.class.php:121
-msgid "Error during update glpi_plugin_behaviors_configs"
-msgstr "Chyba při aktualizaci db tabulky glpi_plugin_behaviors_configs"
-
-#: inc/config.class.php:233
-msgid "Inventory"
-msgstr "Inventář"
-
-#: inc/config.class.php:237
-msgid "Ticket's number format"
-msgstr "Formát čísla požadavku"
-
-#: inc/config.class.php:244
+#: templates/config.html.twig:250
 msgid "Delete computer in OCSNG when purged from GLPI"
 msgstr "Po odstranění počítače z GLPI udělat to stejné v OCSNG"
 
-#: inc/config.class.php:250
-msgid "Plugin \"Item's uninstallation\" not installed"
-msgstr "Není nainstalován zásuvný modul „Odinstalace položky“"
+#: src/Document_Item.php:62
+msgid "Delete document to ticket"
+msgstr "Odstranit dokument z požadavku"
 
-#: inc/config.class.php:253
-msgid "Plugin \"OCS Inventory NG\" not installed"
-msgstr "Není nainstalován zásuvný modul „OCS Inventory NG“"
+#: templates/config.html.twig:115
+msgid "Deny change of ticket's creation date"
+msgstr "Zakázat změnu data vytvoření požadavku"
 
-#: inc/config.class.php:259
-msgid "Use the associated item's group"
-msgstr "Použít skupinu přiřazené položky"
+#: src/ITILSolution.php:84 src/ITILSolution.php:365 src/Ticket.php:959
+#: templates/config.html.twig:180
+msgid "Description of solution is mandatory before ticket is solved/closed"
+msgstr ""
+"Aby bylo možné požadavek vyřešit/uzavřít, je třeba vyplnit popis řešení"
 
-#: inc/config.class.php:261
-msgid "Show my assets"
-msgstr "Zobrazit mé položky"
+#: templates/clone_form.html.twig:42
+msgid "Destination entity"
+msgstr ""
 
-#: inc/config.class.php:266
-msgid "Use the requester's group"
-msgstr "Použít skupinu žadatele"
+#: src/Common.php:297 src/ITILSolution.php:97 src/Ticket.php:981
+#: templates/config.html.twig:201
+msgid "Duration is mandatory before ticket is solved/closed"
+msgstr "Aby bylo možné požadavek vyřešit/uzavřít, je třeba vyplnit dobu trvání"
 
-#: inc/config.class.php:269
-msgid "Show assets of my groups"
-msgstr "Zobrazit položky mé skupiny"
+#: src/Config.php:169
+msgid "Error in creating glpi_plugin_behaviors_configs"
+msgstr "Chyba při vytváření db tabulky glpi_plugin_behaviors_configs"
 
-#: inc/config.class.php:274 inc/config.class.php:350
-msgid "Use the technician's group"
-msgstr "Použít skupinu technika"
+#: src/Common.php:319 src/ITILSolution.php:196 src/Ticket.php:1021
+#: templates/config.html.twig:159
+msgid ""
+"Group of technicians assigned is mandatory before ticket is solved/closed"
+msgstr ""
+"Aby bylo možné požadavek vyřešit/uzavřít, je třeba zadat také skupinu "
+"techniků, které je přiřazený"
 
-#: inc/config.class.php:277
+#: templates/config.html.twig:242
+msgid "Inventory"
+msgstr "Inventář"
+
+#: src/Ticket.php:112
+msgid "Last group assigned"
+msgstr "Poslední přiřazená skupina"
+
+#: src/Ticket.php:144
+msgid "Last group assigned without supervisor"
+msgstr ""
+
+#: src/Ticket.php:120
+msgid "Last supplier assigned"
+msgstr "Poslední přiřazený dodavatel"
+
+#: src/Ticket.php:104
+msgid "Last technician assigned"
+msgstr "Poslední přiřazený technik"
+
+#: src/Ticket.php:128
+msgid "Last watcher added"
+msgstr "Poslední přiřazený pozorovatel"
+
+#: src/Common.php:327 src/ITILSolution.php:209 src/Ticket.php:1034
+#: templates/config.html.twig:173
+msgid "Location is mandatory before ticket is solved/closed"
+msgstr "Aby bylo možné požadavek vyřešit/uzavřít, je třeba vyplnit umístění"
+
+#: templates/clone_form.html.twig:53
+msgid "Name"
+msgstr ""
+
+#: templates/config.html.twig:228
+msgid "New change"
+msgstr ""
+
+#: templates/config.html.twig:43
+msgid "New ticket"
+msgstr ""
+
+#: templates/config.html.twig:270
 msgid "Notification"
 msgid_plural "Notifications"
 msgstr[0] "Oznámení"
@@ -88,152 +174,168 @@ msgstr[1] "Oznámení"
 msgstr[2] "Oznámení"
 msgstr[3] "Oznámení"
 
-#: inc/config.class.php:282 inc/ticket.class.php:304
-msgid "Requester is mandatory"
-msgstr "Žadatele je třeba vyplnit"
-
-#: inc/config.class.php:284
-msgid "Additional notifications"
-msgstr "Další oznámení"
-
-#: inc/config.class.php:290
-msgid "Allow Clone"
-msgstr "Umožnit klonování"
-
-#: inc/config.class.php:295 inc/itilsolution.class.php:80
-#: inc/ticket.class.php:478
-msgid "Duration is mandatory before ticket is solved/closed"
-msgstr "Aby bylo možné požadavek vyřešit/uzavřít, je třeba vyplnit dobu trvání"
-
-#: inc/config.class.php:301 inc/itilsolution.class.php:87
-#: inc/ticket.class.php:485
-msgid "Category is mandatory before ticket is solved/closed"
-msgstr "Aby bylo možné požadavek vyřešit/uzavřít, je třeba vyplnit kategorii"
-
-#: inc/config.class.php:304 inc/itilsolution.class.php:130
-#: inc/problem.class.php:65
-msgid "Type of solution is mandatory before problem is solved/closed"
-msgstr "Aby bylo možné požadavek vyřešit/uzavřít, je třeba vyplnit typ řešení"
-
-#: inc/config.class.php:311 inc/ticket.class.php:530
-msgid "Category is mandatory when you assign a ticket"
-msgstr "Kategorie je povinná pro přiřazení požadavku"
-
-#: inc/config.class.php:317 inc/itilsolution.class.php:68
-#: inc/itilsolution.class.php:169 inc/ticket.class.php:460
-msgid "Description of solution is mandatory before ticket is solved/closed"
-msgstr "Aby bylo možné požadavek vyřešit/uzavřít, je třeba vyplnit popis řešení"
-
-#: inc/config.class.php:322
-msgid "Change's number format"
-msgstr "Změnit formát čísla"
-
-#: inc/config.class.php:332 inc/itilsolution.class.php:94
-#: inc/ticket.class.php:493
-msgid "Technician assigned is mandatory before ticket is solved/closed"
-msgstr "Aby bylo možné požadavek vyřešit/uzavřít, je třeba přiřadit technika"
-
-#: inc/config.class.php:340 inc/itilsolution.class.php:101
-#: inc/ticket.class.php:501
-msgid ""
-"Group of technicians assigned is mandatory before ticket is solved/closed"
-msgstr "Aby bylo možné požadavek vyřešit/uzavřít, je třeba zadat také skupinu techniků, které je přiřazený"
-
-#: inc/config.class.php:362 inc/itilsolution.class.php:108
-#: inc/ticket.class.php:508
-msgid "Location is mandatory before ticket is solved/closed"
-msgstr "Aby bylo možné požadavek vyřešit/uzavřít, je třeba vyplnit umístění"
-
-#: inc/config.class.php:368 inc/tickettask.class.php:58
-#: inc/tickettask.class.php:86
-msgid "Task category is mandatory in a task"
-msgstr "Kategorie úkolu je povinná"
-
-#: inc/config.class.php:373
-msgid "Deny change of ticket's creation date"
-msgstr "Zakázat změnu data vytvoření požadavku"
-
-#: inc/config.class.php:378
-msgid "Protect from simultaneous update"
-msgstr "Ochránit před souběžnou úpravou"
-
-#: inc/config.class.php:383
-msgid "Single technician and group"
-msgstr "Jeden technik a skupina"
-
-#: inc/config.class.php:385
-msgid "Single user and single group"
-msgstr "Jeden uživatel a skupina"
-
-#: inc/config.class.php:386
-msgid "Single user or group"
-msgstr "Jeden uživatel nebo skupina"
-
-#: inc/config.class.php:392
-msgid "Block the solving/closing of a the ticket if task do to"
-msgstr "Blokovat vyřešení/uzavření požadavku dokud úkol není dokončen"
-
-#: inc/config.class.php:398
-msgid "Add the logged technician when solve ticket"
-msgstr "Přidat přihlášeného technika při vyřešení požadavku"
-
-#: inc/document_item.class.php:46
-msgid "Add document to ticket"
-msgstr "Přiřadit k požadavku dokument"
-
-#: inc/document_item.class.php:49
-msgid "Delete document to ticket"
-msgstr "Odstranit dokument z požadavku"
-
-#: inc/itilsolution.class.php:59 inc/itilsolution.class.php:160
-#: inc/ticket.class.php:454
-msgid "Type of solution is mandatory before ticket is solved/closed"
-msgstr "Aby bylo možné požadavek vyřešit/uzavřít, je třeba vyplnit typ řešení"
-
-#: inc/itilsolution.class.php:117 inc/ticket.class.php:516
-msgid "You cannot solve/close a ticket with task do to"
-msgstr "Není možné vyřešit/uzavřít požadavek s nedokončeným úkolem"
-
-#: inc/ticket.class.php:53
+#: src/Ticket.php:70
 msgid "Reopen ticket"
 msgstr "Znovu otevřít požadavek"
 
-#: inc/ticket.class.php:56
-msgid "Change status"
-msgstr "Změnit stav"
+#: templates/config.html.twig:321
+msgctxt "button"
+msgid "Save"
+msgstr ""
 
-#: inc/ticket.class.php:59
-msgid "Ticket waiting"
-msgstr "Čekání požadavku"
+#: templates/config.html.twig:152
+msgid "Set the solution writer as the technician of the ticket"
+msgstr ""
 
-#: inc/ticket.class.php:72
-msgid "Last technician assigned"
-msgstr "Poslední přiřazený technik"
+#: templates/config.html.twig:125
+msgid "Single technician and group"
+msgstr "Jeden technik a skupina"
 
-#: inc/ticket.class.php:75
-msgid "Last group assigned"
-msgstr "Poslední přiřazená skupina"
-
-#: inc/ticket.class.php:78
-msgid "Last supplier assigned"
-msgstr "Poslední přiřazený dodavatel"
-
-#: inc/ticket.class.php:81
-msgid "Last watcher added"
-msgstr "Poslední přiřazený pozorovatel"
-
-#: inc/ticket.class.php:84
+#: src/Ticket.php:136
 msgid "Supervisor of last group assigned"
 msgstr "Kontrolor poslední přiřazení skupiny"
 
-#: inc/ticket.class.php:88
-msgid "Last group assigned without supersivor"
-msgstr "Poslední přiřazená skupina bez kontrolora"
+#: templates/config.html.twig:108
+msgid "Task category is mandatory in a task"
+msgstr "Kategorie úkolu je povinná"
 
-#: inc/ticket.class.php:435
-msgid "Can't save, item have been updated"
-msgstr "Nelze uložit, položka byla aktualizována"
+#: src/Common.php:310 src/ITILSolution.php:183 src/Ticket.php:1008
+#: templates/config.html.twig:145
+msgid "Technician assigned is mandatory before ticket is solved/closed"
+msgstr "Aby bylo možné požadavek vyřešit/uzavřít, je třeba přiřadit technika"
 
-#: inc/tickettask.class.php:96
+#: templates/config.html.twig:132
+msgid "Technician assignment when adding follow up"
+msgstr ""
+
+#: templates/config.html.twig:133
+msgid "The technician must belong to the group assigned to the ticket"
+msgstr ""
+
+#: src/Ticket.php:84
+msgid "Ticket waiting"
+msgstr "Čekání požadavku"
+
+#: templates/config.html.twig:51
+msgid "Ticket's number format"
+msgstr "Formát čísla požadavku"
+
+#: src/ITILSolution.php:252 src/Problem.php:83 templates/config.html.twig:215
+msgid "Type of solution is mandatory before problem is solved/closed"
+msgstr "Aby bylo možné požadavek vyřešit/uzavřít, je třeba vyplnit typ řešení"
+
+#: src/ITILSolution.php:71 src/ITILSolution.php:350 src/Ticket.php:947
+#: templates/config.html.twig:187
+msgid "Type of solution is mandatory before ticket is solved/closed"
+msgstr "Aby bylo možné požadavek vyřešit/uzavřít, je třeba vyplnit typ řešení"
+
+#: templates/config.html.twig:209
+msgid "Update of a problem"
+msgstr ""
+
+#: templates/config.html.twig:85
+msgid "Update of a ticket"
+msgstr ""
+
+#: templates/config.html.twig:59
+msgid "Use the associated item's group"
+msgstr "Použít skupinu přiřazené položky"
+
+#: templates/config.html.twig:69
+msgid "Use the requester's group"
+msgstr "Použít skupinu žadatele"
+
+#: templates/config.html.twig:77 templates/config.html.twig:101
+msgid "Use the technician's group"
+msgstr "Použít skupinu technika"
+
+#: src/ChangeTask.php:69
+msgid "You cannot change status of a task in a solved change"
+msgstr ""
+
+#: src/ProblemTask.php:69
+msgid "You cannot change status of a task in a solved problem"
+msgstr ""
+
+#: src/TicketTask.php:125
 msgid "You cannot change status of a task in a solved ticket"
 msgstr "Nemůžete změnit stav úkolu ve vyřešeném požadavku"
+
+#: templates/warning_solution.html.twig:48
+msgid "You cannot resolve the change"
+msgstr ""
+
+#: templates/warning_solution.html.twig:46
+msgid "You cannot resolve the problem"
+msgstr ""
+
+#: templates/warning_solution.html.twig:44
+msgid "You cannot resolve the ticket"
+msgstr ""
+
+#: src/Common.php:380 src/ITILSolution.php:308 src/Change.php:121
+msgid "You cannot solve/close a change with task do to"
+msgstr ""
+
+#: src/Common.php:359 src/ITILSolution.php:274
+msgid "You cannot solve/close a problem with task do to"
+msgstr ""
+
+#: src/Common.php:341 src/ITILSolution.php:231 src/Ticket.php:1057
+msgid "You cannot solve/close a ticket with task do to"
+msgstr "Není možné vyřešit/uzavřít požadavek s nedokončeným úkolem"
+
+#: templates/warning_solution.html.twig:34
+msgid "You must add a description. it's mandatory"
+msgstr ""
+
+#: templates/warning_solution.html.twig:38
+msgid "You must add a solution type. it's mandatory"
+msgstr ""
+
+#: src/TicketTask.php:65 src/TicketTask.php:104
+#: templates/warning_task.html.twig:33
+msgid "You must define a category. it's mandatory"
+msgstr ""
+
+#~ msgid "Behaviours"
+#~ msgstr "Chování"
+
+#~ msgid "Error during update glpi_plugin_behaviors_configs"
+#~ msgstr "Chyba při aktualizaci db tabulky glpi_plugin_behaviors_configs"
+
+#~ msgid "Plugin \"Item's uninstallation\" not installed"
+#~ msgstr "Není nainstalován zásuvný modul „Odinstalace položky“"
+
+#~ msgid "Plugin \"OCS Inventory NG\" not installed"
+#~ msgstr "Není nainstalován zásuvný modul „OCS Inventory NG“"
+
+#~ msgid "Show my assets"
+#~ msgstr "Zobrazit mé položky"
+
+#~ msgid "Show assets of my groups"
+#~ msgstr "Zobrazit položky mé skupiny"
+
+#~ msgid "Requester is mandatory"
+#~ msgstr "Žadatele je třeba vyplnit"
+
+#~ msgid "Protect from simultaneous update"
+#~ msgstr "Ochránit před souběžnou úpravou"
+
+#~ msgid "Single user and single group"
+#~ msgstr "Jeden uživatel a skupina"
+
+#~ msgid "Single user or group"
+#~ msgstr "Jeden uživatel nebo skupina"
+
+#~ msgid "Block the solving/closing of a the ticket if task do to"
+#~ msgstr "Blokovat vyřešení/uzavření požadavku dokud úkol není dokončen"
+
+#~ msgid "Add the logged technician when solve ticket"
+#~ msgstr "Přidat přihlášeného technika při vyřešení požadavku"
+
+#~ msgid "Last group assigned without supersivor"
+#~ msgstr "Poslední přiřazená skupina bez kontrolora"
+
+#~ msgid "Can't save, item have been updated"
+#~ msgstr "Nelze uložit, položka byla aktualizována"

@@ -2,24 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # DWXXX, 2026
 # Xavier CAILLAUD <thetsmr@gmail.com>, 2026
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-22 14:15+0000\n"
+"POT-Creation-Date: 2026-08-31 14:50+0000\n"
 "PO-Revision-Date: 2025-04-26 07:42+0000\n"
 "Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2026\n"
-"Language-Team: Chinese (China) (https://app.transifex.com/infotelGLPI/teams/250760/zh_CN/)\n"
+"Language-Team: Chinese (China) (https://app.transifex.com/infotelGLPI/"
+"teams/250760/zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: src/Document_Item.php:55
@@ -53,11 +54,12 @@ msgstr "存在进行中任务时，阻止解决/关闭故障"
 msgid "Block the solving/closing of a the ticket if it remains a task to do"
 msgstr "存在进行中任务时，阻止解决/关闭故障"
 
-#: src/Common.php:302 templates/config.html.twig:166
+#: src/Common.php:302 src/ITILSolution.php:169 src/Ticket.php:994
+#: templates/config.html.twig:166
 msgid "Category is mandatory before ticket is solved/closed"
 msgstr "工单解决/关闭前分类必填"
 
-#: templates/config.html.twig:91
+#: src/Ticket.php:1077 templates/config.html.twig:91
 msgid "Category is mandatory when you assign a ticket"
 msgstr "分配工单时分类必填"
 
@@ -94,6 +96,7 @@ msgstr "删除工单的文档"
 msgid "Deny change of ticket's creation date"
 msgstr "拒绝更改工单创建日期"
 
+#: src/ITILSolution.php:84 src/ITILSolution.php:365 src/Ticket.php:959
 #: templates/config.html.twig:180
 msgid "Description of solution is mandatory before ticket is solved/closed"
 msgstr "工单解决/关闭前解决方案描述必填"
@@ -102,7 +105,8 @@ msgstr "工单解决/关闭前解决方案描述必填"
 msgid "Destination entity"
 msgstr "目标实体"
 
-#: src/Common.php:297 templates/config.html.twig:201
+#: src/Common.php:297 src/ITILSolution.php:97 src/Ticket.php:981
+#: templates/config.html.twig:201
 msgid "Duration is mandatory before ticket is solved/closed"
 msgstr "工单解决/关闭前持续时间必填"
 
@@ -110,6 +114,7 @@ msgstr "工单解决/关闭前持续时间必填"
 msgid "Error in creating glpi_plugin_behaviors_configs"
 msgstr "glpi_plugin_behaviors_configs创建时出错"
 
+#: src/Common.php:319 src/ITILSolution.php:196 src/Ticket.php:1021
 #: templates/config.html.twig:159
 msgid ""
 "Group of technicians assigned is mandatory before ticket is solved/closed"
@@ -139,7 +144,8 @@ msgstr "最后分配的技术员"
 msgid "Last watcher added"
 msgstr "最后增加的观察者"
 
-#: src/Common.php:327 templates/config.html.twig:173
+#: src/Common.php:327 src/ITILSolution.php:209 src/Ticket.php:1034
+#: templates/config.html.twig:173
 msgid "Location is mandatory before ticket is solved/closed"
 msgstr "工单解决关闭前，地点必填。"
 
@@ -185,6 +191,7 @@ msgstr "最后分配群组的主管"
 msgid "Task category is mandatory in a task"
 msgstr "任务分类在任务中必填"
 
+#: src/Common.php:310 src/ITILSolution.php:183 src/Ticket.php:1008
 #: templates/config.html.twig:145
 msgid "Technician assigned is mandatory before ticket is solved/closed"
 msgstr "工单解决/关闭前必须分配技术员"
@@ -205,10 +212,11 @@ msgstr "等待的工单"
 msgid "Ticket's number format"
 msgstr "工单编码格式"
 
-#: templates/config.html.twig:215
+#: src/ITILSolution.php:252 src/Problem.php:83 templates/config.html.twig:215
 msgid "Type of solution is mandatory before problem is solved/closed"
 msgstr "故障解决/关闭前解决类型必填"
 
+#: src/ITILSolution.php:71 src/ITILSolution.php:350 src/Ticket.php:947
 #: templates/config.html.twig:187
 msgid "Type of solution is mandatory before ticket is solved/closed"
 msgstr "工单解决/关闭前解决类型必填"
@@ -233,6 +241,18 @@ msgstr "使用请求者群组"
 msgid "Use the technician's group"
 msgstr "使用技术员群组"
 
+#: src/ChangeTask.php:69
+msgid "You cannot change status of a task in a solved change"
+msgstr ""
+
+#: src/ProblemTask.php:69
+msgid "You cannot change status of a task in a solved problem"
+msgstr ""
+
+#: src/TicketTask.php:125
+msgid "You cannot change status of a task in a solved ticket"
+msgstr ""
+
 #: templates/warning_solution.html.twig:48
 msgid "You cannot resolve the change"
 msgstr "你无法解决此变更"
@@ -245,15 +265,15 @@ msgstr "你无法解决此故障"
 msgid "You cannot resolve the ticket"
 msgstr "你无法解决此工单"
 
-#: src/Common.php:380
+#: src/Common.php:380 src/ITILSolution.php:308 src/Change.php:121
 msgid "You cannot solve/close a change with task do to"
 msgstr "你无法解决/关闭一个有进行中任务的变更"
 
-#: src/Common.php:359
+#: src/Common.php:359 src/ITILSolution.php:274
 msgid "You cannot solve/close a problem with task do to"
 msgstr "你无法解决/关闭一个有进行中任务的故障"
 
-#: src/Common.php:341
+#: src/Common.php:341 src/ITILSolution.php:231 src/Ticket.php:1057
 msgid "You cannot solve/close a ticket with task do to"
 msgstr "你无法解决/关闭一个有进行中任务的工单"
 
@@ -265,6 +285,7 @@ msgstr "你必须提供描述，这是必填项。"
 msgid "You must add a solution type. it's mandatory"
 msgstr "你必须提供解决类型，这是必填项。"
 
+#: src/TicketTask.php:65 src/TicketTask.php:104
 #: templates/warning_task.html.twig:33
 msgid "You must define a category. it's mandatory"
 msgstr "你必须定义一个分类，这是必填项。"

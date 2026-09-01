@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Project - Plugin Behaviors\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-31 14:50+0000\n"
+"POT-Creation-Date: 2026-09-01 11:54+0000\n"
 "PO-Revision-Date: 2016-02-24 18:57+0000\n"
 "Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2016-2020,2022\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/yllen/glpi-project-"
@@ -112,6 +112,10 @@ msgstr "Çağrının çözümlenmesi ya da kapatılması için süre zorunludur"
 msgid "Error in creating glpi_plugin_behaviors_configs"
 msgstr "creating glpi_plugin_behaviors_configs eklenirken bir sorun çıktı"
 
+#: templates/config.html.twig:63 templates/config.html.twig:95
+msgid "First"
+msgstr ""
+
 #: src/Common.php:319 src/ITILSolution.php:196 src/Ticket.php:1021
 #: templates/config.html.twig:159
 msgid ""
@@ -120,9 +124,21 @@ msgstr ""
 "Çağrının çözümlenmesi ya da kapatılması için atanan teknisyenler grubu "
 "zorunludur"
 
+#: templates/config.html.twig:285
+msgid "In the active entity"
+msgstr "Etkin birimde"
+
+#: templates/config.html.twig:286
+msgid "In the item's entity"
+msgstr "Ögenin biriminde"
+
 #: templates/config.html.twig:242
 msgid "Inventory"
 msgstr "Envanter"
+
+#: templates/config.html.twig:63 templates/config.html.twig:95
+msgid "Last"
+msgstr ""
 
 #: src/Ticket.php:112
 msgid "Last group assigned"
@@ -161,6 +177,11 @@ msgstr ""
 msgid "New ticket"
 msgstr ""
 
+#: templates/config.html.twig:63 templates/config.html.twig:95
+#: templates/config.html.twig:119 templates/config.html.twig:284
+msgid "No"
+msgstr ""
+
 #: templates/config.html.twig:270
 msgid "Notification"
 msgid_plural "Notifications"
@@ -183,6 +204,14 @@ msgstr ""
 #: templates/config.html.twig:125
 msgid "Single technician and group"
 msgstr "Tek teknisyen ve grup"
+
+#: templates/config.html.twig:119
+msgid "Single user and single group"
+msgstr "Tek kullanıcı ve tek grup"
+
+#: templates/config.html.twig:119
+msgid "Single user or group"
+msgstr "Tek kullanıcı ya da grup"
 
 #: src/Ticket.php:136
 msgid "Supervisor of last group assigned"
@@ -318,12 +347,6 @@ msgstr ""
 #~ msgid "Requester is mandatory"
 #~ msgstr "İstekte bulunan zorunludur"
 
-#~ msgid "In the active entity"
-#~ msgstr "Etkin birimde"
-
-#~ msgid "In the item's entity"
-#~ msgstr "Ögenin biriminde"
-
 #~ msgid "Block the solving/closing of a change if task do to"
 #~ msgstr ""
 #~ "Yapılacak iş varsa bir değişiklik çözülmüş/kapatılmış olarak "
@@ -331,12 +354,6 @@ msgstr ""
 
 #~ msgid "Protect from simultaneous update"
 #~ msgstr "Eşzaman güncelleme yapılamasın"
-
-#~ msgid "Single user and single group"
-#~ msgstr "Tek kullanıcı ve tek grup"
-
-#~ msgid "Single user or group"
-#~ msgstr "Tek kullanıcı ya da grup"
 
 #~ msgid "Block the solving/closing of a the ticket if task do to"
 #~ msgstr ""

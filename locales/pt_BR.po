@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-31 14:50+0000\n"
+"POT-Creation-Date: 2026-09-01 11:54+0000\n"
 "PO-Revision-Date: 2025-04-26 07:42+0000\n"
 "Last-Translator: Diego Nobre <diego@koruma.com.br>, 2025\n"
 "Language-Team: Portuguese (Brazil) (https://app.transifex.com/infotelGLPI/"
@@ -120,6 +120,10 @@ msgstr "Duração é obrigatória antes que o chamado seja solucionado/fechado"
 msgid "Error in creating glpi_plugin_behaviors_configs"
 msgstr "Ocorreu um erro na criação de glpi_plugin_behaviors_configs"
 
+#: templates/config.html.twig:63 templates/config.html.twig:95
+msgid "First"
+msgstr ""
+
 #: src/Common.php:319 src/ITILSolution.php:196 src/Ticket.php:1021
 #: templates/config.html.twig:159
 msgid ""
@@ -128,9 +132,21 @@ msgstr ""
 "Grupo de técnicos atribuído é obrigatório antes do chamado ser solucionado/"
 "fechado"
 
+#: templates/config.html.twig:285
+msgid "In the active entity"
+msgstr ""
+
+#: templates/config.html.twig:286
+msgid "In the item's entity"
+msgstr ""
+
 #: templates/config.html.twig:242
 msgid "Inventory"
 msgstr "Inventário"
+
+#: templates/config.html.twig:63 templates/config.html.twig:95
+msgid "Last"
+msgstr ""
 
 #: src/Ticket.php:112
 msgid "Last group assigned"
@@ -169,6 +185,11 @@ msgstr "Nova mudança"
 msgid "New ticket"
 msgstr "Novo chamado"
 
+#: templates/config.html.twig:63 templates/config.html.twig:95
+#: templates/config.html.twig:119 templates/config.html.twig:284
+msgid "No"
+msgstr ""
+
 #: templates/config.html.twig:270
 msgid "Notification"
 msgid_plural "Notifications"
@@ -191,6 +212,14 @@ msgstr ""
 
 #: templates/config.html.twig:125
 msgid "Single technician and group"
+msgstr ""
+
+#: templates/config.html.twig:119
+msgid "Single user and single group"
+msgstr ""
+
+#: templates/config.html.twig:119
+msgid "Single user or group"
 msgstr ""
 
 #: src/Ticket.php:136

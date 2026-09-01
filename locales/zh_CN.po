@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-31 14:50+0000\n"
+"POT-Creation-Date: 2026-09-01 11:54+0000\n"
 "PO-Revision-Date: 2025-04-26 07:42+0000\n"
 "Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2026\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/infotelGLPI/"
@@ -114,15 +114,31 @@ msgstr "工单解决/关闭前持续时间必填"
 msgid "Error in creating glpi_plugin_behaviors_configs"
 msgstr "glpi_plugin_behaviors_configs创建时出错"
 
+#: templates/config.html.twig:63 templates/config.html.twig:95
+msgid "First"
+msgstr ""
+
 #: src/Common.php:319 src/ITILSolution.php:196 src/Ticket.php:1021
 #: templates/config.html.twig:159
 msgid ""
 "Group of technicians assigned is mandatory before ticket is solved/closed"
 msgstr "工单解决/关闭前技术员群组必须分配"
 
+#: templates/config.html.twig:285
+msgid "In the active entity"
+msgstr ""
+
+#: templates/config.html.twig:286
+msgid "In the item's entity"
+msgstr ""
+
 #: templates/config.html.twig:242
 msgid "Inventory"
 msgstr "资产"
+
+#: templates/config.html.twig:63 templates/config.html.twig:95
+msgid "Last"
+msgstr ""
 
 #: src/Ticket.php:112
 msgid "Last group assigned"
@@ -161,6 +177,11 @@ msgstr "新变更"
 msgid "New ticket"
 msgstr "新工单"
 
+#: templates/config.html.twig:63 templates/config.html.twig:95
+#: templates/config.html.twig:119 templates/config.html.twig:284
+msgid "No"
+msgstr ""
+
 #: templates/config.html.twig:270
 msgid "Notification"
 msgid_plural "Notifications"
@@ -182,6 +203,14 @@ msgstr "设置解决方案的作者为工单的技术员"
 #: templates/config.html.twig:125
 msgid "Single technician and group"
 msgstr "唯一的技术员和群组"
+
+#: templates/config.html.twig:119
+msgid "Single user and single group"
+msgstr ""
+
+#: templates/config.html.twig:119
+msgid "Single user or group"
+msgstr ""
 
 #: src/Ticket.php:136
 msgid "Supervisor of last group assigned"

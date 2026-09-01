@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Project - Plugin Behaviors\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-31 14:50+0000\n"
+"POT-Creation-Date: 2026-09-01 11:54+0000\n"
 "PO-Revision-Date: 2020-07-28 10:37+0000\n"
 "Last-Translator: David Stepan <stepand@tiscali.cz>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/yllen/glpi-"
@@ -117,6 +117,10 @@ msgstr "Aby bylo možné požadavek vyřešit/uzavřít, je třeba vyplnit dobu 
 msgid "Error in creating glpi_plugin_behaviors_configs"
 msgstr "Chyba při vytváření db tabulky glpi_plugin_behaviors_configs"
 
+#: templates/config.html.twig:63 templates/config.html.twig:95
+msgid "First"
+msgstr ""
+
 #: src/Common.php:319 src/ITILSolution.php:196 src/Ticket.php:1021
 #: templates/config.html.twig:159
 msgid ""
@@ -125,9 +129,21 @@ msgstr ""
 "Aby bylo možné požadavek vyřešit/uzavřít, je třeba zadat také skupinu "
 "techniků, které je přiřazený"
 
+#: templates/config.html.twig:285
+msgid "In the active entity"
+msgstr ""
+
+#: templates/config.html.twig:286
+msgid "In the item's entity"
+msgstr ""
+
 #: templates/config.html.twig:242
 msgid "Inventory"
 msgstr "Inventář"
+
+#: templates/config.html.twig:63 templates/config.html.twig:95
+msgid "Last"
+msgstr ""
 
 #: src/Ticket.php:112
 msgid "Last group assigned"
@@ -166,6 +182,11 @@ msgstr ""
 msgid "New ticket"
 msgstr ""
 
+#: templates/config.html.twig:63 templates/config.html.twig:95
+#: templates/config.html.twig:119 templates/config.html.twig:284
+msgid "No"
+msgstr ""
+
 #: templates/config.html.twig:270
 msgid "Notification"
 msgid_plural "Notifications"
@@ -190,6 +211,14 @@ msgstr ""
 #: templates/config.html.twig:125
 msgid "Single technician and group"
 msgstr "Jeden technik a skupina"
+
+#: templates/config.html.twig:119
+msgid "Single user and single group"
+msgstr "Jeden uživatel a skupina"
+
+#: templates/config.html.twig:119
+msgid "Single user or group"
+msgstr "Jeden uživatel nebo skupina"
 
 #: src/Ticket.php:136
 msgid "Supervisor of last group assigned"
@@ -321,12 +350,6 @@ msgstr ""
 
 #~ msgid "Protect from simultaneous update"
 #~ msgstr "Ochránit před souběžnou úpravou"
-
-#~ msgid "Single user and single group"
-#~ msgstr "Jeden uživatel a skupina"
-
-#~ msgid "Single user or group"
-#~ msgstr "Jeden uživatel nebo skupina"
 
 #~ msgid "Block the solving/closing of a the ticket if task do to"
 #~ msgstr "Blokovat vyřešení/uzavření požadavku dokud úkol není dokončen"

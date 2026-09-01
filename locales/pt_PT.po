@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Behaviors plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-31 14:50+0000\n"
+"POT-Creation-Date: 2026-09-01 11:54+0000\n"
 "PO-Revision-Date: 2025-04-26 07:42+0000\n"
 "Last-Translator: André Petinga <andre.petinga@ipleiria.pt>, 2025\n"
 "Language-Team: Portuguese (Portugal) (https://app.transifex.com/infotelGLPI/"
@@ -118,6 +118,10 @@ msgstr "Duração é obrigatória antes de concluir/fechar o ticket"
 msgid "Error in creating glpi_plugin_behaviors_configs"
 msgstr "Ocorreu um erro na criação de glpi_plugin_behaviors_configs"
 
+#: templates/config.html.twig:63 templates/config.html.twig:95
+msgid "First"
+msgstr ""
+
 #: src/Common.php:319 src/ITILSolution.php:196 src/Ticket.php:1021
 #: templates/config.html.twig:159
 msgid ""
@@ -126,9 +130,21 @@ msgstr ""
 "É obrigatório ter um Grupo de técnicos atribuído antes de concluir/fechar o "
 "ticket"
 
+#: templates/config.html.twig:285
+msgid "In the active entity"
+msgstr "Na entidade ativa"
+
+#: templates/config.html.twig:286
+msgid "In the item's entity"
+msgstr "Na entidade do item"
+
 #: templates/config.html.twig:242
 msgid "Inventory"
 msgstr "Inventário"
+
+#: templates/config.html.twig:63 templates/config.html.twig:95
+msgid "Last"
+msgstr ""
 
 #: src/Ticket.php:112
 msgid "Last group assigned"
@@ -167,6 +183,11 @@ msgstr ""
 msgid "New ticket"
 msgstr ""
 
+#: templates/config.html.twig:63 templates/config.html.twig:95
+#: templates/config.html.twig:119 templates/config.html.twig:284
+msgid "No"
+msgstr ""
+
 #: templates/config.html.twig:270
 msgid "Notification"
 msgid_plural "Notifications"
@@ -190,6 +211,14 @@ msgstr "Atribuir a autoria da solução ao técnico do ticket"
 #: templates/config.html.twig:125
 msgid "Single technician and group"
 msgstr "Técnico e grupo único"
+
+#: templates/config.html.twig:119
+msgid "Single user and single group"
+msgstr "Utilizador e grupo único"
+
+#: templates/config.html.twig:119
+msgid "Single user or group"
+msgstr "Utilizador ou grupo único"
 
 #: src/Ticket.php:136
 msgid "Supervisor of last group assigned"
@@ -316,18 +345,6 @@ msgstr "Tem de definir uma categoria. É obrigatório"
 
 #~ msgid "Show assets of my groups"
 #~ msgstr "Mostrar ativos dos meus grupos"
-
-#~ msgid "In the active entity"
-#~ msgstr "Na entidade ativa"
-
-#~ msgid "In the item's entity"
-#~ msgstr "Na entidade do item"
-
-#~ msgid "Single user and single group"
-#~ msgstr "Utilizador e grupo único"
-
-#~ msgid "Single user or group"
-#~ msgstr "Utilizador ou grupo único"
 
 #~ msgid "Block the solving/closing of a change if task do to"
 #~ msgstr ""

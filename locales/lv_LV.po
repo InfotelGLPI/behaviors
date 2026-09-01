@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Project - Plugin Behaviors\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-31 14:50+0000\n"
+"POT-Creation-Date: 2026-09-01 11:54+0000\n"
 "PO-Revision-Date: 2020-07-22 14:30+0000\n"
 "Last-Translator: Nelly Mahu-Lasson <nini.lasson@orange.fr>\n"
 "Language-Team: Latvian (http://www.transifex.com/yllen/glpi-project-plugin-"
@@ -113,15 +113,31 @@ msgstr "Obligāti jānorāda ilgumu pirms atrisināt/slēgts pieteikumu"
 msgid "Error in creating glpi_plugin_behaviors_configs"
 msgstr "Kļūda pie glpi_plugin_behaviors_configs izveidošanas"
 
+#: templates/config.html.twig:63 templates/config.html.twig:95
+msgid "First"
+msgstr ""
+
 #: src/Common.php:319 src/ITILSolution.php:196 src/Ticket.php:1021
 #: templates/config.html.twig:159
 msgid ""
 "Group of technicians assigned is mandatory before ticket is solved/closed"
 msgstr ""
 
+#: templates/config.html.twig:285
+msgid "In the active entity"
+msgstr ""
+
+#: templates/config.html.twig:286
+msgid "In the item's entity"
+msgstr ""
+
 #: templates/config.html.twig:242
 msgid "Inventory"
 msgstr "Inventārs"
+
+#: templates/config.html.twig:63 templates/config.html.twig:95
+msgid "Last"
+msgstr ""
 
 #: src/Ticket.php:112
 msgid "Last group assigned"
@@ -160,6 +176,11 @@ msgstr ""
 msgid "New ticket"
 msgstr ""
 
+#: templates/config.html.twig:63 templates/config.html.twig:95
+#: templates/config.html.twig:119 templates/config.html.twig:284
+msgid "No"
+msgstr ""
+
 #: templates/config.html.twig:270
 msgid "Notification"
 msgid_plural "Notifications"
@@ -183,6 +204,14 @@ msgstr ""
 #: templates/config.html.twig:125
 msgid "Single technician and group"
 msgstr "Viens tehniķis vai grupa"
+
+#: templates/config.html.twig:119
+msgid "Single user and single group"
+msgstr "Viens lietotājs un viena grupa"
+
+#: templates/config.html.twig:119
+msgid "Single user or group"
+msgstr "Viens lietotājs vai grupa"
 
 #: src/Ticket.php:136
 msgid "Supervisor of last group assigned"
@@ -306,12 +335,6 @@ msgstr ""
 
 #~ msgid "Protect from simultaneous update"
 #~ msgstr "Pasargāt no vienlaicīgas atjaunināšanas"
-
-#~ msgid "Single user and single group"
-#~ msgstr "Viens lietotājs un viena grupa"
-
-#~ msgid "Single user or group"
-#~ msgstr "Viens lietotājs vai grupa"
 
 #~ msgid "Can't save, item have been updated"
 #~ msgstr "Nevar saglabāt, objekts bija atjaunots"

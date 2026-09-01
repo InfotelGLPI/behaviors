@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Behaviors plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-31 14:50+0000\n"
+"POT-Creation-Date: 2026-09-01 11:54+0000\n"
 "PO-Revision-Date: 2025-04-26 10:03+0200\n"
 "Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2025\n"
 "Language-Team: Spanish (Spain) (https://app.transifex.com/infotelGLPI/"
@@ -118,15 +118,31 @@ msgstr "La duración es obligatoria para resolver/cerrar una incidencia"
 msgid "Error in creating glpi_plugin_behaviors_configs"
 msgstr "Error al crear glpi_plugin_behaviors_configs"
 
+#: templates/config.html.twig:63 templates/config.html.twig:95
+msgid "First"
+msgstr ""
+
 #: src/Common.php:319 src/ITILSolution.php:196 src/Ticket.php:1021
 #: templates/config.html.twig:159
 msgid ""
 "Group of technicians assigned is mandatory before ticket is solved/closed"
 msgstr ""
 
+#: templates/config.html.twig:285
+msgid "In the active entity"
+msgstr ""
+
+#: templates/config.html.twig:286
+msgid "In the item's entity"
+msgstr ""
+
 #: templates/config.html.twig:242
 msgid "Inventory"
 msgstr "Inventario"
+
+#: templates/config.html.twig:63 templates/config.html.twig:95
+msgid "Last"
+msgstr ""
 
 #: src/Ticket.php:112
 msgid "Last group assigned"
@@ -165,6 +181,11 @@ msgstr ""
 msgid "New ticket"
 msgstr ""
 
+#: templates/config.html.twig:63 templates/config.html.twig:95
+#: templates/config.html.twig:119 templates/config.html.twig:284
+msgid "No"
+msgstr ""
+
 #: templates/config.html.twig:270
 msgid "Notification"
 msgid_plural "Notifications"
@@ -188,6 +209,14 @@ msgstr ""
 #: templates/config.html.twig:125
 msgid "Single technician and group"
 msgstr "Usuario y grupo únicos"
+
+#: templates/config.html.twig:119
+msgid "Single user and single group"
+msgstr "Usuario único Y grupo único"
+
+#: templates/config.html.twig:119
+msgid "Single user or group"
+msgstr "Usuario único O grupo único"
 
 #: src/Ticket.php:136
 msgid "Supervisor of last group assigned"
@@ -307,12 +336,6 @@ msgstr ""
 
 #~ msgid "Protect from simultaneous update"
 #~ msgstr "Prohibir actualizaciones concurrentes"
-
-#~ msgid "Single user and single group"
-#~ msgstr "Usuario único Y grupo único"
-
-#~ msgid "Single user or group"
-#~ msgstr "Usuario único O grupo único"
 
 #~ msgid "Can't save, item have been updated"
 #~ msgstr "No se puede guardar, el elemento ha sido actualizado"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Behaviors plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-31 14:50+0000\n"
+"POT-Creation-Date: 2026-09-01 11:54+0000\n"
 "PO-Revision-Date: 2025-04-26 10:03+0200\n"
 "Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2025\n"
 "Language-Team: Italian (Italy) (https://app.transifex.com/infotelGLPI/"
@@ -118,6 +118,10 @@ msgstr "La durata è obbligatoria prima che la chiamata venga risolta/chiusa"
 msgid "Error in creating glpi_plugin_behaviors_configs"
 msgstr "Errore durante la creazione di glpi_plugin_behaviors_configs"
 
+#: templates/config.html.twig:63 templates/config.html.twig:95
+msgid "First"
+msgstr ""
+
 #: src/Common.php:319 src/ITILSolution.php:196 src/Ticket.php:1021
 #: templates/config.html.twig:159
 msgid ""
@@ -126,9 +130,21 @@ msgstr ""
 "L'assegnazione al gruppo dei tecnico è obbligatoria prima che la chiamata "
 "venga risolta/chiusa"
 
+#: templates/config.html.twig:285
+msgid "In the active entity"
+msgstr ""
+
+#: templates/config.html.twig:286
+msgid "In the item's entity"
+msgstr ""
+
 #: templates/config.html.twig:242
 msgid "Inventory"
 msgstr "Inventario"
+
+#: templates/config.html.twig:63 templates/config.html.twig:95
+msgid "Last"
+msgstr ""
 
 #: src/Ticket.php:112
 msgid "Last group assigned"
@@ -167,6 +183,11 @@ msgstr ""
 msgid "New ticket"
 msgstr ""
 
+#: templates/config.html.twig:63 templates/config.html.twig:95
+#: templates/config.html.twig:119 templates/config.html.twig:284
+msgid "No"
+msgstr ""
+
 #: templates/config.html.twig:270
 msgid "Notification"
 msgid_plural "Notifications"
@@ -190,6 +211,14 @@ msgstr ""
 #: templates/config.html.twig:125
 msgid "Single technician and group"
 msgstr "Singolo tecnico e gruppo"
+
+#: templates/config.html.twig:119
+msgid "Single user and single group"
+msgstr "Singolo utente e singolo gruppo"
+
+#: templates/config.html.twig:119
+msgid "Single user or group"
+msgstr "Singolo utente o gruppo"
 
 #: src/Ticket.php:136
 msgid "Supervisor of last group assigned"
@@ -325,12 +354,6 @@ msgstr ""
 
 #~ msgid "Protect from simultaneous update"
 #~ msgstr "Attiva la protezione da aggiornamenti simultanei"
-
-#~ msgid "Single user and single group"
-#~ msgstr "Singolo utente e singolo gruppo"
-
-#~ msgid "Single user or group"
-#~ msgstr "Singolo utente o gruppo"
 
 #~ msgid "Block the solving/closing of a the ticket if task do to"
 #~ msgstr ""

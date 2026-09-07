@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Project - Plugin Behaviors\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 11:54+0000\n"
+"POT-Creation-Date: 2026-09-07 08:25+0000\n"
 "PO-Revision-Date: 2020-07-22 14:30+0000\n"
 "Last-Translator: Nelly Mahu-Lasson <nini.lasson@orange.fr>\n"
 "Language-Team: Hungarian (Hungary) (http://www.transifex.com/yllen/glpi-"
@@ -35,10 +35,10 @@ msgstr "További értesítések"
 msgid "Allow Clone"
 msgstr ""
 
-#: src/Common.php:118 src/Config.php:65 src/Document_Item.php:54
-#: src/Document_Item.php:61 src/Ticket.php:69 src/Ticket.php:76
-#: src/Ticket.php:83 src/Ticket.php:105 src/Ticket.php:113 src/Ticket.php:121
-#: src/Ticket.php:129 src/Ticket.php:137 src/Ticket.php:145 setup.php:131
+#: setup.php:131 src/Ticket.php:69 src/Ticket.php:76 src/Ticket.php:83
+#: src/Ticket.php:105 src/Ticket.php:113 src/Ticket.php:121 src/Ticket.php:129
+#: src/Ticket.php:137 src/Ticket.php:145 src/Document_Item.php:54
+#: src/Document_Item.php:61 src/Config.php:65 src/Common.php:118
 msgid "Behaviors"
 msgstr ""
 
@@ -50,7 +50,7 @@ msgstr ""
 msgid "Block the solving/closing of a the ticket if it remains a task to do"
 msgstr ""
 
-#: src/Common.php:302 src/ITILSolution.php:169 src/Ticket.php:994
+#: src/Ticket.php:994 src/ITILSolution.php:169 src/Common.php:302
 #: templates/config.html.twig:166
 msgid "Category is mandatory before ticket is solved/closed"
 msgstr "Kategória megadása kötelező a bejelentés megoldása / lezárása előtt"
@@ -94,7 +94,7 @@ msgstr "Dokumentum törlése bejelentésről"
 msgid "Deny change of ticket's creation date"
 msgstr "A bejelentés létrehozásának dátuma nem változtatható"
 
-#: src/ITILSolution.php:84 src/ITILSolution.php:365 src/Ticket.php:959
+#: src/Ticket.php:959 src/ITILSolution.php:84 src/ITILSolution.php:365
 #: templates/config.html.twig:180
 msgid "Description of solution is mandatory before ticket is solved/closed"
 msgstr "Megoldás leírása kötelező a bejelentés megoldása / lezárása előtt"
@@ -103,7 +103,7 @@ msgstr "Megoldás leírása kötelező a bejelentés megoldása / lezárása el�
 msgid "Destination entity"
 msgstr ""
 
-#: src/Common.php:297 src/ITILSolution.php:97 src/Ticket.php:981
+#: src/Ticket.php:981 src/ITILSolution.php:97 src/Common.php:297
 #: templates/config.html.twig:201
 msgid "Duration is mandatory before ticket is solved/closed"
 msgstr "Időtartam megadása kötelező a bejelentés megoldása / lezárása előtt"
@@ -116,7 +116,7 @@ msgstr "Hiba a glpi_plugin_behaviors_configs létrehozásakor"
 msgid "First"
 msgstr ""
 
-#: src/Common.php:319 src/ITILSolution.php:196 src/Ticket.php:1021
+#: src/Ticket.php:1021 src/ITILSolution.php:196 src/Common.php:319
 #: templates/config.html.twig:159
 msgid ""
 "Group of technicians assigned is mandatory before ticket is solved/closed"
@@ -158,7 +158,7 @@ msgstr ""
 msgid "Last watcher added"
 msgstr ""
 
-#: src/Common.php:327 src/ITILSolution.php:209 src/Ticket.php:1034
+#: src/Ticket.php:1034 src/ITILSolution.php:209 src/Common.php:327
 #: templates/config.html.twig:173
 msgid "Location is mandatory before ticket is solved/closed"
 msgstr ""
@@ -219,7 +219,7 @@ msgstr ""
 msgid "Task category is mandatory in a task"
 msgstr ""
 
-#: src/Common.php:310 src/ITILSolution.php:183 src/Ticket.php:1008
+#: src/Ticket.php:1008 src/ITILSolution.php:183 src/Common.php:310
 #: templates/config.html.twig:145
 msgid "Technician assigned is mandatory before ticket is solved/closed"
 msgstr ""
@@ -241,11 +241,11 @@ msgstr ""
 msgid "Ticket's number format"
 msgstr "Bejelentés azonosítójának formátuma"
 
-#: src/ITILSolution.php:252 src/Problem.php:83 templates/config.html.twig:215
+#: src/Problem.php:83 src/ITILSolution.php:252 templates/config.html.twig:215
 msgid "Type of solution is mandatory before problem is solved/closed"
 msgstr "Megoldás típusa kötelező a bejelentés megoldása / lezárása előtt"
 
-#: src/ITILSolution.php:71 src/ITILSolution.php:350 src/Ticket.php:947
+#: src/Ticket.php:947 src/ITILSolution.php:71 src/ITILSolution.php:350
 #: templates/config.html.twig:187
 msgid "Type of solution is mandatory before ticket is solved/closed"
 msgstr "Megoldás típusa kötelező a bejelentés megoldása / lezárása előtt"
@@ -294,15 +294,15 @@ msgstr ""
 msgid "You cannot resolve the ticket"
 msgstr ""
 
-#: src/Common.php:380 src/ITILSolution.php:308 src/Change.php:121
+#: src/ITILSolution.php:308 src/Change.php:121 src/Common.php:380
 msgid "You cannot solve/close a change with task do to"
 msgstr ""
 
-#: src/Common.php:359 src/ITILSolution.php:274
+#: src/ITILSolution.php:274 src/Common.php:359
 msgid "You cannot solve/close a problem with task do to"
 msgstr ""
 
-#: src/Common.php:341 src/ITILSolution.php:231 src/Ticket.php:1057
+#: src/Ticket.php:1057 src/ITILSolution.php:231 src/Common.php:341
 msgid "You cannot solve/close a ticket with task do to"
 msgstr ""
 

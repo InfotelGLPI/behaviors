@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 11:54+0000\n"
+"POT-Creation-Date: 2026-09-07 08:25+0000\n"
 "PO-Revision-Date: 2025-04-26 07:42+0000\n"
 "Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2026\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/infotelGLPI/"
@@ -39,10 +39,10 @@ msgstr "附加的通知"
 msgid "Allow Clone"
 msgstr "允许克隆"
 
-#: src/Common.php:118 src/Config.php:65 src/Document_Item.php:54
-#: src/Document_Item.php:61 src/Ticket.php:69 src/Ticket.php:76
-#: src/Ticket.php:83 src/Ticket.php:105 src/Ticket.php:113 src/Ticket.php:121
-#: src/Ticket.php:129 src/Ticket.php:137 src/Ticket.php:145 setup.php:131
+#: setup.php:131 src/Ticket.php:69 src/Ticket.php:76 src/Ticket.php:83
+#: src/Ticket.php:105 src/Ticket.php:113 src/Ticket.php:121 src/Ticket.php:129
+#: src/Ticket.php:137 src/Ticket.php:145 src/Document_Item.php:54
+#: src/Document_Item.php:61 src/Config.php:65 src/Common.php:118
 msgid "Behaviors"
 msgstr "Comportements"
 
@@ -54,7 +54,7 @@ msgstr "存在进行中任务时，阻止解决/关闭故障"
 msgid "Block the solving/closing of a the ticket if it remains a task to do"
 msgstr "存在进行中任务时，阻止解决/关闭故障"
 
-#: src/Common.php:302 src/ITILSolution.php:169 src/Ticket.php:994
+#: src/Ticket.php:994 src/ITILSolution.php:169 src/Common.php:302
 #: templates/config.html.twig:166
 msgid "Category is mandatory before ticket is solved/closed"
 msgstr "工单解决/关闭前分类必填"
@@ -96,7 +96,7 @@ msgstr "删除工单的文档"
 msgid "Deny change of ticket's creation date"
 msgstr "拒绝更改工单创建日期"
 
-#: src/ITILSolution.php:84 src/ITILSolution.php:365 src/Ticket.php:959
+#: src/Ticket.php:959 src/ITILSolution.php:84 src/ITILSolution.php:365
 #: templates/config.html.twig:180
 msgid "Description of solution is mandatory before ticket is solved/closed"
 msgstr "工单解决/关闭前解决方案描述必填"
@@ -105,7 +105,7 @@ msgstr "工单解决/关闭前解决方案描述必填"
 msgid "Destination entity"
 msgstr "目标实体"
 
-#: src/Common.php:297 src/ITILSolution.php:97 src/Ticket.php:981
+#: src/Ticket.php:981 src/ITILSolution.php:97 src/Common.php:297
 #: templates/config.html.twig:201
 msgid "Duration is mandatory before ticket is solved/closed"
 msgstr "工单解决/关闭前持续时间必填"
@@ -118,7 +118,7 @@ msgstr "glpi_plugin_behaviors_configs创建时出错"
 msgid "First"
 msgstr ""
 
-#: src/Common.php:319 src/ITILSolution.php:196 src/Ticket.php:1021
+#: src/Ticket.php:1021 src/ITILSolution.php:196 src/Common.php:319
 #: templates/config.html.twig:159
 msgid ""
 "Group of technicians assigned is mandatory before ticket is solved/closed"
@@ -160,7 +160,7 @@ msgstr "最后分配的技术员"
 msgid "Last watcher added"
 msgstr "最后增加的观察者"
 
-#: src/Common.php:327 src/ITILSolution.php:209 src/Ticket.php:1034
+#: src/Ticket.php:1034 src/ITILSolution.php:209 src/Common.php:327
 #: templates/config.html.twig:173
 msgid "Location is mandatory before ticket is solved/closed"
 msgstr "工单解决关闭前，地点必填。"
@@ -220,7 +220,7 @@ msgstr "最后分配群组的主管"
 msgid "Task category is mandatory in a task"
 msgstr "任务分类在任务中必填"
 
-#: src/Common.php:310 src/ITILSolution.php:183 src/Ticket.php:1008
+#: src/Ticket.php:1008 src/ITILSolution.php:183 src/Common.php:310
 #: templates/config.html.twig:145
 msgid "Technician assigned is mandatory before ticket is solved/closed"
 msgstr "工单解决/关闭前必须分配技术员"
@@ -241,11 +241,11 @@ msgstr "等待的工单"
 msgid "Ticket's number format"
 msgstr "工单编码格式"
 
-#: src/ITILSolution.php:252 src/Problem.php:83 templates/config.html.twig:215
+#: src/Problem.php:83 src/ITILSolution.php:252 templates/config.html.twig:215
 msgid "Type of solution is mandatory before problem is solved/closed"
 msgstr "故障解决/关闭前解决类型必填"
 
-#: src/ITILSolution.php:71 src/ITILSolution.php:350 src/Ticket.php:947
+#: src/Ticket.php:947 src/ITILSolution.php:71 src/ITILSolution.php:350
 #: templates/config.html.twig:187
 msgid "Type of solution is mandatory before ticket is solved/closed"
 msgstr "工单解决/关闭前解决类型必填"
@@ -294,15 +294,15 @@ msgstr "你无法解决此故障"
 msgid "You cannot resolve the ticket"
 msgstr "你无法解决此工单"
 
-#: src/Common.php:380 src/ITILSolution.php:308 src/Change.php:121
+#: src/ITILSolution.php:308 src/Change.php:121 src/Common.php:380
 msgid "You cannot solve/close a change with task do to"
 msgstr "你无法解决/关闭一个有进行中任务的变更"
 
-#: src/Common.php:359 src/ITILSolution.php:274
+#: src/ITILSolution.php:274 src/Common.php:359
 msgid "You cannot solve/close a problem with task do to"
 msgstr "你无法解决/关闭一个有进行中任务的故障"
 
-#: src/Common.php:341 src/ITILSolution.php:231 src/Ticket.php:1057
+#: src/Ticket.php:1057 src/ITILSolution.php:231 src/Common.php:341
 msgid "You cannot solve/close a ticket with task do to"
 msgstr "你无法解决/关闭一个有进行中任务的工单"
 

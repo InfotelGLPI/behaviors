@@ -2,11 +2,11 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Xavier CAILLAUD <thetsmr@gmail.com>, 2025
 # Alan Lehoux, 2026
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -15,14 +15,12 @@ msgstr ""
 "POT-Creation-Date: 2026-09-07 08:25+0000\n"
 "PO-Revision-Date: 2025-04-26 07:42+0000\n"
 "Last-Translator: Alan Lehoux, 2026\n"
-"Language-Team: Spanish (Argentina) (https://app.transifex.com/infotelGLPI/"
-"teams/250760/es_AR/)\n"
-"Language: es_AR\n"
+"Language-Team: Spanish (Argentina) (https://app.transifex.com/infotelGLPI/teams/250760/es_AR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
-"1 : 2;\n"
+"Language: es_AR\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: src/Document_Item.php:55
 msgid "Add document to ticket"
@@ -45,7 +43,7 @@ msgstr "Permitir Clonación"
 #: src/Ticket.php:137 src/Ticket.php:145 src/Document_Item.php:54
 #: src/Document_Item.php:61 src/Config.php:65 src/Common.php:118
 msgid "Behaviors"
-msgstr ""
+msgstr "Comportamientos"
 
 #: templates/config.html.twig:221
 msgid "Block the solving/closing of a problem if task do to"
@@ -123,7 +121,7 @@ msgstr "Error al crear glpi_plugin_behaviors_configs"
 
 #: templates/config.html.twig:63 templates/config.html.twig:95
 msgid "First"
-msgstr ""
+msgstr "Primero"
 
 #: src/Ticket.php:1021 src/ITILSolution.php:196 src/Common.php:319
 #: templates/config.html.twig:159
@@ -135,11 +133,11 @@ msgstr ""
 
 #: templates/config.html.twig:285
 msgid "In the active entity"
-msgstr ""
+msgstr "En la entidad activa"
 
 #: templates/config.html.twig:286
 msgid "In the item's entity"
-msgstr ""
+msgstr "En la entidad del elemento"
 
 #: templates/config.html.twig:242
 msgid "Inventory"
@@ -147,7 +145,7 @@ msgstr "Inventario"
 
 #: templates/config.html.twig:63 templates/config.html.twig:95
 msgid "Last"
-msgstr ""
+msgstr "Último"
 
 #: src/Ticket.php:112
 msgid "Last group assigned"
@@ -189,7 +187,7 @@ msgstr "Nuevo ticket"
 #: templates/config.html.twig:63 templates/config.html.twig:95
 #: templates/config.html.twig:119 templates/config.html.twig:284
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: templates/config.html.twig:270
 msgid "Notification"
@@ -217,11 +215,11 @@ msgstr "Sólo un técnico y grupo"
 
 #: templates/config.html.twig:119
 msgid "Single user and single group"
-msgstr ""
+msgstr "Un solo usuario y un solo grupo"
 
 #: templates/config.html.twig:119
 msgid "Single user or group"
-msgstr ""
+msgstr "Un solo usuario o grupo"
 
 #: src/Ticket.php:136
 msgid "Supervisor of last group assigned"
@@ -330,6 +328,3 @@ msgstr "Debés agregar un tipo de solución. Es obligatorio"
 #: templates/warning_task.html.twig:33
 msgid "You must define a category. it's mandatory"
 msgstr "Debés definir una categoría. Es obligatoria"
-
-#~ msgid "Behaviours"
-#~ msgstr "Comportamientos"

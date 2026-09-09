@@ -38,9 +38,9 @@
         if (!marker) {
             return false;
         }
-        var submits = document.querySelectorAll('.itilsolution :submit');
-        for (var i = 0; i < submits.length; i++) {
-            submits[i].style.display = 'none';
+        var submits = document.querySelector(".itilsolution button[name='add']");
+        if(submits){
+            submits.style.display = 'none';
         }
         return true;
     }

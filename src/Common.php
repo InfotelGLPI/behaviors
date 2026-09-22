@@ -426,10 +426,10 @@ class Common extends CommonGLPI
                 if ($config->getField('is_tickettaskcategory_mandatory')) {
                     TemplateRenderer::getInstance()->display('@behaviors/warning_task.html.twig', []);
                 }
-            }elseif ($item->getType() == 'ITILFollowup') {
+            } elseif ($item->getType() == 'ITILFollowup') {
                 $config = Config::getInstance();
                 if ($config->getField('is_ticketcategory_mandatory_on_update')) {
-                    $warnings = false;
+                    $warnings = [];
                     $parentitem = $params['options']['item'];
                     $cat = ($parentitem->fields['itilcategories_id'] ?? 0);
 
@@ -466,7 +466,7 @@ class Common extends CommonGLPI
                     TemplateRenderer::getInstance()->display(
                         '@behaviors/warning_hide_submit.html.twig',
                         [
-                            'id_div' => 'behaviors-hide-solution-submit'
+                            'id_div' => 'behaviors-hide-solution-submit',
                         ],
                     );
                 }
@@ -481,7 +481,7 @@ class Common extends CommonGLPI
                         TemplateRenderer::getInstance()->display(
                             '@behaviors/warning_hide_submit.html.twig',
                             [
-                                'id_div' => 'behaviors-hide-followup-submit'
+                                'id_div' => 'behaviors-hide-followup-submit',
                             ],
                         );
                     }

@@ -27,6 +27,22 @@
  # --------------------------------------------------------------------------
  #}
 
-{# Marker consumed by js/warning_hide_submit.js to hide the "Add solution"
-   submit button. No inline <script> here (CSP friendly). #}
-<div id="{{ id_div }}" hidden></div>
+<div class="alert alert-danger d-flex align-items-center gap-2 mb-3" role="alert">
+    <i class="ti ti-ban fs-4"></i>
+    <div>
+        {% if warnings|length > 0 %}
+            <strong>
+                {% if parent_type == 'Ticket' %}
+                    {{ __('You cannot update the ticket', 'behaviors') }} :
+                {% elseif parent_type == 'Problem' %}
+                    {{ __('You cannot update the problem', 'behaviors') }} :
+                {% elseif parent_type == 'Change' %}
+                    {{ __('You cannot update the change', 'behaviors') }} :
+                {% endif %}
+            </strong>
+            {% for warning in warnings %}
+                <div class="text-muted">{{ warning }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

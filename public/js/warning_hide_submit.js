@@ -32,6 +32,8 @@
     'use strict';
 
     var MARKER_ID = 'behaviors-hide-solution-submit';
+    var MARKER_ID_FOLLOWUP = 'behaviors-hide-followup-submit';
+
 
     function hideSolutionSubmit() {
         var marker = document.getElementById(MARKER_ID);
@@ -45,8 +47,24 @@
         return true;
     }
 
+    function hideFollowupSubmit() {
+        var marker = document.getElementById(MARKER_ID_FOLLOWUP);
+        if (!marker) {
+            return false;
+        }
+        var submits = document.querySelector(".itilfollowup button[name='add']");
+        if(submits){
+            submits.style.display = 'none';
+        }
+        return true;
+    }
+
     function init() {
         if (hideSolutionSubmit()) {
+            hideFollowupSubmit()
+            return;
+        }
+        if (hideFollowupSubmit()) {
             return;
         }
         if (typeof MutationObserver === 'undefined') {
@@ -56,6 +74,9 @@
         // marker and stop observing as soon as it is handled.
         var observer = new MutationObserver(function () {
             if (hideSolutionSubmit()) {
+                observer.disconnect();
+            }
+            if (hideFollowupSubmit()) {
                 observer.disconnect();
             }
         });

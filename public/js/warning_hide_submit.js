@@ -37,7 +37,6 @@
 
     function hideSolutionSubmit() {
         var marker = document.getElementById(MARKER_ID);
-        console.log('passe 0');
         if (!marker) {
             return false;
         }
@@ -50,7 +49,6 @@
 
     function hideFollowupSubmit() {
         var marker = document.getElementById(MARKER_ID_FOLLOWUP);
-        console.log('passe1');
         if (!marker) {
             return false;
         }

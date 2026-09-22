@@ -439,7 +439,7 @@ class Common extends CommonGLPI
                     TemplateRenderer::getInstance()->display(
                         '@behaviors/warning_followup.html.twig',
                         [
-                            'warnings'                  => is_array($warnings) ? $warnings : [],
+                            'warnings'                  => $warnings,
                             'parent_type'               => $parentitem->getType(),
                         ],
                     );

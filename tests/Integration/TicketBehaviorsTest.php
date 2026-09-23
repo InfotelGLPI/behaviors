@@ -107,6 +107,9 @@ class TicketBehaviorsTest extends DbTestCase
     public function testBeforeAddAddsRequesterGroupWhenEnabled(): void
     {
         $this->login();
+        // The ticket targets the root entity: it must be in the active entities,
+        // otherwise the posted entity is (rightly) ignored for the group lookup.
+        $this->setEntity(0, true);
         $this->enableBehavior('use_requester_user_group', 1);
 
         $group = $this->createItem(\Group::class, [

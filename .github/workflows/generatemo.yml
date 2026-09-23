@@ -4,6 +4,9 @@ on:
     branches: [ master ]
     paths:
     - '**.po'
+permissions:
+  contents: write
+
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs: 
@@ -16,22 +19,18 @@ jobs:
       uses: actions/checkout@v4
       
     - name: Setup Perl environment
-      # You may pin to the exact commit or the version.
-      # uses: shogo82148/actions-setup-perl@8d2e3d59a9516b785ed32169d48a4888eaa9b514
-      uses: shogo82148/actions-setup-perl@v1
+      uses: shogo82148/actions-setup-perl@ac3202722f5744e62a8fa3af3e1aaaebb08861f3 # v1
     - name: msgfmt
-      # You may pin to the exact commit or the version.
-      # uses: whtsky/msgfmt-action@6b2181f051b002182d01a1e1f1aff216230c5a4d
-      uses: whtsky/msgfmt-action@20190305
+      uses: whtsky/msgfmt-action@6b2181f051b002182d01a1e1f1aff216230c5a4d # 20190305
     - name: Generate mo
       run:  perl tools/update_mo.pl;
 
     - name: Commit changes
-      uses: EndBug/add-and-commit@v9
+      uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9
       with:
        
         message: "Generate mo"
     - name: Push changes
  
-      uses: actions-go/push@master
+      uses: actions-go/push@b9b5794f543ade08bce387301e5031bf6a0969de # master
   

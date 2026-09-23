@@ -34,10 +34,9 @@ use GlpiPlugin\Behaviors\Common;
 
 // Authentication is enforced by the GLPI 11 framework for this (stateful)
 // plugin route. Authorization for the clone action is fully delegated to
-// Common::cloneItem(): it gates on the "clone" config flag and calls
-// check(READ) on the source and check(CREATE) on the clone (rights + entity),
-// throwing on any failure.
-$config = new Common();
+// Common::cloneItem(): it gates on the "clone" config flag, refuses the
+// simplified interface, calls check(READ) and check(UPDATE) on the source and
+// check(CREATE) on the clone (rights + entity), throwing on any failure.
 if (isset($_POST["_clone"])) {
     Common::cloneItem($_POST);
 

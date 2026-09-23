@@ -55,7 +55,7 @@ class ITILSolution
 
         // Check is the connected user is a tech
         if (!is_numeric(Session::getLoginUserID(false))
-            || !Session::haveRight('ticket', UPDATE)) {
+            || !Session::haveRightsOr('ticket', [UPDATE, \Ticket::OWN])) {
             return false; // No check
         }
 
@@ -335,7 +335,7 @@ class ITILSolution
 
         // Check is the connected user is a tech
         if (!is_numeric(Session::getLoginUserID(false))
-            || !Session::haveRight('ticket', UPDATE)) {
+            || !Session::haveRightsOr('ticket', [UPDATE, \Ticket::OWN])) {
             return false; // No check
         }
 

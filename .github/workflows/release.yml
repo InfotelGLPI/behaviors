@@ -8,13 +8,16 @@ on:
 name: Create release with tag
 env:
   TAG_VALUE: ${GITHUB_REF/refs\/tags\//}
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Upload Release Asset
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Build project # This would actually build your project, using zip for an example artifact
         id: build_
         env:

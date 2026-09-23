@@ -300,6 +300,19 @@ class Config extends CommonDBTM
     {
         global $DB;
 
+        // Notifications on the plugin's own events would otherwise survive, pointing at
+        // events no hook declares anymore. Purge through the API so that targets and
+        // template links are cleaned too.
+        $notification = new \Notification();
+        $iterator = $DB->request([
+            'SELECT' => ['id'],
+            'FROM'   => \Notification::getTable(),
+            'WHERE'  => ['event' => ['LIKE', 'plugin_behaviors_%']],
+        ]);
+        foreach ($iterator as $data) {
+            $notification->delete(['id' => $data['id']], true);
+        }
+
         $DB->dropTable(self::getTable(), true);
     }
 

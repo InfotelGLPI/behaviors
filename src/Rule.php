@@ -38,7 +38,7 @@ use RuleCriteria;
 class Rule extends Common
 {
     /**
-     * @param Rule $srce
+     * @param \Rule $srce
      * @param array $input
      * @return array
      */
@@ -50,11 +50,11 @@ class Rule extends Common
 
 
     /**
-     * @param Rule $clone
+     * @param \Rule $clone
      * @param $oldid
      * @return void
      */
-    public static function postClone(Rule $clone, $oldid)
+    public static function postClone(\Rule $clone, $oldid)
     {
         global $DB;
 

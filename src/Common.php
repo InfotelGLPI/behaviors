@@ -35,6 +35,7 @@ use CommonGLPI;
 use CommonITILActor;
 use DbUtils;
 use Dropdown;
+use Glpi\Exception\Http\AccessDeniedHttpException;
 use Html;
 use Log;
 use Glpi\Application\View\TemplateRenderer;
@@ -190,8 +191,15 @@ class Common extends CommonGLPI
             return false;
         }
 
+        // Replay the conditions under which the clone tab is offered (getTabNameForItem()):
+        // not from the simplified interface, and UPDATE on the source item.
+        if (($_SESSION['glpiactiveprofile']['interface'] ?? 'helpdesk') == 'helpdesk') {
+            throw new AccessDeniedHttpException();
+        }
+
         // Read original and prepare clone
         $item->check($param['id'], READ);
+        $item->check($param['id'], UPDATE);
 
         $input = $item->fields;
         $input['name'] = $param['name'];
@@ -272,7 +280,7 @@ class Common extends CommonGLPI
 
         // Check is the connected user is a tech
         if (!is_numeric(Session::getLoginUserID(false))
-            || (!(Session::haveRight('ticket', UPDATE) || Session::haveRight('ITILSolution', CREATE))
+            || (!(Session::haveRightsOr('ticket', [UPDATE, \Ticket::OWN]) || Session::haveRight('ITILSolution', CREATE))
                 && !Session::haveRight('problem', UPDATE)
                 && !Session::haveRight('change', UPDATE))) {
             return false; // No check

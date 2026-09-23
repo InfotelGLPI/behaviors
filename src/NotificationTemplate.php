@@ -37,11 +37,11 @@ use NotificationTemplateTranslation;
 class NotificationTemplate extends Common
 {
     /**
-     * @param NotificationTemplate $clone
+     * @param \NotificationTemplate $clone
      * @param $oldid
      * @return void
      */
-    public static function postClone(NotificationTemplate $clone, $oldid)
+    public static function postClone(\NotificationTemplate $clone, $oldid)
     {
         global $DB;
 

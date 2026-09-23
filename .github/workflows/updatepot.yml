@@ -5,6 +5,9 @@ on:
     paths-ignore:
       - 'locales/**'
 
+permissions:
+  contents: write
+
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
@@ -24,12 +27,12 @@ jobs:
         run: sh tools/extract_template.sh;
 
       - name: Commit changes
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9
         with:
           message: "Update POT"
 
       - name: Push changes
-        uses: actions-go/push@master
+        uses: actions-go/push@b9b5794f543ade08bce387301e5031bf6a0969de # master
         with:
           commit-message: ''
   

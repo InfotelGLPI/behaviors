@@ -32,6 +32,7 @@
 namespace GlpiPlugin\Behaviors;
 
 use CommonITILActor;
+use CommonITILObject;
 use Session;
 
 class ITILFollowup
@@ -42,11 +43,31 @@ class ITILFollowup
      */
     public static function beforeAdd(\ITILFollowup $fup)
     {
+        $config = Config::getInstance();
+
+        // Server-side counterpart of the hidden "add" button (Common::deleteAddSolutionButton()),
+        // so the rule also holds for API calls and direct POSTs. Like the other mandatory
+        // checks, only interactive users are subject to it (mail replies are not refused).
+        if ($config->getField('is_ticketcategory_mandatory_on_update')
+            && is_numeric(Session::getLoginUserID(false))) {
+            $parent = getItemForItemtype($fup->input['itemtype'] ?? '');
+            if ($parent instanceof CommonITILObject
+                && $parent->getFromDB((int) ($fup->input['items_id'] ?? 0))
+                && (int) ($parent->fields['itilcategories_id'] ?? 0) === 0) {
+                Session::addMessageAfterRedirect(
+                    __("Category is mandatory before ticket is updated", 'behaviors'),
+                    true,
+                    ERROR,
+                );
+                $fup->input = false;
+                return;
+            }
+        }
+
         if ($fup->input['itemtype'] !== 'Ticket') {
             return;
         }
 
-        $config = Config::getInstance();
         if (!$config->getField('addfup_updatetech')) {
             return;
         }

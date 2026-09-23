@@ -26,6 +26,8 @@
     </description>
     <homepage>https://github.com/InfotelGLPI/behaviors</homepage>
     <download>https://github.com/InfotelGLPI/behaviors/releases</download>
+    <issues>https://github.com/InfotelGLPI/behaviors/issues</issues>
+    <readme>https://raw.githubusercontent.com/InfotelGLPI/behaviors/master/README.md</readme>
     <authors>
         <author>Infotel</author>
         <author>Remi Collet</author>

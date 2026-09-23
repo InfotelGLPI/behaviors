@@ -623,7 +623,9 @@ class Ticket
                     if ($user->getFromDBbyEmail($email, $condition)) {
                         $input['_users_id_requester'] = $user->getID();
                     } else {
-                        return $input;
+                        // Unknown sender: leave the requesters untouched. Returning $input here
+                        // would inject the whole ticket input as the requester list.
+                        return null;
                     }
                 }
             }

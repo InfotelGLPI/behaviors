@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Behaviors plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-23 12:44+0000\n"
+"POT-Creation-Date: 2026-09-23 16:07+0000\n"
 "PO-Revision-Date: 2025-04-26 07:42+0000\n"
 "Last-Translator: André Petinga <andre.petinga@ipleiria.pt>, 2025\n"
 "Language-Team: Portuguese (Portugal) (https://app.transifex.com/infotelGLPI/"
@@ -56,16 +56,16 @@ msgstr ""
 msgid "Block the solving/closing of a the ticket if it remains a task to do"
 msgstr ""
 
-#: src/Ticket.php:1011 src/ITILSolution.php:169 src/Common.php:310
+#: src/Ticket.php:1013 src/ITILSolution.php:169 src/Common.php:310
 #: templates/config.html.twig:173
 msgid "Category is mandatory before ticket is solved/closed"
 msgstr "A categoria é obrigatória antes de concluir/fechar o ticket"
 
-#: src/Common.php:445 templates/config.html.twig:139
+#: src/ITILFollowup.php:58 src/Common.php:445 templates/config.html.twig:139
 msgid "Category is mandatory before ticket is updated"
 msgstr ""
 
-#: src/Ticket.php:1094 templates/config.html.twig:91
+#: src/Ticket.php:1096 templates/config.html.twig:91
 msgid "Category is mandatory when you assign a ticket"
 msgstr "A categoria é obrigatória quando se assigna o ticket"
 
@@ -104,7 +104,7 @@ msgstr "Remover documento do ticket"
 msgid "Deny change of ticket's creation date"
 msgstr "Negar a mudança da data de criação do ticket"
 
-#: src/Ticket.php:976 src/ITILSolution.php:84 src/ITILSolution.php:365
+#: src/Ticket.php:978 src/ITILSolution.php:84 src/ITILSolution.php:365
 #: templates/config.html.twig:187
 msgid "Description of solution is mandatory before ticket is solved/closed"
 msgstr "Descrição da solução é obrigatória antes de concluir/fechar o ticket"
@@ -113,7 +113,7 @@ msgstr "Descrição da solução é obrigatória antes de concluir/fechar o tick
 msgid "Destination entity"
 msgstr ""
 
-#: src/Ticket.php:998 src/ITILSolution.php:97 src/Common.php:305
+#: src/Ticket.php:1000 src/ITILSolution.php:97 src/Common.php:305
 #: templates/config.html.twig:208
 msgid "Duration is mandatory before ticket is solved/closed"
 msgstr "Duração é obrigatória antes de concluir/fechar o ticket"
@@ -126,7 +126,7 @@ msgstr "Ocorreu um erro na criação de glpi_plugin_behaviors_configs"
 msgid "First"
 msgstr ""
 
-#: src/Ticket.php:1038 src/ITILSolution.php:196 src/Common.php:327
+#: src/Ticket.php:1040 src/ITILSolution.php:196 src/Common.php:327
 #: templates/config.html.twig:166
 msgid ""
 "Group of technicians assigned is mandatory before ticket is solved/closed"
@@ -170,7 +170,7 @@ msgstr "Último técnico atribuído"
 msgid "Last watcher added"
 msgstr "Último observador adicionado"
 
-#: src/Ticket.php:1051 src/ITILSolution.php:209 src/Common.php:335
+#: src/Ticket.php:1053 src/ITILSolution.php:209 src/Common.php:335
 #: templates/config.html.twig:180
 msgid "Location is mandatory before ticket is solved/closed"
 msgstr "A localização é obrigatória antes de concluir/fechar o ticket"
@@ -232,7 +232,7 @@ msgstr "Supervisor do último grupo atribuído"
 msgid "Task category is mandatory in a task"
 msgstr "A categoria da tarefa é obrigatória numa tarefa"
 
-#: src/Ticket.php:1025 src/ITILSolution.php:183 src/Common.php:318
+#: src/Ticket.php:1027 src/ITILSolution.php:183 src/Common.php:318
 #: templates/config.html.twig:152
 msgid "Technician assigned is mandatory before ticket is solved/closed"
 msgstr ""
@@ -258,7 +258,7 @@ msgstr "Formato do número do ticket"
 msgid "Type of solution is mandatory before problem is solved/closed"
 msgstr "Tipo da solução é obrigatório antes de concluir/fechar um problema"
 
-#: src/Ticket.php:964 src/ITILSolution.php:71 src/ITILSolution.php:350
+#: src/Ticket.php:966 src/ITILSolution.php:71 src/ITILSolution.php:350
 #: templates/config.html.twig:194
 msgid "Type of solution is mandatory before ticket is solved/closed"
 msgstr "Tipo da solução é obrigatório antes de concluir/fechar o ticket"
@@ -315,7 +315,7 @@ msgstr "Não pode concluir/fechar a alteração com tarefas por concluir"
 msgid "You cannot solve/close a problem with task do to"
 msgstr "Não pode concluir/fechar o problema com tarefas por concluir"
 
-#: src/Ticket.php:1074 src/ITILSolution.php:231 src/Common.php:349
+#: src/Ticket.php:1076 src/ITILSolution.php:231 src/Common.php:349
 msgid "You cannot solve/close a ticket with task do to"
 msgstr "Não pode concluir/fechar o ticket com tarefas por concluir"
 

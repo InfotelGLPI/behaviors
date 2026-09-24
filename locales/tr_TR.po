@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Project - Plugin Behaviors\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-23 16:07+0000\n"
+"POT-Creation-Date: 2026-09-24 07:18+0000\n"
 "PO-Revision-Date: 2016-02-24 18:57+0000\n"
 "Last-Translator: Kaya Zeren <kayazeren@gmail.com>, 2016-2020,2022\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/yllen/glpi-project-"
@@ -35,10 +35,10 @@ msgstr "Ek bildirimler"
 msgid "Allow Clone"
 msgstr "Kopyalanabilsin"
 
-#: setup.php:131 src/Ticket.php:69 src/Ticket.php:76 src/Ticket.php:83
-#: src/Ticket.php:105 src/Ticket.php:113 src/Ticket.php:121 src/Ticket.php:129
-#: src/Ticket.php:137 src/Ticket.php:145 src/Document_Item.php:54
-#: src/Document_Item.php:61 src/Config.php:65 src/Common.php:119
+#: setup.php:131 src/Common.php:119 src/Document_Item.php:54
+#: src/Document_Item.php:61 src/Ticket.php:69 src/Ticket.php:76
+#: src/Ticket.php:83 src/Ticket.php:105 src/Ticket.php:113 src/Ticket.php:121
+#: src/Ticket.php:129 src/Ticket.php:137 src/Ticket.php:145 src/Config.php:65
 msgid "Behaviors"
 msgstr ""
 
@@ -50,12 +50,12 @@ msgstr "Yapılacak iş varsa çağrı çözülmüş/kapatılmış olarak işaret
 msgid "Block the solving/closing of a the ticket if it remains a task to do"
 msgstr ""
 
-#: src/Ticket.php:1013 src/ITILSolution.php:169 src/Common.php:310
+#: src/ITILSolution.php:169 src/Common.php:310 src/Ticket.php:1013
 #: templates/config.html.twig:173
 msgid "Category is mandatory before ticket is solved/closed"
 msgstr "Çağrının çözümlenmesi ya da kapatılması için kategori zorunludur"
 
-#: src/ITILFollowup.php:58 src/Common.php:445 templates/config.html.twig:139
+#: src/Common.php:445 src/ITILFollowup.php:58 templates/config.html.twig:139
 msgid "Category is mandatory before ticket is updated"
 msgstr ""
 
@@ -97,7 +97,7 @@ msgstr "Çağrıdaki ek belgeyi sil"
 msgid "Deny change of ticket's creation date"
 msgstr "Çağrı oluşturulma tarihi değiştirilemesin"
 
-#: src/Ticket.php:978 src/ITILSolution.php:84 src/ITILSolution.php:365
+#: src/ITILSolution.php:84 src/ITILSolution.php:365 src/Ticket.php:978
 #: templates/config.html.twig:187
 msgid "Description of solution is mandatory before ticket is solved/closed"
 msgstr ""
@@ -107,7 +107,7 @@ msgstr ""
 msgid "Destination entity"
 msgstr ""
 
-#: src/Ticket.php:1000 src/ITILSolution.php:97 src/Common.php:305
+#: src/ITILSolution.php:97 src/Common.php:305 src/Ticket.php:1000
 #: templates/config.html.twig:208
 msgid "Duration is mandatory before ticket is solved/closed"
 msgstr "Çağrının çözümlenmesi ya da kapatılması için süre zorunludur"
@@ -120,7 +120,7 @@ msgstr "creating glpi_plugin_behaviors_configs eklenirken bir sorun çıktı"
 msgid "First"
 msgstr ""
 
-#: src/Ticket.php:1040 src/ITILSolution.php:196 src/Common.php:327
+#: src/ITILSolution.php:196 src/Common.php:327 src/Ticket.php:1040
 #: templates/config.html.twig:166
 msgid ""
 "Group of technicians assigned is mandatory before ticket is solved/closed"
@@ -164,7 +164,7 @@ msgstr "Son atanan teknisyen"
 msgid "Last watcher added"
 msgstr "Son atanan izleyici"
 
-#: src/Ticket.php:1053 src/ITILSolution.php:209 src/Common.php:335
+#: src/ITILSolution.php:209 src/Common.php:335 src/Ticket.php:1053
 #: templates/config.html.twig:180
 msgid "Location is mandatory before ticket is solved/closed"
 msgstr "Çağrının çözümlenmesi ya da kapatılması için konum zorunludur"
@@ -225,7 +225,7 @@ msgstr "Son atanan grubun yöneticisi"
 msgid "Task category is mandatory in a task"
 msgstr "Bir görev için görev kategorisi zorunludur"
 
-#: src/Ticket.php:1027 src/ITILSolution.php:183 src/Common.php:318
+#: src/ITILSolution.php:183 src/Common.php:318 src/Ticket.php:1027
 #: templates/config.html.twig:152
 msgid "Technician assigned is mandatory before ticket is solved/closed"
 msgstr ""
@@ -247,11 +247,11 @@ msgstr "Çağrı uyarısı"
 msgid "Ticket's number format"
 msgstr "Çağrı sayı biçimi"
 
-#: src/Problem.php:83 src/ITILSolution.php:252 templates/config.html.twig:222
+#: src/ITILSolution.php:252 src/Problem.php:83 templates/config.html.twig:222
 msgid "Type of solution is mandatory before problem is solved/closed"
 msgstr "Sorunun çözümlenmesi ya da kapatılması için çözüm türü zorunludur"
 
-#: src/Ticket.php:966 src/ITILSolution.php:71 src/ITILSolution.php:350
+#: src/ITILSolution.php:71 src/ITILSolution.php:350 src/Ticket.php:966
 #: templates/config.html.twig:194
 msgid "Type of solution is mandatory before ticket is solved/closed"
 msgstr "Çağrının çözümlenmesi ya da kapatılması için çözüm türü zorunludur"
@@ -300,7 +300,7 @@ msgstr ""
 msgid "You cannot resolve the ticket"
 msgstr ""
 
-#: src/ITILSolution.php:308 src/Change.php:121 src/Common.php:388
+#: src/ITILSolution.php:308 src/Common.php:388 src/Change.php:121
 msgid "You cannot solve/close a change with task do to"
 msgstr ""
 "Yapılacak işi olan bir değişikliği çözülmüş/kapatılmış olarak "
@@ -311,7 +311,7 @@ msgid "You cannot solve/close a problem with task do to"
 msgstr ""
 "Yapılacak işi olan bir çağrıyı çözülmüş/kapatılmış olarak işaretleyemezsiniz"
 
-#: src/Ticket.php:1076 src/ITILSolution.php:231 src/Common.php:349
+#: src/ITILSolution.php:231 src/Common.php:349 src/Ticket.php:1076
 msgid "You cannot solve/close a ticket with task do to"
 msgstr ""
 "Yapılacak işi olan bir çağrıyı çözülmüş olarak işaretleyemez ya da "

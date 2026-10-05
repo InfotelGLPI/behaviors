@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-23 16:07+0000\n"
+"POT-Creation-Date: 2026-09-24 07:18+0000\n"
 "PO-Revision-Date: 2025-04-26 07:42+0000\n"
 "Last-Translator: Daisuke INOUE, 2026\n"
 "Language-Team: Japanese (Japan) (https://app.transifex.com/infotelGLPI/"
@@ -38,10 +38,10 @@ msgstr "追加の通知"
 msgid "Allow Clone"
 msgstr "クローンを許可"
 
-#: setup.php:131 src/Ticket.php:69 src/Ticket.php:76 src/Ticket.php:83
-#: src/Ticket.php:105 src/Ticket.php:113 src/Ticket.php:121 src/Ticket.php:129
-#: src/Ticket.php:137 src/Ticket.php:145 src/Document_Item.php:54
-#: src/Document_Item.php:61 src/Config.php:65 src/Common.php:119
+#: setup.php:131 src/Common.php:119 src/Document_Item.php:54
+#: src/Document_Item.php:61 src/Ticket.php:69 src/Ticket.php:76
+#: src/Ticket.php:83 src/Ticket.php:105 src/Ticket.php:113 src/Ticket.php:121
+#: src/Ticket.php:129 src/Ticket.php:137 src/Ticket.php:145 src/Config.php:65
 msgid "Behaviors"
 msgstr "ビヘイビア"
 
@@ -53,12 +53,12 @@ msgstr "問題にタスクが残っていたら解決・終了できなくする
 msgid "Block the solving/closing of a the ticket if it remains a task to do"
 msgstr "タスクが残っていたら解決・終了できない"
 
-#: src/Ticket.php:1013 src/ITILSolution.php:169 src/Common.php:310
+#: src/ITILSolution.php:169 src/Common.php:310 src/Ticket.php:1013
 #: templates/config.html.twig:173
 msgid "Category is mandatory before ticket is solved/closed"
 msgstr "チケットを解決・終了するにはカテゴリーの選択が必須"
 
-#: src/ITILFollowup.php:58 src/Common.php:445 templates/config.html.twig:139
+#: src/Common.php:445 src/ITILFollowup.php:58 templates/config.html.twig:139
 msgid "Category is mandatory before ticket is updated"
 msgstr ""
 
@@ -99,7 +99,7 @@ msgstr "チケットのドキュメントを削除"
 msgid "Deny change of ticket's creation date"
 msgstr "チケットの作成日を変更不可に"
 
-#: src/Ticket.php:978 src/ITILSolution.php:84 src/ITILSolution.php:365
+#: src/ITILSolution.php:84 src/ITILSolution.php:365 src/Ticket.php:978
 #: templates/config.html.twig:187
 msgid "Description of solution is mandatory before ticket is solved/closed"
 msgstr "チケットを解決・終了するには解決策の記述を必須に"
@@ -108,7 +108,7 @@ msgstr "チケットを解決・終了するには解決策の記述を必須に
 msgid "Destination entity"
 msgstr "先エンティティー"
 
-#: src/Ticket.php:1000 src/ITILSolution.php:97 src/Common.php:305
+#: src/ITILSolution.php:97 src/Common.php:305 src/Ticket.php:1000
 #: templates/config.html.twig:208
 msgid "Duration is mandatory before ticket is solved/closed"
 msgstr "チケットを解決・終了するには期間を必須に"
@@ -121,7 +121,7 @@ msgstr "glpi_plugin_behaviors_configs の作成でエラー"
 msgid "First"
 msgstr ""
 
-#: src/Ticket.php:1040 src/ITILSolution.php:196 src/Common.php:327
+#: src/ITILSolution.php:196 src/Common.php:327 src/Ticket.php:1040
 #: templates/config.html.twig:166
 msgid ""
 "Group of technicians assigned is mandatory before ticket is solved/closed"
@@ -163,7 +163,7 @@ msgstr "最終割り当て技術者"
 msgid "Last watcher added"
 msgstr "最終割り当て監視者"
 
-#: src/Ticket.php:1053 src/ITILSolution.php:209 src/Common.php:335
+#: src/ITILSolution.php:209 src/Common.php:335 src/Ticket.php:1053
 #: templates/config.html.twig:180
 msgid "Location is mandatory before ticket is solved/closed"
 msgstr "チケットを解決・終了するには場所を必須に"
@@ -223,7 +223,7 @@ msgstr "最終割り当てグループの監督"
 msgid "Task category is mandatory in a task"
 msgstr "タスクのカテゴリーを必須に"
 
-#: src/Ticket.php:1027 src/ITILSolution.php:183 src/Common.php:318
+#: src/ITILSolution.php:183 src/Common.php:318 src/Ticket.php:1027
 #: templates/config.html.twig:152
 msgid "Technician assigned is mandatory before ticket is solved/closed"
 msgstr "チケットを解決・終了するには技術者の割り当てを必須に"
@@ -245,11 +245,11 @@ msgstr "保留中チケット"
 msgid "Ticket's number format"
 msgstr "チケットの数値書式"
 
-#: src/Problem.php:83 src/ITILSolution.php:252 templates/config.html.twig:222
+#: src/ITILSolution.php:252 src/Problem.php:83 templates/config.html.twig:222
 msgid "Type of solution is mandatory before problem is solved/closed"
 msgstr "問題を解決・終了するには解決の型を必須に"
 
-#: src/Ticket.php:966 src/ITILSolution.php:71 src/ITILSolution.php:350
+#: src/ITILSolution.php:71 src/ITILSolution.php:350 src/Ticket.php:966
 #: templates/config.html.twig:194
 msgid "Type of solution is mandatory before ticket is solved/closed"
 msgstr "チケットを解決・終了するには解決の型を必須に"
@@ -298,7 +298,7 @@ msgstr "問題を解決する権限がありません"
 msgid "You cannot resolve the ticket"
 msgstr "チケットを解決する権限がありません"
 
-#: src/ITILSolution.php:308 src/Change.php:121 src/Common.php:388
+#: src/ITILSolution.php:308 src/Common.php:388 src/Change.php:121
 msgid "You cannot solve/close a change with task do to"
 msgstr "タスクのやり残しがある変更を解決・終了することはできません"
 
@@ -306,7 +306,7 @@ msgstr "タスクのやり残しがある変更を解決・終了することは
 msgid "You cannot solve/close a problem with task do to"
 msgstr "タスクのやり残しがある問題を解決・終了することはできません"
 
-#: src/Ticket.php:1076 src/ITILSolution.php:231 src/Common.php:349
+#: src/ITILSolution.php:231 src/Common.php:349 src/Ticket.php:1076
 msgid "You cannot solve/close a ticket with task do to"
 msgstr "タスクのやり残しがあるチケットを解決・終了することはできません"
 

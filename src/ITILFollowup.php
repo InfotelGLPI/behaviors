@@ -72,7 +72,7 @@ class ITILFollowup
             return;
         }
 
-        if (!Session::haveRight('ticket', UPDATE)) {
+        if (!Session::haveRight(\Ticket::$rightname, UPDATE)) {
             return;
         }
 

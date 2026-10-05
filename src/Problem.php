@@ -52,7 +52,7 @@ class Problem
 
         // Check is the connected user is a tech
         if (!is_numeric(Session::getLoginUserID(false))
-            || !Session::haveRight('problem', UPDATE)) {
+            || !Session::haveRight(\Problem::$rightname, UPDATE)) {
             return false; // No check
         }
 

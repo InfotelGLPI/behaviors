@@ -31,7 +31,7 @@
 
 use GlpiPlugin\Behaviors\Config;
 
-Session::checkRight('config', UPDATE);
+Session::checkRight(\Config::$rightname, UPDATE);
 
 global $CFG_GLPI;
 $config = new Config();

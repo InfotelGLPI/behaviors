@@ -43,7 +43,7 @@ class Supplier_Ticket
     {
         // Check is the connected user is a tech
         if (!is_numeric(Session::getLoginUserID(false))
-            || !Session::haveRight('ticket', \Ticket::OWN)) {
+            || !Session::haveRight(\Ticket::$rightname, \Ticket::OWN)) {
             return false; // No check
         }
     }

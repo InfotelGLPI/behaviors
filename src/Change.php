@@ -92,7 +92,7 @@ class Change
 
         // Check is the connected user is a tech
         if (!is_numeric(Session::getLoginUserID(false))
-            || !Session::haveRight('change', UPDATE)) {
+            || !Session::haveRight(\Change::$rightname, UPDATE)) {
             return false; // No check
         }
 

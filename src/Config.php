@@ -43,16 +43,16 @@ use Session;
 class Config extends CommonDBTM
 {
     private static $_instance = null;
-    public static $rightname = 'config';
+    public static string $rightname = 'config';
 
     public static function canCreate(): bool
     {
-        return Session::haveRight('config', UPDATE);
+        return Session::haveRight(\Config::$rightname, UPDATE);
     }
 
     public static function canView(): bool
     {
-        return Session::haveRight('config', READ);
+        return Session::haveRight(\Config::$rightname, READ);
     }
 
     public static function getTypeName($nb = 0)

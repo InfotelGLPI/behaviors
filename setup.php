@@ -136,8 +136,8 @@ function plugin_version_behaviors()
         'minGlpiVersion' => '11.0.0',
         'requirements' => [
             'glpi' => [
-                'min' => '11.0.0',
-                'max' => '12.0.0',
+                'min' => '11.0.99',
+                'max' => '12.0.99',
             ],
         ],
     ];

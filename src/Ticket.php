@@ -932,7 +932,7 @@ class Ticket
         }
 
         // Check is the connected user is a tech (UPDATE or OWN ticket right)
-        if (!Session::haveRightsOr('ticket', [UPDATE, \Ticket::OWN])) {
+        if (!Session::haveRightsOr(\Ticket::$rightname, [UPDATE, \Ticket::OWN])) {
             return false; // No check
         }
 

@@ -280,9 +280,12 @@ class Common extends CommonGLPI
 
         // Check is the connected user is a tech
         if (!is_numeric(Session::getLoginUserID(false))
-            || (!(Session::haveRightsOr('ticket', [UPDATE, \Ticket::OWN]) || Session::haveRight('ITILSolution', CREATE))
-                && !Session::haveRight('problem', UPDATE)
-                && !Session::haveRight('change', UPDATE))) {
+            // No 'ITILSolution' right exists (ITILSolution::$rightname is empty: solving is
+            // gated by the parent's canSolve()), so the former haveRight('ITILSolution', CREATE)
+            // alternative was always false and is dropped
+            || (!Session::haveRightsOr(\Ticket::$rightname, [UPDATE, \Ticket::OWN])
+                && !Session::haveRight(\Problem::$rightname, UPDATE)
+                && !Session::haveRight(\Change::$rightname, UPDATE))) {
             return false; // No check
         }
 

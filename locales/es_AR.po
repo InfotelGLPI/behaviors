@@ -2,27 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Xavier CAILLAUD <thetsmr@gmail.com>, 2025
 # Alan Lehoux, 2026
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-05 13:14+0000\n"
+"POT-Creation-Date: 2026-10-05 13:18+0000\n"
 "PO-Revision-Date: 2025-04-26 07:42+0000\n"
 "Last-Translator: Alan Lehoux, 2026\n"
-"Language-Team: Spanish (Argentina) (https://app.transifex.com/infotelGLPI/"
-"teams/250760/es_AR/)\n"
-"Language: es_AR\n"
+"Language-Team: Spanish (Argentina) (https://app.transifex.com/infotelGLPI/teams/250760/es_AR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
-"1 : 2;\n"
+"Language: es_AR\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: src/Document_Item.php:55
 msgid "Add document to ticket"
@@ -64,7 +62,7 @@ msgstr "La categoría es obligatoria antes de resolver/cerrar el ticket"
 
 #: src/Common.php:448 src/ITILFollowup.php:58 templates/config.html.twig:138
 msgid "Category is mandatory before ticket is updated"
-msgstr ""
+msgstr "La categoría es obligatoria antes de actualizar el ticket"
 
 #: src/Ticket.php:1096 templates/config.html.twig:90
 msgid "Category is mandatory when you assign a ticket"
@@ -324,15 +322,15 @@ msgstr "No podés resolver/cerrar un ticket si hay tareas pendientes"
 
 #: templates/warning_followup.html.twig:40
 msgid "You cannot update the change"
-msgstr ""
+msgstr "No podés actualizar el cambio"
 
 #: templates/warning_followup.html.twig:38
 msgid "You cannot update the problem"
-msgstr ""
+msgstr "No podés actualizar el problema"
 
 #: templates/warning_followup.html.twig:36
 msgid "You cannot update the ticket"
-msgstr ""
+msgstr "No podés actualizar el ticket"
 
 #: templates/warning_solution.html.twig:34
 msgid "You must add a description. it's mandatory"
